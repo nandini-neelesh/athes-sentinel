@@ -1,0 +1,21 @@
+timestamp,ip_address,user_id,endpoint,method,status_code,response_time_ms,event_type,user_agent
+2026-06-12 10:00:00,10.0.0.9,u001,/login,POST,401,120.5,login_failed,Mozilla/5.0
+2026-06-12 10:00:10,10.0.0.9,u001,/login,POST,401,130.5,login_failed,Mozilla/5.0
+2026-06-12 10:00:20,10.0.0.9,u001,/login,POST,401,125.5,login_failed,Mozilla/5.0
+2026-06-12 10:00:30,10.0.0.9,u001,/login,POST,401,122.5,login_failed,Mozilla/5.0
+2026-06-12 10:00:40,10.0.0.9,u001,/login,POST,401,128.5,login_failed,Mozilla/5.0
+2026-06-12 10:00:50,10.0.0.9,u001,/login,POST,401,126.5,login_failed,Mozilla/5.0
+2026-06-12 10:01:00,10.0.0.9,u001,/login,POST,401,121.5,login_failed,Mozilla/5.0
+2026-06-12 10:01:10,10.0.0.9,u001,/login,POST,401,124.5,login_failed,Mozilla/5.0
+2026-06-12 10:01:20,10.0.0.9,u001,/login,POST,401,129.5,login_failed,Mozilla/5.0
+2026-06-12 10:01:30,10.0.0.9,u001,/login,POST,401,132.5,login_failed,Mozilla/5.0
+2026-06-12 10:01:40,10.0.0.9,u001,/login,POST,401,127.5,login_failed,Mozilla/5.0
+2026-06-12 10:01:50,10.0.0.9,u001,/login,POST,401,126.0,login_failed,Mozilla/5.0
+2026-06-12 10:02:00,10.0.0.9,u001,/admin,GET,403,3100.0,unauthorized_access,Mozilla/5.0
+2026-06-12 10:02:10,10.0.0.9,u001,/config,GET,403,3200.0,unauthorized_access,Mozilla/5.0
+2026-06-12 10:02:20,10.0.0.9,u001,/.env,GET,403,3300.0,unauthorized_access,Mozilla/5.0
+2026-06-12 10:02:30,10.0.0.9,u001,/api/users,GET,403,3400.0,unauthorized_access,Mozilla/5.0
+2026-06-12 10:02:40,10.0.0.9,u001,/settings,GET,403,3500.0,unauthorized_access,Mozilla/5.0
+2026-06-12 10:03:00,192.168.1.20,u020,/home,GET,200,90.0,page_view,Mozilla/5.0
+2026-06-12 10:03:10,192.168.1.20,u020,/products,GET,200,95.0,page_view,Mozilla/5.0
+2026-06-12 10:03:20,192.168.1.20,u020,/cart,GET,200,100.0,page_view,Mozilla/5.0
