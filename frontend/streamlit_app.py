@@ -83,6 +83,30 @@ def get_ip_features(file_id):
         return False, _get_error_message(exc)
 
 
+def run_ml_anomaly_detection(file_id):
+    try:
+        response = requests.post(
+            f"{API_BASE_URL}/ml/run/{file_id}",
+            timeout=30,
+        )
+        response.raise_for_status()
+        return True, response.json()
+    except requests.RequestException as exc:
+        return False, _get_error_message(exc)
+
+
+def get_ml_scores(file_id):
+    try:
+        response = requests.get(
+            f"{API_BASE_URL}/ml/scores/{file_id}",
+            timeout=20,
+        )
+        response.raise_for_status()
+        return True, response.json()
+    except requests.RequestException as exc:
+        return False, _get_error_message(exc)
+
+
 def generate_incidents(file_id):
     try:
         response = requests.post(
@@ -165,6 +189,9 @@ if "incidents" not in st.session_state:
 
 if "ip_features" not in st.session_state:
     st.session_state.ip_features = []
+
+if "ml_scores" not in st.session_state:
+    st.session_state.ml_scores = []
 
 
 st.header("Backend Health Check")
@@ -286,6 +313,57 @@ if st.session_state.ip_features:
     show_dataframe(st.session_state.ip_features, columns=feature_columns)
 else:
     st.info("No IP features loaded yet.")
+
+
+st.header("ML Anomaly Detection")
+st.info(
+    "Isolation Forest runs on the per-IP feature table. With very small "
+    "datasets, ML scores may not be very meaningful yet."
+)
+
+if st.button("Run Isolation Forest"):
+    success, ml_result = run_ml_anomaly_detection(selected_file_id)
+
+    if success:
+        st.success("Isolation Forest completed.")
+        st.write("File ID:", ml_result["file_id"])
+        st.write("IP count:", ml_result["ip_count"])
+        st.write("Scores updated:", ml_result["scores_updated"])
+
+        if ml_result.get("results"):
+            show_dataframe(ml_result["results"])
+    else:
+        st.error("Isolation Forest failed.")
+        st.write(ml_result)
+
+if st.button("Load ML Scores"):
+    success, ml_scores_result = get_ml_scores(selected_file_id)
+
+    if success:
+        st.session_state.ml_scores = ml_scores_result
+    else:
+        st.error("Could not load ML scores.")
+        st.write(ml_scores_result)
+
+if st.session_state.ml_scores:
+    ml_score_columns = [
+        "ip_address",
+        "ml_anomaly_score",
+        "total_requests",
+        "error_rate",
+        "endpoint_entropy",
+        "request_frequency",
+        "failed_login_count",
+        "sensitive_endpoint_count",
+    ]
+    show_dataframe(st.session_state.ml_scores, columns=ml_score_columns)
+else:
+    st.info("No ML scores loaded yet.")
+
+st.info(
+    "ML anomaly score is currently separate from incident risk_score. Unified "
+    "rule + ML risk scoring will be added in a later phase."
+)
 
 
 st.header("Incident Generation")
