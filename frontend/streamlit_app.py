@@ -59,6 +59,30 @@ def get_raw_logs(file_id, limit):
         return False, _get_error_message(exc)
 
 
+def generate_ip_features(file_id):
+    try:
+        response = requests.post(
+            f"{API_BASE_URL}/features/generate/{file_id}",
+            timeout=30,
+        )
+        response.raise_for_status()
+        return True, response.json()
+    except requests.RequestException as exc:
+        return False, _get_error_message(exc)
+
+
+def get_ip_features(file_id):
+    try:
+        response = requests.get(
+            f"{API_BASE_URL}/features/{file_id}",
+            timeout=20,
+        )
+        response.raise_for_status()
+        return True, response.json()
+    except requests.RequestException as exc:
+        return False, _get_error_message(exc)
+
+
 def generate_incidents(file_id):
     try:
         response = requests.post(
@@ -139,6 +163,9 @@ if "log_files" not in st.session_state:
 if "incidents" not in st.session_state:
     st.session_state.incidents = []
 
+if "ip_features" not in st.session_state:
+    st.session_state.ip_features = []
+
 
 st.header("Backend Health Check")
 is_healthy, health_result = check_backend_health()
@@ -217,10 +244,48 @@ if st.button("Load raw logs"):
 
 
 st.header("Feature Generation")
-st.info(
-    "IP feature generation is currently done from the backend Python function. "
-    "A feature-generation API can be added in the next backend phase."
-)
+
+if st.button("Generate IP Features"):
+    success, feature_generation_result = generate_ip_features(selected_file_id)
+
+    if success:
+        st.success("IP feature generation completed.")
+        st.write("File ID:", feature_generation_result["file_id"])
+        st.write("IP count:", feature_generation_result["ip_count"])
+        st.write("Features created:", feature_generation_result["features_created"])
+    else:
+        st.error("IP feature generation failed.")
+        st.write(feature_generation_result)
+
+if st.button("Load IP Features"):
+    success, ip_features_result = get_ip_features(selected_file_id)
+
+    if success:
+        st.session_state.ip_features = ip_features_result
+    else:
+        st.error("Could not load IP features.")
+        st.write(ip_features_result)
+
+if st.session_state.ip_features:
+    feature_columns = [
+        "ip_address",
+        "total_requests",
+        "failed_login_count",
+        "success_login_count",
+        "error_4xx_count",
+        "error_5xx_count",
+        "error_rate",
+        "unique_endpoints",
+        "endpoint_entropy",
+        "avg_response_time",
+        "max_response_time",
+        "sensitive_endpoint_count",
+        "request_frequency",
+        "ml_anomaly_score",
+    ]
+    show_dataframe(st.session_state.ip_features, columns=feature_columns)
+else:
+    st.info("No IP features loaded yet.")
 
 
 st.header("Incident Generation")
