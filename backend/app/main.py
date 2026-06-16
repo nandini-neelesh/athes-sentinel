@@ -3,6 +3,7 @@ from pydantic import BaseModel
 
 from backend.app.database import models  # Registers SQLAlchemy models.
 from backend.app.database.session import Base, engine
+from backend.app.detection.routes import router as ml_router
 from backend.app.features.routes import router as features_router
 from backend.app.incidents.routes import router as incidents_router
 from backend.app.logs.routes import router as logs_router
@@ -17,6 +18,7 @@ app = FastAPI(
 app.include_router(features_router)
 app.include_router(incidents_router)
 app.include_router(logs_router)
+app.include_router(ml_router)
 
 
 class TestLogRequest(BaseModel):
