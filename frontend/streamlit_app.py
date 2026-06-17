@@ -361,12 +361,16 @@ else:
     st.info("No ML scores loaded yet.")
 
 st.info(
-    "ML anomaly score is currently separate from incident risk_score. Unified "
-    "rule + ML risk scoring will be added in a later phase."
+    "Run Isolation Forest before generating incidents if you want incident "
+    "risk_score to include the ML anomaly signal."
 )
 
 
 st.header("Incident Generation")
+st.info(
+    "Incident risk_score now combines rule score and ML anomaly score when ML "
+    "scores are available."
+)
 
 if st.button("Generate Incidents"):
     success, generation_result = generate_incidents(selected_file_id)

@@ -1,6 +1,11 @@
 from datetime import datetime
 
-from backend.app.database.models import Incident
+from backend.app.database.models import IPFeature, Incident
+from backend.app.detection.risk_score import (
+    build_risk_explanation,
+    calculate_unified_risk_score,
+    severity_from_risk_score,
+)
 from backend.app.detection.rules import run_rule_engine_for_file
 from backend.app.incidents.explanations import (
     format_incident_response,
@@ -10,6 +15,10 @@ from backend.app.incidents.explanations import (
 
 def create_incidents_from_rule_findings(file_id, db):
     findings = run_rule_engine_for_file(file_id, db)
+    ip_features = db.query(IPFeature).filter(IPFeature.file_id == file_id).all()
+    ml_scores_by_ip = {
+        ip_feature.ip_address: ip_feature.ml_anomaly_score for ip_feature in ip_features
+    }
 
     try:
         db.query(Incident).filter(Incident.file_id == file_id).delete(
@@ -19,13 +28,27 @@ def create_incidents_from_rule_findings(file_id, db):
         incidents = []
 
         for finding in findings:
+            rule_score = finding["rule_score"]
+            ml_anomaly_score = ml_scores_by_ip.get(finding["ip_address"])
+            final_risk_score = calculate_unified_risk_score(
+                rule_score,
+                ml_anomaly_score,
+            )
+            final_severity = severity_from_risk_score(final_risk_score)
+            risk_explanation = build_risk_explanation(
+                rule_score,
+                ml_anomaly_score,
+                final_risk_score,
+            )
+            evidence = f"{finding['evidence']} {risk_explanation}"
+
             incident = Incident(
                 file_id=file_id,
                 ip_address=finding["ip_address"],
                 incident_type=finding["incident_type"],
-                severity=finding["severity"],
-                risk_score=finding["rule_score"],
-                evidence=finding["evidence"],
+                severity=final_severity,
+                risk_score=final_risk_score,
+                evidence=evidence,
                 recommended_action=finding["recommended_action"],
                 status="open",
                 analyst_note=None,
