@@ -36,6 +36,9 @@ NORMAL_ENDPOINTS = [
     "/checkout",
     "/api/orders",
     "/api/products",
+]
+
+RARE_NORMAL_ENDPOINTS = [
     "/settings",
 ]
 
@@ -128,29 +131,63 @@ def generate_normal_rows():
     rows = []
     normal_ips = [f"192.168.{index // 255}.{index % 255}" for index in range(10, 70)]
 
-    for _ in range(950):
-        endpoint = random.choice(NORMAL_ENDPOINTS)
-        status_code = random.choices(
-            population=[200, 302, 404, 500],
-            weights=[86, 7, 5, 2],
-            k=1,
-        )[0]
-        timestamp = random_timestamp(START_TIME, WINDOW_MINUTES)
-        response_time = max(80, min(random.gauss(310, 140), 800))
+    for index, ip_address in enumerate(normal_ips):
+        user_id = f"user_{1000 + index}"
 
-        rows.append(
-            make_row(
-                timestamp=timestamp,
-                ip_address=random.choice(normal_ips),
-                user_id=f"user_{random.randint(1000, 1099)}",
-                endpoint=endpoint,
-                method=method_for_endpoint(endpoint),
-                status_code=status_code,
-                response_time_ms=response_time,
-                event_type=event_type_for_normal_request(endpoint, status_code),
-                user_agent=random.choice(USER_AGENTS),
+        # Normal users repeat a small set of common paths instead of scanning widely.
+        endpoint_pool = ["/", "/home", "/login", "/dashboard", "/profile"]
+
+        if index % 3 == 0:
+            endpoint_pool.extend(["/products", "/cart", "/checkout"])
+        elif index % 3 == 1:
+            endpoint_pool.extend(["/api/orders", "/api/products", "/products"])
+        else:
+            endpoint_pool.extend(["/products", "/api/products", "/logout"])
+
+        request_count = random.randint(14, 18)
+
+        for _ in range(request_count):
+            endpoint = random.choice(endpoint_pool)
+            status_code = random.choices(
+                population=[200, 302, 404, 500],
+                weights=[93, 5, 1.5, 0.5],
+                k=1,
+            )[0]
+            timestamp = random_timestamp(START_TIME, WINDOW_MINUTES)
+            response_time = max(80, min(random.gauss(300, 125), 800))
+
+            rows.append(
+                make_row(
+                    timestamp=timestamp,
+                    ip_address=ip_address,
+                    user_id=user_id,
+                    endpoint=endpoint,
+                    method=method_for_endpoint(endpoint),
+                    status_code=status_code,
+                    response_time_ms=response_time,
+                    event_type=event_type_for_normal_request(endpoint, status_code),
+                    user_agent=random.choice(USER_AGENTS),
+                )
             )
-        )
+
+        # A few normal users visit settings once, but not enough to trip rules.
+        if random.random() < 0.18:
+            endpoint = random.choice(RARE_NORMAL_ENDPOINTS)
+            timestamp = random_timestamp(START_TIME, WINDOW_MINUTES)
+
+            rows.append(
+                make_row(
+                    timestamp=timestamp,
+                    ip_address=ip_address,
+                    user_id=user_id,
+                    endpoint=endpoint,
+                    method=method_for_endpoint(endpoint),
+                    status_code=200,
+                    response_time_ms=random.uniform(120, 520),
+                    event_type="page_view",
+                    user_agent=random.choice(USER_AGENTS),
+                )
+            )
 
     return rows
 

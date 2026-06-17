@@ -400,6 +400,11 @@ if st.button("Load incidents"):
         st.write(incidents_result)
 
 if st.session_state.incidents:
+    sorted_incidents = sorted(
+        st.session_state.incidents,
+        key=lambda incident: incident.get("risk_score", 0),
+        reverse=True,
+    )
     incident_columns = [
         "id",
         "ip_address",
@@ -411,7 +416,7 @@ if st.session_state.incidents:
         "status",
         "created_at",
     ]
-    show_dataframe(st.session_state.incidents, columns=incident_columns)
+    show_dataframe(sorted_incidents, columns=incident_columns)
 else:
     st.info("No incidents loaded yet.")
 
