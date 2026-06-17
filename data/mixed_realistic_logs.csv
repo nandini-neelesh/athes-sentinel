@@ -1,0 +1,1256 @@
+timestamp,ip_address,user_id,endpoint,method,status_code,response_time_ms,event_type,user_agent
+2026-06-17 09:01:12,192.168.0.58,user_1090,/api/orders,GET,200,283.33,api_request,curl/8.4.0
+2026-06-17 09:01:32,192.168.0.19,user_1005,/api/orders,GET,200,203.24,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:01:34,192.168.0.23,user_1075,/cart,GET,200,182.88,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:01:46,192.168.0.58,user_1020,/dashboard,GET,200,97.3,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:02:06,192.168.0.18,user_1048,/dashboard,GET,200,161.43,page_view,curl/8.4.0
+2026-06-17 09:02:14,192.168.0.24,user_1011,/settings,GET,200,361.98,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:02:37,192.168.0.52,user_1048,/profile,GET,200,317.22,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:02:38,192.168.0.17,user_1009,/settings,GET,200,227.2,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:03:05,192.168.0.43,user_1066,/,GET,200,488.42,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:03:17,192.168.0.33,user_1040,/home,GET,200,312.2,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:03:21,192.168.0.25,user_1005,/,GET,200,180.75,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:03:22,192.168.0.15,user_1092,/profile,GET,302,273.95,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:03:22,192.168.0.60,user_1089,/cart,GET,302,402.81,page_view,curl/8.4.0
+2026-06-17 09:03:28,192.168.0.52,user_1011,/profile,GET,200,350.18,page_view,curl/8.4.0
+2026-06-17 09:03:51,192.168.0.12,user_1006,/profile,GET,200,291.01,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:04:17,192.168.0.10,user_1002,/cart,GET,200,487.17,page_view,curl/8.4.0
+2026-06-17 09:04:26,192.168.0.32,user_1008,/profile,GET,200,263.51,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:05:20,192.168.0.64,user_1097,/api/orders,POST,404,320.67,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:05:55,192.168.0.62,user_1035,/logout,POST,200,355.23,logout,curl/8.4.0
+2026-06-17 09:06:07,192.168.0.47,user_1020,/api/products,GET,200,312.91,api_request,curl/8.4.0
+2026-06-17 09:06:32,192.168.0.39,user_1080,/logout,POST,200,147.1,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:06:48,192.168.0.61,user_1061,/home,GET,200,426.11,page_view,curl/8.4.0
+2026-06-17 09:06:57,192.168.0.51,user_1063,/api/products,POST,200,80.0,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:07:04,192.168.0.57,user_1023,/logout,POST,404,411.91,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 09:07:24,192.168.0.65,user_1059,/api/orders,GET,200,437.99,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:07:52,192.168.0.50,user_1077,/settings,GET,200,479.26,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:08:24,192.168.0.40,user_1020,/products,GET,200,239.34,page_view,curl/8.4.0
+2026-06-17 09:08:28,192.168.0.11,user_1079,/api/products,GET,200,398.72,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:08:30,192.168.0.13,user_1061,/dashboard,GET,200,375.88,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:08:48,192.168.0.38,user_1033,/dashboard,GET,302,159.22,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:09:09,192.168.0.16,user_1066,/logout,POST,200,381.66,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:09:30,192.168.0.51,user_1046,/api/products,POST,200,382.07,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:09:38,192.168.0.62,user_1024,/products,GET,200,80.0,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:09:47,192.168.0.15,user_1077,/home,GET,200,307.58,page_view,curl/8.4.0
+2026-06-17 09:09:50,192.168.0.20,user_1011,/api/orders,POST,200,180.06,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:10:11,192.168.0.66,user_1022,/settings,GET,200,384.26,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:10:12,192.168.0.34,user_1081,/settings,GET,200,124.06,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:10:18,192.168.0.49,user_1016,/settings,GET,302,159.55,page_view,curl/8.4.0
+2026-06-17 09:10:43,192.168.0.45,user_1049,/products,GET,500,273.51,page_view,curl/8.4.0
+2026-06-17 09:10:46,192.168.0.53,user_1040,/home,GET,200,389.28,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:10:47,192.168.0.58,user_1075,/api/products,GET,200,373.36,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:10:53,192.168.0.67,user_1045,/profile,GET,302,270.72,profile_update,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:11:21,192.168.0.23,user_1054,/profile,GET,200,319.49,profile_update,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:11:24,192.168.0.44,user_1070,/checkout,POST,200,498.56,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:11:33,192.168.0.14,user_1040,/home,GET,200,166.95,page_view,curl/8.4.0
+2026-06-17 09:11:51,192.168.0.56,user_1058,/api/orders,GET,200,276.31,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:11:55,192.168.0.25,user_1056,/login,POST,200,131.84,login_success,curl/8.4.0
+2026-06-17 09:12:22,192.168.0.61,user_1060,/products,GET,200,524.8,page_view,curl/8.4.0
+2026-06-17 09:12:29,192.168.0.19,user_1002,/profile,GET,200,218.53,page_view,curl/8.4.0
+2026-06-17 09:12:29,192.168.0.29,user_1037,/login,POST,200,370.28,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 09:12:31,192.168.0.10,user_1017,/settings,GET,200,204.06,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:12:32,192.168.0.35,user_1008,/logout,POST,200,428.5,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 09:13:01,192.168.0.13,user_1027,/checkout,POST,200,137.8,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 09:13:13,192.168.0.63,user_1058,/profile,GET,302,498.27,profile_update,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:13:15,192.168.0.45,user_1055,/,GET,200,516.4,page_view,curl/8.4.0
+2026-06-17 09:13:17,192.168.0.38,user_1029,/api/orders,GET,200,311.39,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:13:27,192.168.0.35,user_1064,/home,GET,200,205.7,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:13:33,192.168.0.41,user_1019,/dashboard,GET,200,171.71,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:13:44,192.168.0.42,user_1028,/profile,GET,404,269.6,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:13:46,192.168.0.16,user_1049,/,GET,200,583.82,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:14:00,192.168.0.36,user_1039,/login,POST,200,215.31,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 09:14:01,192.168.0.50,user_1092,/api/orders,POST,200,235.91,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:14:05,192.168.0.69,user_1036,/cart,GET,200,360.84,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:14:12,192.168.0.20,user_1049,/api/orders,GET,200,408.29,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:14:21,192.168.0.19,user_1020,/api/orders,GET,200,371.7,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:14:47,192.168.0.16,user_1007,/cart,GET,302,123.31,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:14:50,192.168.0.51,user_1033,/settings,GET,200,119.29,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:15:07,192.168.0.29,user_1021,/checkout,POST,302,392.79,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:15:16,192.168.0.24,user_1004,/logout,POST,200,336.09,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 09:15:16,192.168.0.66,user_1055,/products,GET,200,421.4,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:15:20,192.168.0.43,user_1061,/cart,GET,200,320.72,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:15:30,192.168.0.48,user_1051,/checkout,POST,200,396.04,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 09:15:55,192.168.0.12,user_1093,/profile,GET,200,359.13,profile_update,Mozilla/5.0 Edg/125.0
+2026-06-17 09:16:04,192.168.0.65,user_1042,/home,GET,200,350.11,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:16:21,192.168.0.20,user_1056,/dashboard,GET,200,253.32,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:16:24,192.168.0.28,user_1025,/,GET,200,114.29,page_view,curl/8.4.0
+2026-06-17 09:16:34,192.168.0.33,user_1071,/cart,GET,200,335.91,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:17:00,192.168.0.55,user_1017,/cart,GET,302,359.17,page_view,curl/8.4.0
+2026-06-17 09:17:02,192.168.0.33,user_1070,/login,POST,200,298.71,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:17:16,192.168.0.29,user_1061,/dashboard,GET,200,365.92,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:17:17,192.168.0.52,user_1068,/api/orders,POST,200,371.79,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:17:25,192.168.0.69,user_1060,/products,GET,200,230.51,page_view,curl/8.4.0
+2026-06-17 09:17:59,192.168.0.31,user_1012,/api/products,POST,200,467.02,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:18:17,192.168.0.45,user_1041,/api/orders,POST,200,462.47,api_request,curl/8.4.0
+2026-06-17 09:18:23,192.168.0.47,user_1062,/home,GET,200,309.6,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:18:26,192.168.0.10,user_1033,/home,GET,200,393.96,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:18:42,192.168.0.48,user_1008,/home,GET,200,305.09,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:19:20,192.168.0.61,user_1013,/settings,GET,200,317.99,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:19:21,192.168.0.51,user_1062,/profile,GET,200,624.4,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:19:26,192.168.0.60,user_1080,/settings,GET,200,188.19,page_view,curl/8.4.0
+2026-06-17 09:19:26,192.168.0.17,user_1087,/api/orders,POST,404,219.31,api_request,curl/8.4.0
+2026-06-17 09:19:27,192.168.0.44,user_1056,/api/orders,GET,200,198.84,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:19:29,192.168.0.48,user_1095,/dashboard,GET,200,541.11,page_view,curl/8.4.0
+2026-06-17 09:19:49,192.168.0.32,user_1064,/,GET,200,318.28,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:19:54,192.168.0.24,user_1023,/api/orders,GET,200,335.98,api_request,curl/8.4.0
+2026-06-17 09:20:04,192.168.0.34,user_1064,/profile,GET,200,415.69,page_view,curl/8.4.0
+2026-06-17 09:20:13,192.168.0.46,user_1080,/home,GET,200,287.03,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:20:18,192.168.0.44,user_1072,/cart,GET,200,264.52,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:20:20,192.168.0.42,user_1015,/dashboard,GET,200,343.37,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:21:19,192.168.0.47,user_1039,/api/products,GET,200,239.86,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:21:31,192.168.0.38,user_1011,/products,GET,200,80.0,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:21:40,192.168.0.48,user_1076,/cart,GET,200,207.52,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:21:51,192.168.0.38,user_1077,/dashboard,GET,200,254.88,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:22:00,10.10.10.10,target_4,/login,POST,401,157.79,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:22:12,10.10.10.10,target_4,/login,POST,401,206.2,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:22:15,10.10.10.10,target_4,/login,POST,401,154.94,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:22:24,10.10.10.10,target_2,/login,POST,401,180.18,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:22:30,192.168.0.50,user_1068,/products,GET,200,301.82,page_view,curl/8.4.0
+2026-06-17 09:22:31,192.168.0.18,user_1064,/,GET,200,349.81,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:22:49,192.168.0.23,user_1019,/api/orders,POST,200,248.42,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:22:52,10.10.10.10,target_1,/login,POST,401,246.01,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:22:54,10.10.10.10,target_4,/login,POST,403,221.44,login_failed,curl/8.4.0
+2026-06-17 09:22:55,10.10.10.10,target_3,/login,POST,401,135.96,login_failed,curl/8.4.0
+2026-06-17 09:22:55,10.10.10.10,target_1,/login,POST,401,249.55,login_failed,curl/8.4.0
+2026-06-17 09:23:08,192.168.0.60,user_1042,/api/orders,GET,200,260.22,api_request,curl/8.4.0
+2026-06-17 09:23:20,10.10.10.10,target_1,/login,POST,401,231.39,login_failed,curl/8.4.0
+2026-06-17 09:23:22,192.168.0.43,user_1046,/api/orders,GET,200,196.09,api_request,curl/8.4.0
+2026-06-17 09:23:23,192.168.0.56,user_1062,/api/orders,GET,404,186.09,api_request,curl/8.4.0
+2026-06-17 09:23:39,10.10.10.10,target_5,/login,POST,401,107.66,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:23:40,10.10.10.10,target_3,/login,POST,401,132.82,login_failed,curl/8.4.0
+2026-06-17 09:23:45,10.10.10.10,target_5,/login,POST,401,147.36,login_failed,curl/8.4.0
+2026-06-17 09:23:46,192.168.0.31,user_1059,/api/products,GET,200,144.23,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:23:55,192.168.0.28,user_1084,/profile,GET,200,420.22,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:24:06,10.10.10.10,target_1,/login,POST,403,198.59,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:24:13,10.10.10.10,target_2,/login,POST,403,194.37,login_failed,curl/8.4.0
+2026-06-17 09:24:15,10.10.10.10,target_3,/login,POST,401,180.89,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:24:23,10.10.10.10,target_1,/login,POST,401,208.26,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:24:24,10.10.10.10,target_4,/login,POST,401,156.06,login_failed,curl/8.4.0
+2026-06-17 09:24:24,10.10.10.10,target_2,/login,POST,403,199.73,login_failed,curl/8.4.0
+2026-06-17 09:24:25,192.168.0.51,user_1073,/api/products,GET,200,323.19,api_request,curl/8.4.0
+2026-06-17 09:24:33,10.10.10.10,target_2,/login,POST,401,164.9,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:24:34,10.10.10.10,target_1,/login,POST,401,202.98,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:24:35,192.168.0.56,user_1012,/api/products,POST,200,320.2,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:24:36,10.10.10.10,target_3,/login,POST,401,205.91,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:24:36,192.168.0.36,user_1022,/profile,GET,200,414.99,profile_update,curl/8.4.0
+2026-06-17 09:24:39,192.168.0.39,user_1074,/api/products,GET,302,185.1,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:24:40,192.168.0.28,user_1003,/dashboard,GET,200,564.26,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:24:41,10.10.10.10,target_4,/login,POST,401,187.69,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:24:45,10.10.10.10,target_3,/login,POST,401,117.53,login_failed,curl/8.4.0
+2026-06-17 09:24:48,10.10.10.10,target_1,/login,POST,401,104.69,login_failed,curl/8.4.0
+2026-06-17 09:24:48,10.10.10.10,target_3,/login,POST,403,200.12,login_failed,curl/8.4.0
+2026-06-17 09:24:49,192.168.0.67,user_1065,/settings,GET,200,546.19,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:24:54,192.168.0.33,user_1010,/settings,GET,200,425.26,page_view,curl/8.4.0
+2026-06-17 09:24:56,192.168.0.24,user_1086,/api/orders,GET,200,382.05,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:24:57,192.168.0.58,user_1080,/logout,POST,200,260.15,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:24:59,192.168.0.10,user_1039,/profile,GET,200,492.01,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:25:00,10.10.10.10,target_4,/login,POST,401,201.15,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:25:10,10.10.10.10,target_1,/login,POST,401,243.79,login_failed,curl/8.4.0
+2026-06-17 09:25:24,192.168.0.64,user_1066,/login,POST,200,407.75,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 09:25:25,192.168.0.35,user_1065,/api/products,POST,200,258.22,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:25:26,192.168.0.48,user_1069,/checkout,POST,200,236.47,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:25:35,192.168.0.23,user_1029,/products,GET,200,386.71,page_view,curl/8.4.0
+2026-06-17 09:26:00,10.10.10.10,target_1,/login,POST,401,95.93,login_failed,curl/8.4.0
+2026-06-17 09:26:00,10.10.10.10,target_5,/login,POST,403,225.86,login_failed,curl/8.4.0
+2026-06-17 09:26:00,192.168.0.36,user_1007,/checkout,POST,500,463.53,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 09:26:06,10.10.10.10,target_4,/login,POST,401,147.35,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:26:08,10.10.10.10,target_1,/login,POST,401,122.83,login_failed,curl/8.4.0
+2026-06-17 09:26:17,192.168.0.38,user_1095,/cart,GET,200,437.77,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:26:18,192.168.0.49,user_1067,/login,POST,200,207.26,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 09:26:24,10.10.10.10,target_2,/login,POST,401,218.78,login_failed,curl/8.4.0
+2026-06-17 09:26:24,192.168.0.44,user_1052,/api/orders,GET,200,420.32,api_request,curl/8.4.0
+2026-06-17 09:26:36,192.168.0.58,user_1084,/settings,GET,200,205.69,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:26:48,10.10.10.10,target_4,/login,POST,403,233.49,login_failed,curl/8.4.0
+2026-06-17 09:26:54,10.10.10.10,target_4,/login,POST,401,93.19,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:27:05,192.168.0.58,user_1026,/api/orders,GET,200,488.38,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:27:11,192.168.0.48,user_1068,/checkout,POST,404,442.68,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:27:20,192.168.0.44,user_1094,/logout,POST,404,311.4,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:27:25,10.10.10.10,target_1,/login,POST,401,155.35,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:27:27,192.168.0.63,user_1024,/api/orders,POST,200,197.65,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:27:30,10.10.10.10,target_3,/login,POST,401,172.71,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:27:33,192.168.0.48,user_1004,/logout,POST,200,351.36,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 09:27:37,192.168.0.42,user_1098,/home,GET,200,510.11,page_view,curl/8.4.0
+2026-06-17 09:27:39,192.168.0.36,user_1089,/products,GET,200,125.12,page_view,curl/8.4.0
+2026-06-17 09:27:40,10.10.10.10,target_4,/login,POST,401,110.09,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:27:44,10.10.10.10,target_5,/login,POST,401,119.49,login_failed,curl/8.4.0
+2026-06-17 09:28:05,192.168.0.17,user_1029,/profile,GET,200,475.06,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:28:17,10.10.10.10,target_4,/login,POST,401,202.32,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:28:24,10.10.10.10,target_1,/login,POST,403,224.77,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:28:33,192.168.0.54,user_1063,/products,GET,200,388.45,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:28:36,10.10.10.10,target_1,/login,POST,403,96.3,login_failed,curl/8.4.0
+2026-06-17 09:28:48,192.168.0.59,user_1081,/settings,GET,200,292.65,page_view,curl/8.4.0
+2026-06-17 09:28:49,192.168.0.37,user_1046,/products,GET,200,265.05,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:28:51,192.168.0.20,user_1057,/api/orders,POST,200,411.5,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:28:54,192.168.0.25,user_1055,/home,GET,200,609.86,page_view,curl/8.4.0
+2026-06-17 09:29:00,10.10.10.10,target_5,/login,POST,401,182.8,login_failed,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:29:04,192.168.0.31,user_1014,/login,POST,200,155.52,login_success,curl/8.4.0
+2026-06-17 09:29:07,192.168.0.25,user_1048,/products,GET,200,197.27,page_view,curl/8.4.0
+2026-06-17 09:29:09,192.168.0.18,user_1023,/login,POST,200,424.34,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:29:21,192.168.0.37,user_1017,/checkout,POST,200,155.1,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 09:29:25,192.168.0.58,user_1053,/logout,POST,200,608.5,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:29:30,192.168.0.38,user_1093,/profile,GET,200,301.87,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:29:31,192.168.0.47,user_1003,/login,POST,404,476.43,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:29:31,192.168.0.34,user_1004,/dashboard,GET,200,168.76,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:29:31,192.168.0.27,user_1081,/api/orders,POST,200,184.07,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:29:48,10.10.10.10,target_5,/login,POST,401,100.87,login_failed,curl/8.4.0
+2026-06-17 09:29:49,192.168.0.49,user_1094,/settings,GET,200,469.76,page_view,curl/8.4.0
+2026-06-17 09:29:50,192.168.0.25,user_1024,/settings,GET,200,80.0,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:30:16,192.168.0.28,user_1086,/home,GET,200,323.61,page_view,curl/8.4.0
+2026-06-17 09:30:23,192.168.0.31,user_1026,/,GET,200,256.36,page_view,curl/8.4.0
+2026-06-17 09:30:32,192.168.0.63,user_1039,/profile,GET,200,569.51,profile_update,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:30:38,192.168.0.13,user_1070,/home,GET,302,268.61,page_view,curl/8.4.0
+2026-06-17 09:30:38,10.10.10.10,target_2,/login,POST,401,209.22,login_failed,curl/8.4.0
+2026-06-17 09:30:45,10.10.10.10,target_5,/login,POST,401,129.61,login_failed,curl/8.4.0
+2026-06-17 09:30:48,192.168.0.49,user_1098,/login,POST,200,511.5,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:30:50,192.168.0.66,user_1052,/cart,GET,302,130.38,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:30:57,192.168.0.34,user_1032,/products,GET,302,182.21,page_view,curl/8.4.0
+2026-06-17 09:31:08,192.168.0.43,user_1065,/home,GET,200,141.61,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:31:14,192.168.0.46,user_1027,/login,POST,200,280.93,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 09:31:25,192.168.0.16,user_1086,/,GET,200,437.05,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:31:56,192.168.0.21,user_1047,/home,GET,200,218.56,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:32:02,192.168.0.68,user_1031,/logout,POST,404,305.4,logout,curl/8.4.0
+2026-06-17 09:32:03,192.168.0.61,user_1094,/home,GET,200,326.51,page_view,curl/8.4.0
+2026-06-17 09:32:18,192.168.0.31,user_1092,/login,POST,200,233.22,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:33:08,192.168.0.52,user_1067,/logout,POST,302,80.0,logout,curl/8.4.0
+2026-06-17 09:33:27,192.168.0.16,user_1006,/profile,GET,200,298.42,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:33:49,192.168.0.53,user_1003,/products,GET,200,202.49,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:34:16,192.168.0.11,user_1018,/dashboard,GET,500,345.91,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:34:27,192.168.0.27,user_1079,/api/orders,POST,200,162.62,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:34:28,192.168.0.42,user_1075,/cart,GET,404,80.0,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:34:36,192.168.0.57,user_1008,/login,POST,200,301.1,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 09:34:47,192.168.0.55,user_1013,/profile,GET,200,167.36,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:35:43,192.168.0.57,user_1056,/,GET,200,238.93,page_view,curl/8.4.0
+2026-06-17 09:35:44,192.168.0.30,user_1096,/logout,POST,200,254.14,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:35:58,192.168.0.44,user_1087,/profile,GET,200,330.52,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:36:10,192.168.0.66,user_1031,/logout,POST,200,573.76,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 09:36:14,192.168.0.25,user_1018,/api/products,POST,200,485.46,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:36:25,192.168.0.18,user_1052,/dashboard,GET,200,190.35,page_view,curl/8.4.0
+2026-06-17 09:36:44,192.168.0.31,user_1067,/home,GET,200,509.73,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:36:49,192.168.0.40,user_1071,/settings,GET,200,277.44,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:36:53,192.168.0.21,user_1075,/dashboard,GET,200,522.58,page_view,curl/8.4.0
+2026-06-17 09:36:58,192.168.0.59,user_1082,/dashboard,GET,200,352.12,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:36:59,192.168.0.31,user_1079,/logout,POST,200,195.06,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 09:37:04,192.168.0.15,user_1017,/api/products,POST,200,350.36,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:37:13,192.168.0.10,user_1088,/,GET,200,222.35,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:37:32,192.168.0.10,user_1070,/settings,GET,200,410.74,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:37:46,192.168.0.42,user_1063,/profile,GET,200,494.98,profile_update,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:37:47,192.168.0.25,user_1029,/cart,GET,200,282.36,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:37:53,192.168.0.49,user_1000,/cart,GET,200,318.75,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:37:56,192.168.0.66,user_1074,/home,GET,200,174.59,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:38:10,192.168.0.25,user_1035,/products,GET,200,343.38,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:38:24,192.168.0.31,user_1095,/home,GET,404,135.51,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:38:35,192.168.0.34,user_1074,/cart,GET,200,239.64,page_view,curl/8.4.0
+2026-06-17 09:38:44,192.168.0.57,user_1081,/api/products,GET,200,248.39,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:38:49,192.168.0.36,user_1048,/api/products,POST,200,212.09,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:39:00,192.168.0.49,user_1083,/api/products,GET,500,473.82,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:39:14,192.168.0.65,user_1078,/logout,POST,404,379.25,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 09:39:30,192.168.0.61,user_1022,/api/orders,GET,200,483.99,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:39:44,192.168.0.56,user_1003,/login,POST,200,249.11,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 09:39:55,192.168.0.32,user_1005,/api/products,GET,302,295.78,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:39:59,192.168.0.28,user_1005,/profile,GET,404,487.63,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:39:59,192.168.0.28,user_1026,/dashboard,GET,200,424.2,page_view,curl/8.4.0
+2026-06-17 09:40:06,192.168.0.13,user_1021,/,GET,302,383.18,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:40:17,192.168.0.58,user_1098,/cart,GET,200,301.78,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:40:20,192.168.0.59,user_1014,/profile,GET,200,80.0,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:40:35,192.168.0.25,user_1082,/dashboard,GET,200,499.94,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:40:35,192.168.0.59,user_1075,/cart,GET,200,243.8,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:40:46,192.168.0.27,user_1003,/profile,GET,200,300.75,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:40:46,192.168.0.49,user_1071,/api/products,GET,200,347.9,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:40:49,192.168.0.45,user_1093,/,GET,200,152.69,page_view,curl/8.4.0
+2026-06-17 09:40:50,192.168.0.36,user_1063,/logout,POST,200,290.69,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:40:55,192.168.0.38,user_1014,/logout,POST,200,450.61,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:40:58,192.168.0.12,user_1070,/profile,GET,200,463.54,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:41:10,192.168.0.18,user_1025,/dashboard,GET,200,325.99,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:41:21,192.168.0.42,user_1099,/cart,GET,200,229.25,page_view,curl/8.4.0
+2026-06-17 09:41:42,192.168.0.37,user_1039,/products,GET,200,262.77,page_view,curl/8.4.0
+2026-06-17 09:41:43,192.168.0.55,user_1027,/logout,POST,200,563.98,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:41:48,192.168.0.10,user_1038,/dashboard,GET,200,368.79,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:41:53,192.168.0.53,user_1057,/api/orders,POST,200,383.19,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:42:01,192.168.0.54,user_1068,/,GET,200,192.91,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:42:02,192.168.0.41,user_1091,/home,GET,200,322.3,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:42:09,192.168.0.14,user_1060,/products,GET,302,490.32,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:42:15,192.168.0.26,user_1068,/products,GET,200,143.91,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:42:26,192.168.0.27,user_1036,/home,GET,200,506.73,page_view,curl/8.4.0
+2026-06-17 09:43:00,192.168.0.50,user_1062,/dashboard,GET,200,293.4,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:43:25,192.168.0.31,user_1026,/api/orders,POST,200,445.92,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:43:28,192.168.0.21,user_1072,/checkout,POST,200,102.83,checkout,curl/8.4.0
+2026-06-17 09:43:36,192.168.0.62,user_1041,/api/orders,POST,200,415.05,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:43:41,192.168.0.14,user_1049,/home,GET,200,348.32,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:43:41,192.168.0.11,user_1018,/checkout,POST,200,119.52,checkout,curl/8.4.0
+2026-06-17 09:43:47,192.168.0.23,user_1088,/settings,GET,200,468.97,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:44:10,192.168.0.60,user_1043,/cart,GET,200,444.79,page_view,curl/8.4.0
+2026-06-17 09:44:37,192.168.0.69,user_1081,/checkout,POST,200,202.05,checkout,curl/8.4.0
+2026-06-17 09:45:01,192.168.0.68,user_1051,/profile,GET,200,559.44,profile_update,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:45:19,192.168.0.48,user_1014,/api/products,POST,200,184.51,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:45:25,192.168.0.51,user_1078,/api/products,GET,200,137.43,api_request,curl/8.4.0
+2026-06-17 09:45:38,192.168.0.18,user_1005,/cart,GET,200,560.64,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:45:42,192.168.0.44,user_1000,/home,GET,404,547.39,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:45:47,192.168.0.56,user_1087,/api/products,POST,200,454.59,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:45:55,192.168.0.59,user_1098,/logout,POST,200,344.7,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 09:46:20,192.168.0.52,user_1081,/cart,GET,200,248.01,page_view,curl/8.4.0
+2026-06-17 09:46:25,192.168.0.21,user_1037,/checkout,POST,200,464.39,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:46:39,192.168.0.52,user_1019,/checkout,POST,200,463.98,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:47:11,192.168.0.32,user_1027,/products,GET,200,409.46,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:47:18,192.168.0.45,user_1021,/settings,GET,302,414.95,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:47:38,192.168.0.45,user_1020,/settings,GET,200,328.15,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:47:39,192.168.0.30,user_1086,/api/products,POST,200,423.62,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:47:43,192.168.0.43,user_1058,/profile,GET,200,241.64,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:47:50,192.168.0.68,user_1035,/api/orders,GET,200,110.2,api_request,curl/8.4.0
+2026-06-17 09:47:51,192.168.0.22,user_1084,/,GET,404,214.27,page_view,curl/8.4.0
+2026-06-17 09:47:52,192.168.0.28,user_1016,/logout,POST,200,145.51,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:48:05,192.168.0.27,user_1078,/settings,GET,200,273.08,page_view,curl/8.4.0
+2026-06-17 09:48:17,192.168.0.30,user_1081,/cart,GET,200,528.4,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:48:20,192.168.0.66,user_1052,/login,POST,404,214.86,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:48:23,192.168.0.62,user_1016,/cart,GET,302,279.09,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:48:26,192.168.0.33,user_1004,/api/orders,GET,200,537.69,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:48:52,192.168.0.50,user_1088,/home,GET,200,227.14,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:49:22,192.168.0.63,user_1088,/products,GET,200,80.0,page_view,curl/8.4.0
+2026-06-17 09:49:41,192.168.0.59,user_1016,/checkout,POST,200,380.44,checkout,Mozilla/5.0 Safari/17.5
+2026-06-17 09:49:46,192.168.0.61,user_1017,/settings,GET,200,407.01,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:49:48,192.168.0.39,user_1079,/logout,POST,200,354.25,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 09:50:20,192.168.0.65,user_1061,/cart,GET,200,414.3,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:50:27,192.168.0.18,user_1061,/products,GET,200,151.94,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:50:44,192.168.0.37,user_1077,/products,GET,200,202.23,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:50:52,192.168.0.69,user_1095,/products,GET,200,264.96,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:51:10,192.168.0.42,user_1052,/home,GET,200,147.89,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:51:13,192.168.0.43,user_1046,/cart,GET,200,113.86,page_view,curl/8.4.0
+2026-06-17 09:51:24,192.168.0.63,user_1063,/api/orders,POST,200,292.77,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:51:50,192.168.0.29,user_1099,/api/products,POST,404,273.91,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 09:52:00,192.168.0.13,user_1034,/checkout,POST,200,359.75,checkout,Mozilla/5.0 Safari/17.5
+2026-06-17 09:52:35,192.168.0.30,user_1015,/logout,POST,200,500.6,logout,curl/8.4.0
+2026-06-17 09:52:38,192.168.0.66,user_1025,/api/orders,GET,200,260.16,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:52:44,192.168.0.50,user_1022,/checkout,POST,200,205.54,checkout,curl/8.4.0
+2026-06-17 09:53:29,192.168.0.35,user_1027,/home,GET,200,433.55,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:54:01,192.168.0.37,user_1014,/api/products,GET,200,80.0,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:54:17,192.168.0.36,user_1028,/api/orders,POST,200,263.88,api_request,curl/8.4.0
+2026-06-17 09:54:35,192.168.0.27,user_1096,/,GET,200,151.02,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:54:50,192.168.0.35,user_1040,/dashboard,GET,200,223.2,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:54:55,192.168.0.55,user_1039,/logout,POST,302,282.43,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 09:55:00,10.10.10.20,,/actuator,GET,404,246.19,page_view,curl/8.4.0
+2026-06-17 09:55:00,192.168.0.61,user_1016,/profile,GET,302,407.8,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:55:09,10.10.10.20,,/settings,HEAD,404,109.38,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:55:10,192.168.0.12,user_1073,/login,POST,302,381.42,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:55:16,10.10.10.20,,/.env,GET,404,655.68,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:55:23,192.168.0.69,user_1056,/products,GET,200,312.53,page_view,curl/8.4.0
+2026-06-17 09:55:31,192.168.0.38,user_1047,/products,GET,200,282.54,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:55:35,192.168.0.42,user_1062,/logout,POST,200,205.1,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 09:55:50,10.10.10.20,,/robots.txt,HEAD,200,670.18,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:55:57,10.10.10.20,,/api/token,HEAD,404,223.7,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:56:00,10.10.10.20,,/test,HEAD,404,662.85,page_view,curl/8.4.0
+2026-06-17 09:56:03,10.10.10.20,,/test,HEAD,200,404.52,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:56:24,10.10.10.20,,/admin/config,GET,200,241.38,page_view,curl/8.4.0
+2026-06-17 09:56:25,192.168.0.46,user_1044,/api/orders,POST,200,408.45,api_request,curl/8.4.0
+2026-06-17 09:56:30,10.10.10.20,,/shell,HEAD,404,205.79,page_view,curl/8.4.0
+2026-06-17 09:56:30,192.168.0.15,user_1060,/logout,POST,200,365.49,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:56:57,10.10.10.20,,/test,GET,404,532.84,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:57:05,192.168.0.49,user_1007,/checkout,POST,200,502.39,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:57:10,192.168.0.58,user_1020,/,GET,200,315.98,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:57:15,192.168.0.25,user_1088,/cart,GET,200,563.44,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:57:15,192.168.0.49,user_1091,/api/products,POST,200,517.5,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:57:15,10.10.10.20,,/server-status,GET,404,621.93,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:57:24,10.10.10.20,,/manager/html,GET,404,131.84,page_view,curl/8.4.0
+2026-06-17 09:57:34,10.10.10.20,,/api/token,HEAD,404,567.39,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:57:36,192.168.0.55,user_1040,/products,GET,200,464.86,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:57:40,192.168.0.20,user_1015,/settings,GET,500,291.33,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:57:40,192.168.0.59,user_1017,/logout,POST,200,349.53,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 09:57:47,192.168.0.39,user_1041,/dashboard,GET,200,384.55,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 09:57:56,10.10.10.20,,/portal,GET,404,451.06,page_view,curl/8.4.0
+2026-06-17 09:58:00,10.10.10.20,,/config,HEAD,404,225.75,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:58:07,10.10.10.20,,/admin/login,HEAD,403,162.65,page_view,curl/8.4.0
+2026-06-17 09:58:12,192.168.0.65,user_1087,/logout,POST,200,267.23,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 09:58:12,10.10.10.20,,/internal,GET,404,571.3,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:58:12,10.10.10.20,,/backup,HEAD,404,248.7,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:58:16,192.168.0.24,user_1066,/settings,GET,200,236.09,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:58:28,10.10.10.20,,/config,HEAD,200,120.17,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:58:29,192.168.0.22,user_1028,/profile,GET,200,179.93,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:58:40,10.10.10.20,,/robots.txt,GET,200,682.08,page_view,curl/8.4.0
+2026-06-17 09:58:47,192.168.0.15,user_1048,/profile,GET,200,432.28,profile_update,Mozilla/5.0 Edg/125.0
+2026-06-17 09:58:58,10.10.10.20,,/portal,GET,404,656.73,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:59:05,192.168.0.47,user_1097,/settings,GET,200,301.94,page_view,curl/8.4.0
+2026-06-17 09:59:07,10.10.10.20,,/sitemap.xml,HEAD,404,301.53,page_view,curl/8.4.0
+2026-06-17 09:59:12,10.10.10.20,,/wp-admin,HEAD,404,374.64,page_view,curl/8.4.0
+2026-06-17 09:59:19,192.168.0.58,user_1015,/api/products,POST,200,365.1,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 09:59:24,10.10.10.20,,/test,HEAD,404,551.73,page_view,curl/8.4.0
+2026-06-17 09:59:28,192.168.0.17,user_1030,/,GET,302,295.97,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 09:59:35,192.168.0.62,user_1079,/profile,GET,200,104.06,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 09:59:35,10.10.10.20,,/.git/config,GET,200,638.95,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 09:59:54,10.10.10.20,,/uploads,GET,404,231.91,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:00:10,192.168.0.30,user_1052,/api/products,POST,200,265.14,api_request,curl/8.4.0
+2026-06-17 10:00:13,192.168.0.28,user_1004,/,GET,200,163.08,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:00:17,192.168.0.17,user_1023,/login,POST,200,230.68,login_success,curl/8.4.0
+2026-06-17 10:00:21,192.168.0.59,user_1086,/api/orders,GET,200,178.55,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:00:22,10.10.10.20,,/.env,HEAD,404,454.95,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:00:40,10.10.10.20,,/actuator,GET,404,181.9,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:00:41,192.168.0.18,user_1025,/home,GET,200,203.85,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:00:42,10.10.10.20,,/vendor,HEAD,200,622.68,page_view,curl/8.4.0
+2026-06-17 10:00:48,192.168.0.29,user_1059,/products,GET,200,429.5,page_view,curl/8.4.0
+2026-06-17 10:00:48,10.10.10.20,,/admin/config,GET,403,109.56,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:00:51,192.168.0.43,user_1051,/dashboard,GET,200,200.22,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:00:52,192.168.0.59,user_1079,/profile,GET,200,380.24,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:01:14,192.168.0.64,user_1013,/login,POST,200,233.12,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 10:01:32,192.168.0.61,user_1059,/cart,GET,200,241.19,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:01:34,192.168.0.32,user_1066,/profile,GET,404,162.48,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:01:36,10.10.10.20,,/debug,GET,404,265.57,page_view,curl/8.4.0
+2026-06-17 10:01:40,192.168.0.15,user_1083,/api/orders,GET,200,228.86,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:01:54,192.168.0.57,user_1083,/home,GET,302,250.45,page_view,curl/8.4.0
+2026-06-17 10:02:30,10.10.10.20,,/old,GET,200,671.26,page_view,curl/8.4.0
+2026-06-17 10:02:42,192.168.0.25,user_1058,/products,GET,200,107.41,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:02:44,192.168.0.23,user_1088,/checkout,POST,302,143.61,checkout,curl/8.4.0
+2026-06-17 10:02:45,10.10.10.20,,/uploads,GET,404,210.97,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:02:45,192.168.0.11,user_1025,/api/orders,POST,200,256.23,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:02:50,192.168.0.47,user_1028,/,GET,200,219.51,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:03:00,10.10.10.20,,/sitemap.xml,GET,403,330.93,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:03:08,10.10.10.20,,/portal,GET,200,170.13,page_view,curl/8.4.0
+2026-06-17 10:03:12,192.168.0.28,user_1090,/cart,GET,200,359.09,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:03:32,10.10.10.20,,/phpmyadmin,GET,200,609.67,page_view,curl/8.4.0
+2026-06-17 10:03:37,192.168.0.31,user_1099,/logout,POST,200,563.11,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:03:45,192.168.0.58,user_1093,/login,POST,200,352.12,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:03:56,192.168.0.37,user_1083,/products,GET,200,383.26,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:04:00,10.10.10.20,,/old,GET,404,397.17,page_view,curl/8.4.0
+2026-06-17 10:04:07,192.168.0.23,user_1029,/cart,GET,200,284.01,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:04:08,192.168.0.53,user_1039,/profile,GET,200,213.87,profile_update,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:04:20,10.10.10.20,,/vendor,GET,404,669.96,page_view,curl/8.4.0
+2026-06-17 10:04:23,192.168.0.45,user_1055,/settings,GET,200,365.52,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:04:28,192.168.0.64,user_1046,/logout,POST,200,89.98,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:04:29,192.168.0.65,user_1004,/login,POST,200,80.0,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 10:04:30,10.10.10.20,,/wp-admin,HEAD,200,548.37,page_view,curl/8.4.0
+2026-06-17 10:04:38,192.168.0.69,user_1069,/api/orders,POST,200,283.86,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:04:39,192.168.0.28,user_1033,/api/products,POST,404,260.03,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 10:04:40,10.10.10.20,,/manager/html,HEAD,404,193.63,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:04:54,10.10.10.20,,/wp-admin,GET,403,696.26,page_view,curl/8.4.0
+2026-06-17 10:04:58,192.168.0.20,user_1026,/products,GET,200,190.09,page_view,curl/8.4.0
+2026-06-17 10:04:58,192.168.0.47,user_1041,/login,POST,200,296.34,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:05:00,10.10.10.20,,/uploads,GET,404,203.04,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:05:02,192.168.0.36,user_1062,/home,GET,200,307.7,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:05:08,10.10.10.20,,/server-status,GET,404,257.61,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:05:09,192.168.0.37,user_1014,/settings,GET,200,365.56,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:05:12,10.10.10.20,,/uploads,GET,404,319.86,page_view,curl/8.4.0
+2026-06-17 10:05:12,192.168.0.46,user_1049,/profile,GET,302,456.64,profile_update,Mozilla/5.0 Safari/17.5
+2026-06-17 10:05:12,10.10.10.20,,/shell,GET,200,628.51,page_view,curl/8.4.0
+2026-06-17 10:05:13,192.168.0.49,user_1087,/checkout,POST,200,456.54,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:05:15,10.10.10.20,,/admin/config,HEAD,200,416.01,page_view,curl/8.4.0
+2026-06-17 10:05:19,192.168.0.27,user_1056,/checkout,POST,200,382.12,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:05:21,192.168.0.41,user_1081,/dashboard,GET,200,241.56,page_view,curl/8.4.0
+2026-06-17 10:05:21,192.168.0.45,user_1041,/settings,GET,200,80.0,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:05:29,192.168.0.10,user_1052,/api/products,POST,200,335.48,api_request,curl/8.4.0
+2026-06-17 10:05:30,10.10.10.20,,/test,HEAD,403,166.58,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:05:37,10.10.10.20,,/.git/config,HEAD,404,456.01,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:05:44,192.168.0.23,user_1074,/products,GET,200,369.57,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:05:44,10.10.10.20,,/debug,GET,404,308.02,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:05:45,10.10.10.20,,/phpmyadmin,GET,403,334.41,page_view,curl/8.4.0
+2026-06-17 10:06:00,10.10.10.20,,/uploads,HEAD,404,223.09,page_view,curl/8.4.0
+2026-06-17 10:06:03,192.168.0.10,user_1078,/api/products,POST,200,287.19,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:06:05,192.168.0.26,user_1084,/login,POST,200,263.76,login_success,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:06:16,10.10.10.20,,/settings,HEAD,404,673.73,page_view,curl/8.4.0
+2026-06-17 10:06:22,192.168.0.49,user_1018,/home,GET,200,438.75,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:06:24,10.10.10.20,,/vendor,GET,403,342.74,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:06:25,192.168.0.39,user_1087,/products,GET,200,326.75,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:06:42,10.10.10.20,,/admin,HEAD,404,696.6,page_view,curl/8.4.0
+2026-06-17 10:06:43,10.10.10.20,,/vendor,GET,404,688.75,page_view,curl/8.4.0
+2026-06-17 10:06:51,192.168.0.59,user_1009,/login,POST,200,501.48,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 10:07:00,10.10.10.20,,/test,HEAD,404,132.68,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:07:06,192.168.0.53,user_1043,/products,GET,200,105.86,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:07:08,10.10.10.20,,/console,HEAD,404,323.75,page_view,curl/8.4.0
+2026-06-17 10:07:10,10.10.10.20,,/api/token,HEAD,200,553.15,page_view,curl/8.4.0
+2026-06-17 10:07:20,10.10.10.20,,/phpmyadmin,HEAD,404,432.32,page_view,curl/8.4.0
+2026-06-17 10:07:20,192.168.0.56,user_1080,/profile,GET,200,407.63,page_view,curl/8.4.0
+2026-06-17 10:07:21,10.10.10.20,,/manager/html,GET,404,311.63,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:07:45,10.10.10.20,,/server-status,HEAD,404,561.85,page_view,curl/8.4.0
+2026-06-17 10:07:52,192.168.0.51,user_1049,/home,GET,200,104.64,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:07:58,192.168.0.34,user_1098,/,GET,200,378.42,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:08:18,10.10.10.20,,/old,HEAD,404,472.57,page_view,curl/8.4.0
+2026-06-17 10:08:26,192.168.0.52,user_1087,/api/products,GET,200,211.93,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:08:37,192.168.0.65,user_1056,/checkout,POST,200,391.98,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:08:42,192.168.0.15,user_1026,/login,POST,200,512.4,login_success,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:08:47,192.168.0.24,user_1033,/,GET,200,138.93,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:09:06,10.10.10.20,,/actuator/env,GET,404,213.44,page_view,curl/8.4.0
+2026-06-17 10:09:06,192.168.0.10,user_1058,/,GET,200,395.78,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:09:08,10.10.10.20,,/actuator,HEAD,404,683.92,page_view,curl/8.4.0
+2026-06-17 10:09:12,10.10.10.20,,/phpmyadmin,HEAD,200,691.98,page_view,curl/8.4.0
+2026-06-17 10:09:29,192.168.0.62,user_1000,/settings,GET,200,401.4,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:09:30,192.168.0.40,user_1098,/home,GET,200,177.04,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:10:00,10.10.10.20,,/login,HEAD,404,435.57,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:10:10,10.10.10.20,,/test,GET,404,290.65,page_view,curl/8.4.0
+2026-06-17 10:10:24,10.10.10.20,,/test,GET,403,459.26,page_view,curl/8.4.0
+2026-06-17 10:10:37,192.168.0.56,user_1071,/cart,GET,200,80.0,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:10:38,10.10.10.20,,/admin/config,HEAD,403,270.79,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:10:54,192.168.0.27,user_1060,/profile,GET,200,352.06,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:10:54,192.168.0.43,user_1073,/api/orders,POST,200,299.15,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:11:00,10.10.10.20,,/dbadmin,GET,200,486.8,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:11:00,10.10.10.20,,/dbadmin,HEAD,403,323.92,page_view,curl/8.4.0
+2026-06-17 10:11:02,192.168.0.62,user_1022,/,GET,200,487.12,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:11:06,10.10.10.20,,/actuator/env,HEAD,404,198.27,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:11:08,10.10.10.20,,/api/users,GET,200,232.67,page_view,curl/8.4.0
+2026-06-17 10:11:12,10.10.10.20,,/dbadmin,GET,200,135.11,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:11:19,192.168.0.21,user_1074,/home,GET,302,542.56,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:11:20,10.10.10.20,,/actuator/env,GET,200,458.76,page_view,curl/8.4.0
+2026-06-17 10:11:25,192.168.0.51,user_1046,/settings,GET,200,543.42,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:11:38,192.168.0.50,user_1040,/logout,POST,200,232.42,logout,curl/8.4.0
+2026-06-17 10:11:48,192.168.0.63,user_1066,/api/orders,GET,200,356.44,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:11:54,192.168.0.44,user_1046,/cart,GET,200,218.87,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:11:54,192.168.0.25,user_1036,/checkout,POST,200,219.28,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:11:55,192.168.0.42,user_1097,/,GET,404,183.2,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:12:00,10.10.10.20,,/debug,GET,404,536.71,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:12:00,10.10.10.20,,/shell,HEAD,404,513.49,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:12:16,192.168.0.51,user_1026,/api/products,POST,200,580.83,api_request,curl/8.4.0
+2026-06-17 10:12:34,10.10.10.20,,/api/private,GET,404,314.44,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:12:51,10.10.10.20,,/config,GET,200,415.86,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:12:51,192.168.0.28,user_1055,/api/products,GET,302,324.89,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 10:13:10,192.168.0.50,user_1019,/settings,GET,200,435.0,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:13:23,192.168.0.56,user_1015,/login,POST,200,606.71,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:13:25,10.10.10.20,,/vendor,HEAD,404,262.88,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:13:28,192.168.0.21,user_1095,/logout,POST,302,459.0,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:13:41,10.10.10.20,,/sitemap.xml,HEAD,404,637.59,page_view,curl/8.4.0
+2026-06-17 10:14:11,192.168.0.15,user_1017,/settings,GET,200,157.97,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:14:16,192.168.0.46,user_1080,/profile,GET,200,201.86,profile_update,Mozilla/5.0 Safari/17.5
+2026-06-17 10:14:22,10.10.10.20,,/admin/config,HEAD,403,273.91,page_view,curl/8.4.0
+2026-06-17 10:14:25,192.168.0.63,user_1021,/profile,GET,200,243.03,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:14:29,192.168.0.63,user_1055,/home,GET,200,150.42,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:14:40,192.168.0.44,user_1048,/checkout,POST,404,267.01,checkout,Mozilla/5.0 Safari/17.5
+2026-06-17 10:14:48,10.10.10.20,,/internal,HEAD,404,188.77,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:14:49,192.168.0.15,user_1047,/api/products,GET,200,420.25,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:14:58,192.168.0.13,user_1009,/api/orders,POST,500,151.35,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:15:00,192.168.0.14,user_1039,/cart,GET,200,200.53,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:15:06,192.168.0.16,user_1086,/api/products,GET,200,312.46,api_request,curl/8.4.0
+2026-06-17 10:15:14,192.168.0.53,user_1050,/api/orders,GET,200,393.22,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 10:15:23,192.168.0.25,user_1001,/profile,GET,200,188.9,page_view,curl/8.4.0
+2026-06-17 10:15:24,10.10.10.20,,/internal,HEAD,403,103.97,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:15:32,192.168.0.44,user_1040,/logout,POST,200,343.22,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 10:15:56,192.168.0.62,user_1026,/logout,POST,302,179.49,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:16:04,192.168.0.64,user_1071,/checkout,POST,200,83.01,checkout,curl/8.4.0
+2026-06-17 10:16:11,192.168.0.29,user_1098,/logout,POST,404,216.66,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:16:21,192.168.0.46,user_1087,/profile,GET,200,136.42,profile_update,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:16:40,192.168.0.23,user_1019,/home,GET,200,299.51,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:17:14,192.168.0.53,user_1076,/login,POST,200,126.35,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:17:39,192.168.0.49,user_1084,/login,POST,200,610.48,login_success,curl/8.4.0
+2026-06-17 10:17:56,10.10.10.20,,/api/users,HEAD,404,107.74,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:18:06,10.10.10.20,,/api/users,HEAD,404,207.62,page_view,curl/8.4.0
+2026-06-17 10:18:07,192.168.0.65,user_1068,/api/orders,POST,200,361.78,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 10:18:09,192.168.0.59,user_1029,/api/orders,POST,200,346.22,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:18:14,192.168.0.39,user_1080,/home,GET,200,295.19,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:18:17,192.168.0.11,user_1064,/settings,GET,200,317.37,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:18:28,192.168.0.37,user_1012,/logout,POST,200,542.0,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:18:32,192.168.0.46,user_1064,/settings,GET,200,204.76,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:18:40,192.168.0.25,user_1053,/checkout,POST,200,315.54,checkout,curl/8.4.0
+2026-06-17 10:18:44,10.10.10.20,,/shell,GET,404,376.29,page_view,curl/8.4.0
+2026-06-17 10:18:59,192.168.0.24,user_1093,/login,POST,200,352.09,login_success,curl/8.4.0
+2026-06-17 10:19:01,192.168.0.15,user_1029,/,GET,200,121.26,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:19:33,192.168.0.64,user_1052,/settings,GET,200,335.91,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:19:54,192.168.0.28,user_1073,/checkout,POST,200,80.0,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:20:01,10.10.10.20,,/robots.txt,HEAD,200,388.29,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:20:06,192.168.0.25,user_1067,/profile,GET,200,216.39,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:20:17,192.168.0.39,user_1015,/profile,GET,200,379.8,page_view,curl/8.4.0
+2026-06-17 10:20:33,192.168.0.33,user_1078,/settings,GET,200,443.76,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:20:33,192.168.0.46,user_1086,/,GET,200,442.3,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:20:36,192.168.0.19,user_1025,/api/orders,POST,200,272.09,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:20:37,192.168.0.35,user_1035,/profile,GET,200,571.07,profile_update,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:20:40,192.168.0.36,user_1010,/,GET,200,356.6,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:20:50,192.168.0.26,user_1059,/cart,GET,500,255.65,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:20:58,10.10.10.20,,/uploads,GET,404,197.99,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:21:13,192.168.0.53,user_1017,/cart,GET,200,473.11,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:21:32,192.168.0.63,user_1053,/,GET,404,315.99,page_view,curl/8.4.0
+2026-06-17 10:21:41,192.168.0.26,user_1058,/profile,GET,500,215.47,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:21:42,192.168.0.18,user_1048,/profile,GET,200,370.04,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:21:46,192.168.0.67,user_1003,/cart,GET,200,306.25,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:21:51,192.168.0.40,user_1002,/cart,GET,200,192.2,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:22:01,192.168.0.12,user_1093,/home,GET,200,541.58,page_view,curl/8.4.0
+2026-06-17 10:22:17,192.168.0.69,user_1056,/dashboard,GET,200,220.74,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:22:25,192.168.0.10,user_1038,/login,POST,500,309.31,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:22:38,192.168.0.17,user_1047,/profile,GET,200,335.08,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:22:50,192.168.0.67,user_1081,/products,GET,404,80.0,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:22:59,192.168.0.57,user_1079,/dashboard,GET,200,467.14,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:23:01,192.168.0.56,user_1072,/settings,GET,302,618.27,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:23:04,192.168.0.62,user_1090,/home,GET,200,288.95,page_view,curl/8.4.0
+2026-06-17 10:23:14,192.168.0.20,user_1044,/api/products,POST,200,369.87,api_request,curl/8.4.0
+2026-06-17 10:24:00,10.10.10.20,,/admin/config,HEAD,404,304.19,page_view,curl/8.4.0
+2026-06-17 10:24:13,192.168.0.48,user_1007,/cart,GET,200,444.74,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:24:21,192.168.0.60,user_1056,/api/products,GET,200,108.97,api_request,curl/8.4.0
+2026-06-17 10:24:22,192.168.0.21,user_1018,/login,POST,200,424.68,login_success,curl/8.4.0
+2026-06-17 10:24:27,192.168.0.52,user_1094,/api/orders,GET,200,331.16,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:24:50,192.168.0.10,user_1047,/dashboard,GET,200,227.05,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:25:10,192.168.0.43,user_1061,/settings,GET,200,174.65,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:25:13,192.168.0.69,user_1041,/cart,GET,200,526.73,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:25:19,192.168.0.50,user_1026,/checkout,POST,200,543.65,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:25:36,192.168.0.30,user_1083,/login,POST,200,400.91,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 10:25:52,192.168.0.11,user_1026,/login,POST,302,205.94,page_view,curl/8.4.0
+2026-06-17 10:25:54,192.168.0.65,user_1045,/dashboard,GET,200,416.31,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:26:09,192.168.0.46,user_1087,/checkout,POST,200,284.4,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:26:12,192.168.0.60,user_1062,/api/products,POST,200,313.31,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:26:22,192.168.0.37,user_1021,/api/orders,GET,200,491.08,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:26:27,192.168.0.29,user_1072,/logout,POST,200,282.84,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:26:29,192.168.0.58,user_1044,/login,POST,200,555.17,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 10:26:53,192.168.0.24,user_1081,/,GET,200,632.35,page_view,curl/8.4.0
+2026-06-17 10:26:58,192.168.0.27,user_1018,/checkout,POST,200,367.69,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:27:01,192.168.0.26,user_1013,/,GET,200,136.57,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:27:14,192.168.0.15,user_1090,/logout,POST,200,453.74,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:27:33,192.168.0.52,user_1066,/profile,GET,200,333.52,profile_update,Mozilla/5.0 Edg/125.0
+2026-06-17 10:27:47,192.168.0.48,user_1060,/api/orders,GET,200,199.87,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:28:00,10.10.10.30,user_2000,/admin,POST,403,238.4,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:28:26,10.10.10.30,user_2004,/admin,POST,403,389.76,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:28:30,10.10.10.30,user_2001,/api/users,GET,403,381.46,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:28:41,192.168.0.39,user_1088,/products,GET,200,470.28,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:28:45,192.168.0.21,user_1062,/profile,GET,200,466.4,profile_update,Mozilla/5.0 Edg/125.0
+2026-06-17 10:28:48,192.168.0.65,user_1060,/api/products,POST,200,432.16,api_request,curl/8.4.0
+2026-06-17 10:28:48,10.10.10.30,user_2003,/admin,POST,403,194.61,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:28:54,10.10.10.30,user_2001,/admin,GET,404,382.51,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:29:05,192.168.0.14,user_1025,/settings,GET,200,263.74,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:29:22,192.168.0.64,user_1093,/cart,GET,404,80.0,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:29:24,10.10.10.30,user_2002,/admin,GET,403,417.3,page_view,curl/8.4.0
+2026-06-17 10:29:30,192.168.0.32,user_1050,/,GET,200,441.56,page_view,curl/8.4.0
+2026-06-17 10:30:09,192.168.0.49,user_1040,/profile,GET,200,231.52,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:30:10,192.168.0.15,user_1096,/settings,GET,200,428.06,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:30:12,192.168.0.39,user_1062,/profile,GET,200,379.88,profile_update,Mozilla/5.0 Safari/17.5
+2026-06-17 10:30:17,192.168.0.26,user_1091,/logout,POST,200,391.08,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:30:20,10.10.10.30,user_2004,/api/users,GET,404,165.19,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:30:34,192.168.0.12,user_1011,/,GET,200,80.0,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:30:37,192.168.0.58,user_1079,/logout,POST,302,253.09,logout,curl/8.4.0
+2026-06-17 10:30:40,10.10.10.30,user_2004,/api/users,POST,403,181.01,api_request,curl/8.4.0
+2026-06-17 10:30:42,192.168.0.52,user_1094,/login,POST,200,339.14,login_success,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:30:44,192.168.0.62,user_1025,/api/orders,GET,200,80.0,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 10:30:45,10.10.10.30,user_2001,/admin,POST,403,385.29,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:30:47,192.168.0.31,user_1082,/api/orders,GET,200,397.26,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 10:30:51,10.10.10.30,user_2004,/api/users,GET,403,431.44,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:30:55,192.168.0.29,user_1001,/logout,POST,302,245.53,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:31:00,10.10.10.30,user_2005,/api/users,GET,403,185.27,api_request,curl/8.4.0
+2026-06-17 10:31:00,10.10.10.30,user_2001,/settings,POST,404,281.15,page_view,curl/8.4.0
+2026-06-17 10:31:30,10.10.10.30,user_2001,/admin,GET,403,131.12,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:32:07,192.168.0.35,user_1009,/login,POST,200,140.06,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:32:13,192.168.0.45,user_1073,/profile,GET,200,455.34,profile_update,Mozilla/5.0 Safari/17.5
+2026-06-17 10:32:22,192.168.0.43,user_1066,/settings,GET,200,511.06,page_view,curl/8.4.0
+2026-06-17 10:32:29,192.168.0.14,user_1018,/dashboard,GET,200,362.59,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:32:53,192.168.0.55,user_1040,/cart,GET,200,215.0,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:33:19,192.168.0.67,user_1050,/dashboard,GET,200,448.38,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:33:21,192.168.0.41,user_1047,/,GET,200,94.48,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:33:23,192.168.0.40,user_1040,/products,GET,200,597.81,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:33:25,10.10.10.30,user_2000,/admin,POST,403,297.04,page_view,curl/8.4.0
+2026-06-17 10:33:46,192.168.0.51,user_1022,/cart,GET,200,368.41,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:33:49,192.168.0.62,user_1015,/,GET,200,320.85,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:33:53,192.168.0.23,user_1052,/dashboard,GET,200,315.96,page_view,curl/8.4.0
+2026-06-17 10:34:00,10.10.10.30,user_2002,/admin,POST,403,381.08,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:34:00,10.10.10.30,user_2004,/settings,POST,403,208.49,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:34:00,192.168.0.49,user_1065,/products,GET,200,494.75,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:34:00,10.10.10.30,user_2005,/admin,GET,403,309.29,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:34:01,192.168.0.42,user_1075,/logout,POST,200,285.21,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:34:04,10.10.10.30,user_2005,/admin,POST,404,196.73,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:34:17,10.10.10.30,user_2000,/settings,GET,403,456.19,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:34:18,10.10.10.30,user_2002,/admin,POST,403,151.25,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:34:31,10.10.10.30,user_2001,/settings,GET,404,375.4,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:34:56,10.10.10.30,user_2003,/api/users,POST,404,344.6,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 10:34:57,192.168.0.17,user_1022,/login,POST,200,409.28,login_success,curl/8.4.0
+2026-06-17 10:35:00,10.10.10.30,user_2003,/settings,POST,403,444.09,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:35:27,192.168.0.69,user_1003,/logout,POST,200,362.61,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 10:35:31,192.168.0.29,user_1083,/api/orders,POST,200,267.82,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:35:33,192.168.0.24,user_1083,/,GET,500,367.87,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:35:40,10.10.10.30,user_2003,/admin,POST,403,358.78,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:35:44,10.10.10.30,user_2003,/admin,POST,404,191.74,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:35:59,192.168.0.38,user_1005,/login,POST,200,413.44,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 10:36:10,192.168.0.41,user_1023,/login,POST,200,418.57,login_success,curl/8.4.0
+2026-06-17 10:36:24,10.10.10.30,user_2005,/settings,GET,403,174.48,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:37:02,192.168.0.50,user_1038,/profile,GET,200,462.87,profile_update,curl/8.4.0
+2026-06-17 10:37:13,192.168.0.19,user_1099,/logout,POST,200,80.0,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:37:27,10.10.10.30,user_2002,/api/users,POST,404,255.32,api_request,curl/8.4.0
+2026-06-17 10:37:28,192.168.0.51,user_1042,/api/products,POST,200,338.38,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:37:30,10.10.10.30,user_2000,/api/users,GET,403,258.21,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:37:50,192.168.0.29,user_1059,/products,GET,200,403.17,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:37:54,10.10.10.30,user_2004,/settings,POST,403,411.84,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:37:55,192.168.0.66,user_1093,/login,POST,200,96.61,login_success,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:37:57,192.168.0.59,user_1039,/cart,GET,200,414.73,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:37:58,192.168.0.54,user_1045,/logout,POST,200,338.72,logout,curl/8.4.0
+2026-06-17 10:38:00,10.10.10.30,user_2004,/admin,POST,403,235.05,page_view,curl/8.4.0
+2026-06-17 10:38:02,10.10.10.30,user_2005,/admin,GET,403,223.88,page_view,curl/8.4.0
+2026-06-17 10:38:03,192.168.0.40,user_1069,/,GET,500,586.42,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:38:05,192.168.0.11,user_1030,/,GET,200,397.98,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:38:22,192.168.0.63,user_1053,/products,GET,200,393.85,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:38:24,192.168.0.62,user_1059,/,GET,200,278.5,page_view,curl/8.4.0
+2026-06-17 10:38:29,10.10.10.30,user_2000,/settings,POST,403,295.15,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:38:38,192.168.0.66,user_1005,/checkout,POST,302,80.0,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:39:50,192.168.0.58,user_1018,/profile,GET,200,246.21,profile_update,curl/8.4.0
+2026-06-17 10:40:00,10.10.10.30,user_2002,/admin,POST,403,183.32,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:40:30,10.10.10.30,user_2001,/settings,POST,404,305.23,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:40:36,10.10.10.30,user_2004,/admin,GET,403,450.2,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:40:36,10.10.10.30,user_2002,/settings,POST,403,481.98,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:40:38,192.168.0.17,user_1074,/,GET,200,202.24,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:40:39,10.10.10.30,user_2002,/api/users,POST,403,130.7,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:40:41,192.168.0.63,user_1036,/cart,GET,200,239.15,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:40:43,192.168.0.57,user_1091,/settings,GET,200,404.53,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:40:49,192.168.0.18,user_1005,/checkout,POST,200,241.15,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:40:52,192.168.0.24,user_1005,/logout,POST,200,149.7,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:41:02,10.10.10.30,user_2002,/admin,GET,403,264.62,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:41:04,10.10.10.30,user_2005,/admin,POST,404,275.9,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:41:10,192.168.0.42,user_1071,/products,GET,200,234.71,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:41:25,10.10.10.30,user_2003,/settings,POST,403,371.27,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:41:45,192.168.0.47,user_1071,/home,GET,200,377.55,page_view,curl/8.4.0
+2026-06-17 10:41:57,10.10.10.30,user_2005,/api/users,POST,404,333.66,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:42:06,192.168.0.33,user_1028,/,GET,200,350.32,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:42:06,192.168.0.40,user_1017,/cart,GET,200,365.87,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:42:11,192.168.0.45,user_1082,/,GET,200,353.73,page_view,curl/8.4.0
+2026-06-17 10:42:18,10.10.10.30,user_2003,/admin,POST,403,337.56,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:42:29,192.168.0.14,user_1075,/api/orders,GET,200,133.32,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:42:31,192.168.0.67,user_1011,/profile,GET,200,339.36,page_view,curl/8.4.0
+2026-06-17 10:42:42,10.10.10.30,user_2002,/admin,GET,403,498.57,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:42:43,192.168.0.33,user_1039,/settings,GET,200,198.04,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:42:51,192.168.0.51,user_1009,/checkout,POST,200,234.05,checkout,curl/8.4.0
+2026-06-17 10:42:56,192.168.0.40,user_1074,/settings,GET,200,692.8,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:43:00,10.10.10.30,user_2003,/api/users,POST,403,365.5,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:43:01,10.10.10.30,user_2002,/admin,GET,403,218.19,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:43:09,192.168.0.32,user_1092,/settings,GET,200,281.65,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:43:24,192.168.0.32,user_1069,/products,GET,200,266.78,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:43:28,192.168.0.62,user_1008,/profile,GET,200,261.04,page_view,curl/8.4.0
+2026-06-17 10:43:36,192.168.0.47,user_1012,/,GET,200,328.84,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:43:45,10.10.10.30,user_2003,/api/users,POST,403,277.44,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:43:47,192.168.0.15,user_1098,/api/products,POST,200,317.75,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:43:57,192.168.0.20,user_1017,/api/orders,POST,200,443.92,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:44:09,10.10.10.30,user_2003,/api/users,GET,403,176.99,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:44:11,192.168.0.34,user_1053,/settings,GET,200,417.63,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:44:16,192.168.0.42,user_1067,/cart,GET,200,257.83,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:44:26,192.168.0.34,user_1048,/profile,GET,500,80.0,profile_update,curl/8.4.0
+2026-06-17 10:44:40,192.168.0.56,user_1047,/products,GET,404,482.88,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:44:44,192.168.0.31,user_1038,/logout,POST,200,331.29,logout,curl/8.4.0
+2026-06-17 10:44:50,192.168.0.45,user_1064,/cart,GET,200,147.01,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:44:56,192.168.0.69,user_1051,/api/orders,POST,200,330.12,api_request,curl/8.4.0
+2026-06-17 10:45:05,10.10.10.30,user_2001,/settings,POST,403,439.34,page_view,curl/8.4.0
+2026-06-17 10:45:44,10.10.10.30,user_2003,/api/users,POST,403,384.46,api_request,curl/8.4.0
+2026-06-17 10:45:49,192.168.0.33,user_1023,/home,GET,200,425.95,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:45:50,192.168.0.10,user_1039,/settings,GET,200,271.5,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:46:03,192.168.0.32,user_1022,/logout,POST,200,414.0,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:46:12,10.10.10.30,user_2003,/admin,POST,404,280.37,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:46:27,192.168.0.29,user_1029,/login,POST,200,240.14,login_success,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:46:36,192.168.0.26,user_1058,/products,GET,200,342.72,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:46:46,192.168.0.28,user_1081,/logout,POST,200,388.92,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:47:09,192.168.0.22,user_1032,/,GET,200,452.18,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:47:16,192.168.0.46,user_1064,/api/products,GET,200,540.21,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:47:17,192.168.0.22,user_1075,/products,GET,200,95.26,page_view,curl/8.4.0
+2026-06-17 10:47:20,192.168.0.36,user_1041,/settings,GET,200,377.01,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:47:40,192.168.0.19,user_1016,/products,GET,200,267.64,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:47:48,10.10.10.30,user_2003,/api/users,GET,403,422.35,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:48:00,10.10.10.30,user_2004,/api/users,GET,403,258.42,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:48:01,192.168.0.47,user_1012,/home,GET,200,148.2,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:48:04,192.168.0.24,user_1042,/products,GET,200,469.17,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:48:22,192.168.0.15,user_1047,/profile,GET,200,294.13,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:48:24,192.168.0.16,user_1033,/,GET,200,80.0,page_view,curl/8.4.0
+2026-06-17 10:48:31,192.168.0.64,user_1071,/api/products,POST,200,161.68,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:48:32,192.168.0.64,user_1086,/profile,GET,200,148.98,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:48:36,192.168.0.23,user_1063,/home,GET,200,339.78,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:48:40,192.168.0.42,user_1098,/,GET,302,113.13,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:48:42,192.168.0.57,user_1017,/api/orders,GET,200,471.5,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:48:45,192.168.0.46,user_1030,/login,POST,200,416.48,login_success,curl/8.4.0
+2026-06-17 10:48:48,192.168.0.31,user_1035,/,GET,200,520.26,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:48:52,192.168.0.37,user_1040,/profile,GET,200,255.93,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:49:07,192.168.0.60,user_1055,/api/products,GET,200,432.94,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:49:10,192.168.0.46,user_1027,/dashboard,GET,200,602.62,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:49:13,192.168.0.57,user_1056,/profile,GET,200,276.61,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:49:17,192.168.0.39,user_1034,/login,POST,200,279.19,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 10:49:26,192.168.0.47,user_1052,/dashboard,GET,200,302.87,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:49:28,10.10.10.30,user_2003,/api/users,GET,403,358.58,api_request,curl/8.4.0
+2026-06-17 10:49:41,192.168.0.12,user_1050,/login,POST,200,240.71,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 10:50:06,192.168.0.46,user_1071,/settings,GET,200,215.71,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:50:22,192.168.0.10,user_1084,/dashboard,GET,200,482.73,page_view,curl/8.4.0
+2026-06-17 10:50:26,192.168.0.37,user_1040,/products,GET,200,244.64,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:50:42,192.168.0.47,user_1025,/profile,GET,200,467.59,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:50:42,192.168.0.11,user_1092,/login,POST,200,163.71,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 10:50:53,192.168.0.28,user_1026,/api/orders,POST,200,306.19,api_request,curl/8.4.0
+2026-06-17 10:51:28,192.168.0.19,user_1038,/profile,GET,200,320.31,page_view,curl/8.4.0
+2026-06-17 10:51:29,192.168.0.17,user_1017,/settings,GET,200,479.52,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:51:30,10.10.10.30,user_2003,/admin,GET,404,221.82,page_view,curl/8.4.0
+2026-06-17 10:51:34,192.168.0.58,user_1001,/logout,POST,200,436.86,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:51:48,192.168.0.62,user_1073,/checkout,POST,200,521.65,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:51:58,192.168.0.11,user_1029,/login,POST,200,306.63,login_success,curl/8.4.0
+2026-06-17 10:52:10,192.168.0.32,user_1085,/profile,GET,200,144.78,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:52:33,192.168.0.26,user_1019,/cart,GET,200,430.31,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:52:35,192.168.0.56,user_1041,/profile,GET,200,323.22,page_view,curl/8.4.0
+2026-06-17 10:52:56,192.168.0.30,user_1044,/home,GET,200,195.11,page_view,curl/8.4.0
+2026-06-17 10:53:00,192.168.0.15,user_1063,/settings,GET,200,250.0,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:53:02,192.168.0.20,user_1023,/checkout,POST,404,488.77,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:53:18,192.168.0.27,user_1000,/home,GET,200,178.09,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:53:27,192.168.0.25,user_1058,/checkout,POST,200,509.07,checkout,curl/8.4.0
+2026-06-17 10:53:29,192.168.0.20,user_1010,/products,GET,200,272.42,page_view,curl/8.4.0
+2026-06-17 10:53:39,192.168.0.68,user_1092,/logout,POST,200,630.84,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:53:44,192.168.0.45,user_1067,/checkout,POST,200,518.48,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:53:44,192.168.0.56,user_1088,/profile,GET,200,93.85,page_view,curl/8.4.0
+2026-06-17 10:54:06,10.10.10.30,user_2001,/api/users,GET,404,417.25,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:54:13,192.168.0.44,user_1004,/checkout,POST,200,501.92,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 10:54:28,192.168.0.43,user_1031,/dashboard,GET,200,400.86,page_view,curl/8.4.0
+2026-06-17 10:54:34,192.168.0.46,user_1075,/api/orders,GET,200,370.61,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:54:48,192.168.0.52,user_1048,/checkout,POST,200,443.61,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:54:57,192.168.0.28,user_1037,/api/orders,GET,200,80.0,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:55:06,192.168.0.11,user_1095,/products,GET,200,309.17,page_view,curl/8.4.0
+2026-06-17 10:55:09,192.168.0.17,user_1016,/settings,GET,200,161.6,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:55:12,192.168.0.65,user_1009,/checkout,POST,200,373.33,checkout,Mozilla/5.0 Safari/17.5
+2026-06-17 10:55:20,192.168.0.11,user_1048,/dashboard,GET,302,370.99,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:55:37,192.168.0.42,user_1046,/home,GET,200,436.7,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:55:39,192.168.0.63,user_1035,/,GET,200,80.0,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:55:41,192.168.0.13,user_1008,/api/orders,POST,200,281.56,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:55:45,192.168.0.23,user_1053,/profile,GET,200,410.92,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:55:47,192.168.0.27,user_1027,/dashboard,GET,200,159.38,page_view,curl/8.4.0
+2026-06-17 10:56:14,192.168.0.37,user_1070,/settings,GET,200,199.84,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:56:37,192.168.0.21,user_1070,/profile,GET,200,372.67,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:56:49,192.168.0.22,user_1088,/cart,GET,200,365.91,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:56:58,192.168.0.51,user_1043,/,GET,200,282.07,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 10:57:26,192.168.0.30,user_1087,/logout,POST,200,492.69,logout,curl/8.4.0
+2026-06-17 10:57:26,192.168.0.38,user_1029,/settings,GET,302,304.82,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:57:32,192.168.0.61,user_1037,/cart,GET,200,440.94,page_view,curl/8.4.0
+2026-06-17 10:57:35,192.168.0.62,user_1083,/profile,GET,200,631.42,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:57:35,192.168.0.48,user_1023,/settings,GET,200,184.81,page_view,curl/8.4.0
+2026-06-17 10:57:42,192.168.0.32,user_1054,/home,GET,200,261.87,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:57:46,192.168.0.51,user_1021,/cart,GET,200,356.84,page_view,curl/8.4.0
+2026-06-17 10:58:25,192.168.0.50,user_1054,/home,GET,200,225.13,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 10:58:39,192.168.0.37,user_1077,/,GET,200,170.85,page_view,curl/8.4.0
+2026-06-17 10:58:50,192.168.0.57,user_1087,/home,GET,200,109.19,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:58:53,192.168.0.22,user_1080,/home,GET,500,265.71,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 10:59:31,192.168.0.56,user_1011,/profile,GET,200,416.28,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 10:59:37,192.168.0.25,user_1028,/api/products,GET,200,433.91,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 10:59:59,192.168.0.43,user_1066,/logout,POST,200,303.51,logout,curl/8.4.0
+2026-06-17 11:00:00,10.10.10.40,user_3004,/api/orders,POST,500,1300.57,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:00:13,192.168.0.10,user_1092,/home,GET,302,559.14,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:00:17,10.10.10.40,user_3003,/checkout,POST,500,636.04,api_request,curl/8.4.0
+2026-06-17 11:00:37,192.168.0.23,user_1052,/api/products,POST,200,188.24,api_request,curl/8.4.0
+2026-06-17 11:00:51,192.168.0.49,user_1092,/api/orders,POST,200,378.01,api_request,curl/8.4.0
+2026-06-17 11:00:53,192.168.0.37,user_1039,/products,GET,200,255.3,page_view,curl/8.4.0
+2026-06-17 11:00:59,192.168.0.56,user_1053,/logout,POST,200,328.53,logout,curl/8.4.0
+2026-06-17 11:01:02,10.10.10.40,user_3004,/api/orders,POST,503,1284.56,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:01:05,192.168.0.61,user_1016,/logout,POST,302,403.69,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:01:12,10.10.10.40,user_3001,/api/products,GET,503,839.48,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:01:15,10.10.10.40,user_3002,/api/orders,POST,500,1335.5,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:01:19,192.168.0.34,user_1015,/settings,GET,200,303.11,page_view,curl/8.4.0
+2026-06-17 11:01:32,192.168.0.64,user_1040,/cart,GET,200,565.32,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:01:34,192.168.0.21,user_1039,/checkout,POST,200,251.01,checkout,Mozilla/5.0 Safari/17.5
+2026-06-17 11:01:45,10.10.10.40,user_3004,/checkout,POST,500,1241.47,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:01:48,192.168.0.47,user_1070,/profile,GET,200,434.39,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:01:51,192.168.0.67,user_1016,/settings,GET,200,288.68,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:02:11,192.168.0.12,user_1036,/profile,GET,404,312.68,page_view,curl/8.4.0
+2026-06-17 11:02:12,10.10.10.40,user_3002,/dashboard,GET,500,763.0,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:02:30,10.10.10.40,user_3004,/api/orders,POST,500,716.49,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:02:35,192.168.0.24,user_1068,/dashboard,GET,200,421.72,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:03:01,192.168.0.34,user_1055,/,GET,200,178.93,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:03:03,192.168.0.54,user_1074,/logout,POST,200,212.88,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:03:04,10.10.10.40,user_3004,/api/products,POST,503,1038.95,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:03:05,192.168.0.49,user_1085,/home,GET,200,316.03,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:03:32,192.168.0.30,user_1008,/cart,GET,200,514.46,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:03:35,192.168.0.16,user_1078,/,GET,200,128.5,page_view,curl/8.4.0
+2026-06-17 11:03:41,192.168.0.46,user_1057,/login,POST,200,173.48,login_success,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:03:53,192.168.0.60,user_1089,/api/orders,GET,200,161.6,api_request,curl/8.4.0
+2026-06-17 11:04:00,10.10.10.40,user_3000,/checkout,POST,500,697.42,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:04:10,192.168.0.69,user_1051,/api/orders,GET,404,244.08,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:04:45,192.168.0.25,user_1066,/checkout,POST,200,329.18,checkout,curl/8.4.0
+2026-06-17 11:04:48,10.10.10.40,user_3001,/api/orders,POST,503,407.87,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:04:56,192.168.0.66,user_1031,/cart,GET,200,258.27,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:04:56,192.168.0.21,user_1099,/products,GET,500,483.35,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:04:58,192.168.0.60,user_1025,/settings,GET,200,401.42,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:04:59,10.10.10.40,user_3004,/api/products,GET,503,820.87,api_request,curl/8.4.0
+2026-06-17 11:05:00,10.10.10.40,user_3000,/api/products,GET,500,1374.13,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:05:03,192.168.0.45,user_1091,/login,POST,200,218.45,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:05:11,192.168.0.57,user_1010,/settings,GET,302,337.67,page_view,curl/8.4.0
+2026-06-17 11:05:41,192.168.0.65,user_1029,/logout,POST,200,157.92,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:05:45,10.10.10.40,user_3004,/api/orders,POST,503,1227.26,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:05:52,192.168.0.37,user_1092,/profile,GET,200,611.98,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:05:56,192.168.0.64,user_1021,/home,GET,200,80.0,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:06:00,10.10.10.40,user_3004,/checkout,POST,503,1199.53,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:06:00,10.10.10.40,user_3003,/api/orders,POST,503,1117.39,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:06:10,192.168.0.21,user_1023,/checkout,POST,200,326.23,checkout,Mozilla/5.0 Safari/17.5
+2026-06-17 11:06:17,192.168.0.60,user_1052,/checkout,POST,302,184.26,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:06:25,10.10.10.40,user_3002,/dashboard,GET,503,1189.32,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:06:46,10.10.10.40,user_3000,/checkout,POST,500,1041.37,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:06:58,10.10.10.40,user_3000,/checkout,POST,503,570.12,api_request,curl/8.4.0
+2026-06-17 11:06:58,192.168.0.38,user_1056,/api/orders,GET,200,308.82,api_request,curl/8.4.0
+2026-06-17 11:06:59,192.168.0.26,user_1028,/,GET,200,577.41,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:07:00,10.10.10.40,user_3003,/api/orders,GET,503,1374.4,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:07:00,10.10.10.40,user_3000,/checkout,POST,503,1018.0,api_request,curl/8.4.0
+2026-06-17 11:07:05,192.168.0.42,user_1090,/,GET,200,260.12,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:07:45,10.10.10.40,user_3002,/api/orders,POST,503,1377.52,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:07:52,192.168.0.51,user_1090,/api/orders,POST,200,408.85,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:07:55,10.10.10.40,user_3003,/dashboard,GET,500,1000.08,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:07:59,192.168.0.54,user_1038,/dashboard,GET,200,400.89,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:08:01,192.168.0.39,user_1065,/checkout,POST,200,150.46,checkout,Mozilla/5.0 Safari/17.5
+2026-06-17 11:08:04,192.168.0.53,user_1073,/dashboard,GET,404,385.72,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:08:12,192.168.0.58,user_1040,/home,GET,200,394.33,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:08:34,192.168.0.58,user_1068,/settings,GET,200,500.68,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:08:35,192.168.0.41,user_1084,/dashboard,GET,200,412.21,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:08:45,10.10.10.40,user_3001,/dashboard,GET,500,800.66,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:08:48,10.10.10.40,user_3000,/checkout,POST,500,557.82,api_request,curl/8.4.0
+2026-06-17 11:08:48,192.168.0.43,user_1045,/dashboard,GET,200,410.11,page_view,curl/8.4.0
+2026-06-17 11:08:48,10.10.10.40,user_3001,/api/orders,GET,503,687.96,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:08:52,10.10.10.40,user_3002,/api/orders,GET,503,1276.39,api_request,curl/8.4.0
+2026-06-17 11:09:09,192.168.0.34,user_1084,/,GET,200,239.01,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:09:30,192.168.0.14,user_1011,/login,POST,200,341.52,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:09:37,192.168.0.63,user_1081,/cart,GET,302,87.69,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:09:38,10.10.10.40,user_3003,/api/products,POST,503,878.37,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:09:45,192.168.0.11,user_1043,/settings,GET,200,572.35,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:09:47,192.168.0.43,user_1077,/login,POST,200,389.46,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 11:09:53,192.168.0.28,user_1041,/products,GET,200,217.55,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:09:56,192.168.0.67,user_1078,/api/orders,GET,200,361.65,api_request,curl/8.4.0
+2026-06-17 11:10:03,192.168.0.64,user_1091,/api/orders,GET,302,267.61,api_request,curl/8.4.0
+2026-06-17 11:10:08,192.168.0.18,user_1064,/home,GET,200,268.52,page_view,curl/8.4.0
+2026-06-17 11:10:11,192.168.0.20,user_1007,/,GET,200,80.0,page_view,curl/8.4.0
+2026-06-17 11:10:34,192.168.0.48,user_1047,/logout,POST,404,442.79,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 11:10:36,192.168.0.44,user_1004,/checkout,POST,200,407.43,checkout,curl/8.4.0
+2026-06-17 11:10:37,192.168.0.21,user_1058,/logout,POST,200,190.06,logout,curl/8.4.0
+2026-06-17 11:10:46,10.10.10.40,user_3002,/dashboard,GET,500,713.27,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:10:48,192.168.0.23,user_1075,/cart,GET,200,187.13,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:10:49,192.168.0.51,user_1017,/profile,GET,200,526.21,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:11:36,192.168.0.17,user_1033,/api/orders,GET,302,80.0,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:11:38,192.168.0.66,user_1017,/profile,GET,200,322.23,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:11:39,192.168.0.47,user_1094,/products,GET,200,343.74,page_view,curl/8.4.0
+2026-06-17 11:11:42,10.10.10.40,user_3003,/dashboard,GET,500,841.52,api_request,curl/8.4.0
+2026-06-17 11:11:43,10.10.10.40,user_3004,/dashboard,GET,503,453.22,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:11:44,192.168.0.40,user_1032,/checkout,POST,200,387.59,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 11:11:45,192.168.0.54,user_1089,/settings,GET,200,431.87,page_view,curl/8.4.0
+2026-06-17 11:12:01,192.168.0.59,user_1041,/login,POST,200,291.23,login_success,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:12:08,10.10.10.40,user_3001,/api/products,POST,500,428.77,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:12:15,192.168.0.44,user_1048,/login,POST,200,210.18,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 11:12:30,10.10.10.40,user_3001,/api/orders,POST,503,1396.74,api_request,curl/8.4.0
+2026-06-17 11:12:30,10.10.10.40,user_3001,/api/orders,GET,503,1179.49,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:12:31,192.168.0.44,user_1089,/dashboard,GET,302,261.78,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:12:33,192.168.0.23,user_1069,/checkout,POST,200,611.39,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:12:35,192.168.0.21,user_1035,/dashboard,GET,200,167.48,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:12:36,192.168.0.53,user_1051,/logout,POST,200,434.62,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:12:36,192.168.0.67,user_1007,/logout,POST,200,80.0,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:13:03,10.10.10.40,user_3003,/api/products,POST,500,495.28,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:13:14,192.168.0.65,user_1069,/profile,GET,200,88.86,profile_update,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:13:24,192.168.0.45,user_1097,/logout,POST,200,202.67,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:13:25,10.10.10.40,user_3002,/dashboard,GET,503,682.93,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:13:31,192.168.0.30,user_1061,/settings,GET,200,274.33,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:13:37,192.168.0.27,user_1004,/products,GET,200,80.0,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:13:52,192.168.0.67,user_1010,/products,GET,200,274.52,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:13:53,10.10.10.40,user_3003,/dashboard,GET,503,578.01,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:13:56,10.10.10.40,user_3001,/api/orders,GET,503,660.22,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:14:01,192.168.0.28,user_1028,/settings,GET,200,285.26,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:14:02,192.168.0.16,user_1001,/api/products,POST,302,239.68,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:14:04,192.168.0.46,user_1031,/settings,GET,200,321.51,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:14:07,192.168.0.22,user_1015,/api/orders,GET,200,473.03,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:14:14,192.168.0.64,user_1089,/dashboard,GET,200,167.56,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:14:15,10.10.10.40,user_3000,/checkout,POST,500,860.23,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:14:16,192.168.0.15,user_1060,/products,GET,200,347.46,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:14:20,192.168.0.22,user_1041,/dashboard,GET,200,361.24,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:14:26,192.168.0.67,user_1073,/profile,GET,200,153.93,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:14:27,192.168.0.18,user_1091,/,GET,302,284.22,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:14:31,192.168.0.44,user_1005,/home,GET,302,130.32,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:14:31,192.168.0.44,user_1017,/,GET,200,386.35,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:14:40,10.10.10.40,user_3004,/api/orders,POST,503,1076.44,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:14:43,192.168.0.56,user_1069,/cart,GET,200,552.11,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:14:50,192.168.0.66,user_1055,/dashboard,GET,200,135.26,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:14:52,192.168.0.66,user_1017,/api/products,POST,200,116.48,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:14:54,192.168.0.11,user_1046,/login,POST,200,427.81,login_success,curl/8.4.0
+2026-06-17 11:15:08,192.168.0.53,user_1060,/,GET,200,89.66,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:15:18,10.10.10.40,user_3003,/api/products,GET,503,982.9,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:15:18,10.10.10.40,user_3002,/api/products,POST,503,1135.89,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:15:23,192.168.0.41,user_1041,/checkout,POST,200,347.66,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:15:29,192.168.0.61,user_1066,/profile,GET,404,262.31,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:15:48,192.168.0.57,user_1083,/cart,GET,200,373.97,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:15:57,10.10.10.40,user_3001,/checkout,POST,500,717.32,api_request,curl/8.4.0
+2026-06-17 11:16:25,192.168.0.64,user_1072,/checkout,POST,200,293.67,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:16:29,192.168.0.48,user_1068,/cart,GET,200,381.15,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:16:29,192.168.0.31,user_1072,/settings,GET,200,423.58,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:16:44,192.168.0.16,user_1055,/settings,GET,200,306.32,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:16:48,10.10.10.40,user_3000,/api/products,POST,503,1198.15,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:17:04,10.10.10.40,user_3000,/api/products,GET,503,569.87,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:17:11,192.168.0.54,user_1028,/api/orders,GET,200,390.35,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:17:11,192.168.0.11,user_1040,/profile,GET,302,261.65,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:17:36,10.10.10.40,user_3000,/api/orders,POST,503,990.34,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:17:46,10.10.10.40,user_3000,/api/orders,GET,503,580.65,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:18:09,192.168.0.11,user_1079,/,GET,200,244.99,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:18:21,192.168.0.17,user_1087,/home,GET,200,82.72,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:18:28,192.168.0.35,user_1089,/settings,GET,302,257.79,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:18:36,192.168.0.40,user_1005,/checkout,POST,200,178.68,checkout,Mozilla/5.0 Safari/17.5
+2026-06-17 11:18:36,10.10.10.40,user_3002,/checkout,POST,503,1292.67,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:18:48,192.168.0.45,user_1026,/api/products,POST,200,309.09,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:19:06,192.168.0.44,user_1042,/dashboard,GET,200,80.0,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:19:08,192.168.0.22,user_1095,/logout,POST,200,197.22,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 11:19:20,10.10.10.40,user_3003,/dashboard,GET,500,1245.84,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:19:22,192.168.0.15,user_1050,/login,POST,200,384.32,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 11:19:26,192.168.0.57,user_1066,/home,GET,200,283.98,page_view,curl/8.4.0
+2026-06-17 11:19:34,192.168.0.46,user_1016,/login,POST,500,291.24,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:19:43,192.168.0.49,user_1020,/settings,GET,200,410.54,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:19:53,192.168.0.65,user_1040,/settings,GET,302,244.14,page_view,curl/8.4.0
+2026-06-17 11:20:04,10.10.10.40,user_3000,/api/products,GET,503,1076.91,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:20:08,192.168.0.47,user_1013,/cart,GET,200,139.14,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:20:09,192.168.0.45,user_1059,/,GET,200,154.51,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:20:33,192.168.0.41,user_1002,/login,POST,200,80.0,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:20:42,192.168.0.55,user_1064,/profile,GET,200,323.29,page_view,curl/8.4.0
+2026-06-17 11:20:44,192.168.0.35,user_1069,/profile,GET,404,331.63,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:20:46,192.168.0.18,user_1041,/cart,GET,200,363.59,page_view,curl/8.4.0
+2026-06-17 11:20:52,192.168.0.64,user_1015,/checkout,POST,404,391.14,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 11:20:56,192.168.0.53,user_1016,/home,GET,200,140.54,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:21:08,192.168.0.61,user_1065,/settings,GET,200,369.41,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:21:26,192.168.0.39,user_1006,/products,GET,200,297.73,page_view,curl/8.4.0
+2026-06-17 11:21:51,192.168.0.16,user_1012,/home,GET,404,211.52,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:21:54,192.168.0.61,user_1023,/api/orders,GET,200,288.57,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:21:55,192.168.0.10,user_1048,/api/orders,GET,200,359.21,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:21:58,192.168.0.56,user_1094,/settings,GET,200,465.4,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:22:04,192.168.0.27,user_1079,/api/products,GET,200,514.74,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:22:11,192.168.0.50,user_1087,/home,GET,200,496.89,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:22:22,192.168.0.50,user_1035,/api/products,POST,200,512.41,api_request,curl/8.4.0
+2026-06-17 11:22:32,10.10.10.40,user_3000,/api/products,POST,200,599.87,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:22:33,192.168.0.36,user_1047,/api/products,GET,200,318.24,api_request,curl/8.4.0
+2026-06-17 11:22:41,192.168.0.36,user_1068,/,GET,200,375.91,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:22:45,192.168.0.30,user_1033,/api/products,GET,200,498.06,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:22:53,192.168.0.58,user_1033,/logout,POST,200,458.65,logout,curl/8.4.0
+2026-06-17 11:23:02,192.168.0.68,user_1017,/dashboard,GET,200,383.66,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:23:04,192.168.0.12,user_1009,/api/products,GET,404,505.34,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:23:06,10.10.10.40,user_3004,/checkout,POST,500,983.55,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:23:07,192.168.0.18,user_1043,/settings,GET,200,156.42,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:23:24,10.10.10.40,user_3004,/dashboard,GET,500,834.11,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:23:44,192.168.0.59,user_1035,/settings,GET,200,709.48,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:24:29,192.168.0.26,user_1070,/api/orders,GET,500,168.47,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:24:33,192.168.0.57,user_1020,/,GET,200,255.04,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:25:00,192.168.0.16,user_1052,/logout,POST,200,325.52,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 11:25:00,192.168.0.22,user_1002,/profile,GET,200,315.07,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:25:00,10.10.10.50,user_4000,/checkout,POST,200,7786.18,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:25:15,192.168.0.61,user_1034,/dashboard,GET,200,547.59,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:25:23,10.10.10.50,user_4003,/profile,GET,200,6030.24,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:25:45,192.168.0.44,user_1029,/checkout,POST,200,262.66,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:25:59,192.168.0.50,user_1060,/settings,GET,200,83.93,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:26:02,192.168.0.14,user_1096,/products,GET,200,533.32,page_view,curl/8.4.0
+2026-06-17 11:26:04,192.168.0.28,user_1034,/login,POST,200,681.39,login_success,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:26:20,10.10.10.50,user_4004,/profile,GET,500,4271.53,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:26:24,192.168.0.43,user_1082,/settings,GET,200,173.6,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:26:24,10.10.10.50,user_4001,/checkout,POST,200,6680.19,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:26:30,10.10.10.50,user_4000,/dashboard,GET,200,4621.76,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:26:30,10.10.10.40,user_3002,/dashboard,GET,200,1000.34,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:26:31,192.168.0.57,user_1086,/products,GET,200,405.77,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:26:36,192.168.0.16,user_1098,/settings,GET,302,80.0,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:26:36,192.168.0.21,user_1046,/home,GET,200,218.78,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:26:38,192.168.0.35,user_1011,/login,POST,200,190.34,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 11:26:50,10.10.10.40,user_3002,/dashboard,GET,200,1058.01,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:27:10,192.168.0.67,user_1074,/logout,POST,200,295.16,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 11:27:17,192.168.0.59,user_1067,/profile,GET,200,500.65,page_view,curl/8.4.0
+2026-06-17 11:27:25,10.10.10.40,user_3004,/api/orders,POST,503,1347.42,api_request,curl/8.4.0
+2026-06-17 11:27:28,10.10.10.50,user_4000,/dashboard,GET,500,4133.54,page_view,curl/8.4.0
+2026-06-17 11:27:29,192.168.0.26,user_1084,/settings,GET,302,640.89,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:27:30,192.168.0.36,user_1075,/cart,GET,200,378.27,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:27:36,192.168.0.31,user_1049,/products,GET,200,258.97,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:27:56,10.10.10.50,user_4000,/api/orders,GET,200,7231.91,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:28:02,192.168.0.28,user_1038,/settings,GET,200,305.61,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:28:03,192.168.0.13,user_1095,/,GET,200,172.48,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:28:10,192.168.0.63,user_1053,/products,GET,200,260.95,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:28:20,192.168.0.55,user_1038,/dashboard,GET,200,192.42,page_view,curl/8.4.0
+2026-06-17 11:28:26,192.168.0.32,user_1041,/logout,POST,200,137.46,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 11:28:28,192.168.0.55,user_1095,/home,GET,200,233.9,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:28:30,10.10.10.40,user_3002,/api/orders,GET,500,1084.31,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:28:41,192.168.0.54,user_1030,/api/orders,GET,200,287.5,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:28:51,192.168.0.18,user_1024,/products,GET,200,330.85,page_view,curl/8.4.0
+2026-06-17 11:28:54,10.10.10.50,user_4003,/checkout,POST,500,3569.59,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:28:56,10.10.10.40,user_3004,/dashboard,GET,500,690.7,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:29:00,10.10.10.50,user_4004,/profile,GET,500,4658.33,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:29:02,10.10.10.50,user_4003,/api/orders,POST,500,5859.61,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:29:15,192.168.0.20,user_1009,/cart,GET,302,431.88,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:29:26,10.10.10.50,user_4003,/checkout,POST,500,4954.99,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:29:40,10.10.10.50,user_4003,/checkout,POST,200,5625.69,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:29:41,192.168.0.45,user_1055,/logout,POST,200,208.9,logout,Mozilla/5.0 Safari/17.5
+2026-06-17 11:29:52,192.168.0.39,user_1082,/,GET,200,238.38,page_view,curl/8.4.0
+2026-06-17 11:29:57,10.10.10.50,user_4001,/api/orders,POST,200,5535.04,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:29:58,10.10.10.40,user_3003,/api/products,POST,200,447.73,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:30:04,192.168.0.50,user_1038,/api/products,GET,200,203.92,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:30:12,192.168.0.11,user_1093,/login,POST,200,553.53,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 11:30:12,192.168.0.12,user_1058,/api/products,GET,404,212.37,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:30:15,192.168.0.69,user_1095,/checkout,POST,200,162.01,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 11:30:17,192.168.0.27,user_1039,/checkout,POST,200,203.98,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 11:30:20,10.10.10.50,user_4003,/checkout,POST,200,3733.4,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:30:22,192.168.0.40,user_1007,/cart,GET,200,352.02,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:30:24,192.168.0.24,user_1014,/settings,GET,200,452.82,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:30:24,192.168.0.49,user_1068,/dashboard,GET,200,279.99,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:30:29,10.10.10.40,user_3000,/api/orders,POST,503,494.48,api_request,curl/8.4.0
+2026-06-17 11:30:35,192.168.0.36,user_1082,/checkout,POST,200,374.72,checkout,Mozilla/5.0 Edg/125.0
+2026-06-17 11:30:37,192.168.0.26,user_1069,/logout,POST,302,346.01,logout,curl/8.4.0
+2026-06-17 11:30:38,192.168.0.14,user_1039,/api/orders,POST,200,509.33,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:30:55,192.168.0.40,user_1007,/products,GET,200,559.86,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:31:20,192.168.0.15,user_1076,/,GET,200,385.07,page_view,curl/8.4.0
+2026-06-17 11:31:26,192.168.0.66,user_1017,/api/products,POST,200,246.93,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:31:45,192.168.0.22,user_1037,/products,GET,200,224.98,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:31:47,192.168.0.51,user_1085,/api/products,POST,200,80.0,api_request,curl/8.4.0
+2026-06-17 11:31:48,192.168.0.39,user_1013,/products,GET,200,308.72,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:31:54,10.10.10.50,user_4001,/dashboard,GET,500,4236.84,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:31:56,10.10.10.50,user_4003,/dashboard,GET,500,9253.62,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:31:59,192.168.0.26,user_1016,/,GET,200,389.81,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:32:01,192.168.0.11,user_1077,/api/orders,POST,200,195.95,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:32:12,10.10.10.50,user_4002,/profile,GET,500,4073.47,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:32:20,10.10.10.50,user_4003,/profile,GET,500,6379.42,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:32:34,192.168.0.63,user_1085,/settings,GET,200,312.44,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:32:40,192.168.0.62,user_1035,/home,GET,200,421.48,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:32:53,192.168.0.49,user_1095,/api/products,GET,200,416.74,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:32:55,10.10.10.50,user_4004,/profile,GET,200,5027.49,page_view,curl/8.4.0
+2026-06-17 11:33:00,192.168.0.32,user_1002,/dashboard,GET,200,80.0,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:33:03,10.10.10.50,user_4002,/profile,GET,200,5438.63,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:33:15,192.168.0.60,user_1089,/logout,POST,200,181.73,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 11:33:18,192.168.0.51,user_1008,/,GET,200,219.55,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:33:20,10.10.10.50,user_4000,/dashboard,GET,200,4415.85,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:33:22,192.168.0.55,user_1057,/checkout,POST,200,488.57,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:33:26,10.10.10.50,user_4004,/api/orders,POST,200,3918.14,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:33:27,192.168.0.54,user_1078,/login,POST,200,160.89,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 11:33:30,10.10.10.50,user_4004,/dashboard,GET,200,3268.47,page_view,curl/8.4.0
+2026-06-17 11:33:41,192.168.0.25,user_1015,/login,POST,200,366.08,login_success,curl/8.4.0
+2026-06-17 11:33:44,192.168.0.16,user_1009,/,GET,200,205.78,page_view,curl/8.4.0
+2026-06-17 11:34:10,192.168.0.45,user_1026,/logout,POST,500,383.18,logout,curl/8.4.0
+2026-06-17 11:34:14,192.168.0.45,user_1068,/login,POST,200,416.14,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:34:36,10.10.10.50,user_4003,/profile,GET,200,7764.23,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:34:54,10.10.10.50,user_4004,/checkout,POST,200,6272.27,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:35:05,192.168.0.31,user_1036,/,GET,200,80.0,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:35:12,192.168.0.21,user_1097,/products,GET,302,155.29,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:35:21,10.10.10.50,user_4004,/profile,GET,200,4044.99,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:35:21,192.168.0.49,user_1003,/profile,GET,200,236.16,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:35:24,10.10.10.50,user_4001,/checkout,POST,200,8021.2,page_view,curl/8.4.0
+2026-06-17 11:35:29,10.10.10.50,user_4002,/profile,GET,500,6580.27,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:35:33,192.168.0.49,user_1010,/products,GET,200,314.47,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:35:48,10.10.10.50,user_4004,/api/orders,GET,200,5783.45,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:35:55,192.168.0.40,user_1052,/settings,GET,404,217.29,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:36:00,10.10.10.50,user_4003,/api/orders,POST,200,4157.66,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:36:00,192.168.0.57,user_1067,/cart,GET,200,374.35,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:36:03,192.168.0.53,user_1079,/api/orders,GET,302,443.75,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:36:04,192.168.0.67,user_1006,/dashboard,GET,200,194.72,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:36:05,192.168.0.19,user_1012,/checkout,POST,200,80.0,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:36:15,192.168.0.24,user_1082,/,GET,200,328.12,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:36:20,192.168.0.54,user_1014,/api/products,GET,200,267.11,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:36:23,192.168.0.17,user_1034,/checkout,POST,200,132.56,checkout,curl/8.4.0
+2026-06-17 11:36:25,192.168.0.35,user_1098,/settings,GET,200,467.64,page_view,curl/8.4.0
+2026-06-17 11:36:43,192.168.0.30,user_1083,/cart,GET,200,396.82,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:36:47,192.168.0.48,user_1059,/settings,GET,404,345.77,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:36:59,192.168.0.26,user_1088,/dashboard,GET,302,250.37,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:37:00,10.10.10.50,user_4004,/checkout,POST,200,9102.11,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:37:02,10.10.10.50,user_4001,/profile,GET,200,5576.63,page_view,curl/8.4.0
+2026-06-17 11:37:11,192.168.0.22,user_1091,/products,GET,302,290.61,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:37:26,192.168.0.22,user_1032,/home,GET,200,512.86,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:37:50,192.168.0.20,user_1057,/home,GET,200,185.6,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:37:52,192.168.0.28,user_1094,/,GET,200,332.19,page_view,curl/8.4.0
+2026-06-17 11:38:14,192.168.0.46,user_1082,/cart,GET,200,80.0,page_view,curl/8.4.0
+2026-06-17 11:38:30,10.10.10.50,user_4004,/dashboard,GET,200,6405.15,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:38:48,192.168.0.33,user_1060,/settings,GET,200,318.35,page_view,curl/8.4.0
+2026-06-17 11:39:08,192.168.0.46,user_1085,/profile,GET,200,296.39,page_view,curl/8.4.0
+2026-06-17 11:39:10,10.10.10.50,user_4003,/profile,GET,500,3696.78,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:39:14,192.168.0.26,user_1058,/api/products,POST,200,406.87,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:39:18,10.10.10.50,user_4002,/api/orders,POST,200,4128.16,api_request,curl/8.4.0
+2026-06-17 11:39:30,10.10.10.50,user_4002,/api/orders,POST,500,3765.32,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:39:56,10.10.10.50,user_4000,/profile,GET,200,6665.53,page_view,curl/8.4.0
+2026-06-17 11:40:16,192.168.0.47,user_1084,/settings,GET,200,518.22,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:40:17,192.168.0.17,user_1044,/products,GET,200,167.39,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:40:47,192.168.0.39,user_1084,/api/products,GET,200,521.08,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:41:11,192.168.0.66,user_1058,/,GET,200,547.1,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:41:18,192.168.0.40,user_1072,/login,POST,200,108.83,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 11:41:33,192.168.0.66,user_1094,/dashboard,GET,200,595.23,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:41:35,192.168.0.57,user_1019,/api/orders,POST,200,581.32,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:41:36,192.168.0.47,user_1019,/checkout,POST,200,503.78,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:41:47,192.168.0.27,user_1041,/cart,GET,200,80.0,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:41:48,10.10.10.50,user_4000,/profile,GET,200,6371.51,page_view,curl/8.4.0
+2026-06-17 11:41:55,10.10.10.50,user_4000,/dashboard,GET,200,3351.09,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:42:10,192.168.0.51,user_1002,/checkout,POST,200,516.08,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:42:37,192.168.0.69,user_1019,/home,GET,404,333.74,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:42:41,192.168.0.38,user_1067,/logout,POST,200,350.43,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 11:42:47,192.168.0.10,user_1066,/profile,GET,200,276.01,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:42:48,192.168.0.19,user_1047,/settings,GET,200,238.69,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:42:51,192.168.0.41,user_1082,/home,GET,200,328.27,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:42:51,10.10.10.50,user_4004,/api/orders,GET,200,4380.25,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:42:51,192.168.0.21,user_1062,/checkout,POST,200,399.22,checkout,curl/8.4.0
+2026-06-17 11:43:28,192.168.0.14,user_1067,/dashboard,GET,302,462.94,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:43:30,10.10.10.50,user_4001,/checkout,POST,500,6735.0,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:43:40,192.168.0.42,user_1095,/login,POST,200,80.0,login_success,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:43:42,192.168.0.42,user_1066,/dashboard,GET,200,193.85,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:43:49,192.168.0.38,user_1045,/api/products,POST,200,253.2,api_request,curl/8.4.0
+2026-06-17 11:43:50,192.168.0.54,user_1003,/logout,POST,200,289.35,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 11:43:54,192.168.0.24,user_1047,/login,POST,200,263.19,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:43:57,192.168.0.61,user_1015,/settings,GET,200,444.13,page_view,curl/8.4.0
+2026-06-17 11:44:04,192.168.0.59,user_1023,/logout,POST,200,425.53,logout,curl/8.4.0
+2026-06-17 11:44:04,10.10.10.50,user_4003,/dashboard,GET,200,5761.91,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:44:38,10.10.10.50,user_4001,/api/orders,GET,200,4509.45,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:44:43,192.168.0.67,user_1028,/settings,GET,200,80.0,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:44:44,192.168.0.13,user_1013,/,GET,200,215.61,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:44:50,10.10.10.50,user_4002,/profile,GET,200,6060.59,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:45:06,192.168.0.51,user_1061,/login,POST,200,378.51,login_success,Mozilla/5.0 Edg/125.0
+2026-06-17 11:45:09,10.10.10.50,user_4004,/checkout,POST,200,4647.21,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:45:14,192.168.0.12,user_1003,/api/products,GET,200,143.76,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:45:21,192.168.0.22,user_1073,/home,GET,200,219.82,page_view,curl/8.4.0
+2026-06-17 11:45:22,192.168.0.24,user_1029,/api/orders,GET,200,217.42,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:45:31,192.168.0.66,user_1041,/products,GET,200,229.24,page_view,curl/8.4.0
+2026-06-17 11:45:37,192.168.0.40,user_1061,/home,GET,200,204.62,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:46:00,192.168.0.30,user_1050,/products,GET,200,297.39,page_view,curl/8.4.0
+2026-06-17 11:46:17,192.168.0.27,user_1050,/products,GET,200,514.98,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:46:25,192.168.0.65,user_1048,/login,POST,200,425.41,login_success,curl/8.4.0
+2026-06-17 11:46:30,10.10.10.50,user_4001,/checkout,POST,200,5810.36,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:46:35,192.168.0.15,user_1031,/checkout,POST,200,268.64,checkout,Mozilla/5.0 Safari/17.5
+2026-06-17 11:46:36,10.10.10.50,user_4000,/profile,GET,500,8516.6,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:46:38,192.168.0.50,user_1054,/settings,GET,200,208.37,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:47:21,192.168.0.13,user_1001,/checkout,POST,302,333.42,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:47:25,192.168.0.68,user_1006,/login,POST,200,446.36,login_success,curl/8.4.0
+2026-06-17 11:47:37,192.168.0.48,user_1050,/home,GET,200,181.07,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:47:41,192.168.0.66,user_1025,/products,GET,200,451.75,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:47:57,192.168.0.65,user_1084,/checkout,POST,200,545.78,checkout,curl/8.4.0
+2026-06-17 11:48:01,192.168.0.31,user_1044,/settings,GET,200,454.75,page_view,curl/8.4.0
+2026-06-17 11:48:09,192.168.0.10,user_1094,/dashboard,GET,200,256.52,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:48:20,192.168.0.31,user_1064,/profile,GET,200,302.08,page_view,curl/8.4.0
+2026-06-17 11:48:40,192.168.0.16,user_1063,/home,GET,200,360.88,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:48:42,192.168.0.50,user_1085,/cart,GET,200,527.93,page_view,curl/8.4.0
+2026-06-17 11:48:46,10.10.10.50,user_4000,/checkout,POST,200,6753.04,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:48:52,192.168.0.24,user_1099,/products,GET,200,291.44,page_view,curl/8.4.0
+2026-06-17 11:49:55,192.168.0.44,user_1003,/cart,GET,302,332.98,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:49:56,10.10.10.50,user_4004,/dashboard,GET,200,5186.43,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:50:11,192.168.0.16,user_1050,/dashboard,GET,200,280.18,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:50:23,192.168.0.54,user_1075,/api/products,POST,200,366.9,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:50:43,192.168.0.30,user_1091,/settings,GET,200,382.5,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:50:44,192.168.0.48,user_1025,/checkout,POST,302,250.11,checkout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:50:45,192.168.0.68,user_1078,/dashboard,GET,200,325.6,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:50:46,192.168.0.49,user_1084,/api/orders,POST,200,502.58,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:50:52,192.168.0.62,user_1003,/dashboard,GET,200,303.32,page_view,curl/8.4.0
+2026-06-17 11:50:58,10.10.10.50,user_4004,/profile,GET,500,3938.48,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:51:04,192.168.0.20,user_1003,/settings,GET,200,430.01,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:51:06,10.10.10.50,user_4003,/dashboard,GET,500,5636.56,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:51:06,192.168.0.14,user_1093,/logout,POST,200,143.06,logout,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:51:15,192.168.0.29,user_1061,/api/products,GET,200,117.53,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:51:16,192.168.0.30,user_1019,/profile,GET,302,410.33,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:51:30,192.168.0.57,user_1019,/profile,GET,200,385.1,page_view,curl/8.4.0
+2026-06-17 11:51:39,192.168.0.46,user_1024,/home,GET,200,105.23,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:51:45,192.168.0.56,user_1088,/api/orders,POST,200,251.02,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:52:13,192.168.0.10,user_1027,/products,GET,200,335.54,page_view,curl/8.4.0
+2026-06-17 11:52:23,10.10.10.50,user_4003,/dashboard,GET,200,6398.63,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:52:28,192.168.0.35,user_1098,/,GET,200,491.35,page_view,curl/8.4.0
+2026-06-17 11:52:37,192.168.0.12,user_1040,/,GET,200,221.71,page_view,curl/8.4.0
+2026-06-17 11:53:01,192.168.0.43,user_1047,/,GET,200,423.45,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:53:21,192.168.0.52,user_1089,/settings,GET,404,171.01,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:53:35,192.168.0.32,user_1026,/products,GET,200,352.06,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:53:37,192.168.0.66,user_1072,/cart,GET,200,268.81,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:54:00,192.168.0.46,user_1007,/home,GET,200,333.5,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:54:08,192.168.0.24,user_1015,/settings,GET,200,370.88,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:54:21,192.168.0.33,user_1013,/api/orders,GET,200,404.09,api_request,Mozilla/5.0 Safari/17.5
+2026-06-17 11:54:24,10.10.10.50,user_4004,/api/orders,GET,200,5236.15,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:54:24,192.168.0.42,user_1041,/login,POST,200,519.26,login_success,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:54:37,192.168.0.48,user_1002,/api/products,GET,200,419.45,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:54:46,10.10.10.50,user_4000,/checkout,POST,200,5027.0,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:54:48,192.168.0.36,user_1037,/products,GET,200,370.61,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:54:55,192.168.0.22,user_1088,/api/products,POST,200,309.08,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:54:59,192.168.0.18,user_1086,/logout,POST,200,80.0,logout,Mozilla/5.0 Edg/125.0
+2026-06-17 11:55:13,192.168.0.57,user_1062,/cart,GET,404,310.9,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:55:22,192.168.0.12,user_1087,/cart,GET,200,162.64,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:55:24,192.168.0.43,user_1044,/login,POST,404,450.06,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:55:30,192.168.0.27,user_1054,/dashboard,GET,200,532.8,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:55:32,192.168.0.39,user_1018,/api/products,POST,200,215.95,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:55:39,192.168.0.61,user_1088,/profile,GET,200,290.64,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:56:01,192.168.0.59,user_1046,/settings,GET,200,80.0,page_view,curl/8.4.0
+2026-06-17 11:56:02,192.168.0.68,user_1009,/profile,GET,200,470.63,profile_update,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:56:04,192.168.0.22,user_1015,/api/products,POST,200,220.98,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:56:14,192.168.0.19,user_1032,/profile,GET,200,350.85,profile_update,curl/8.4.0
+2026-06-17 11:56:16,192.168.0.64,user_1017,/checkout,POST,200,99.27,checkout,curl/8.4.0
+2026-06-17 11:56:23,192.168.0.34,user_1048,/logout,POST,200,412.84,logout,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:56:25,192.168.0.17,user_1023,/login,POST,200,96.03,login_success,curl/8.4.0
+2026-06-17 11:56:46,192.168.0.24,user_1032,/cart,GET,302,426.71,page_view,curl/8.4.0
+2026-06-17 11:56:50,192.168.0.33,user_1096,/api/products,GET,200,580.02,api_request,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:56:55,192.168.0.33,user_1001,/dashboard,GET,200,80.0,page_view,curl/8.4.0
+2026-06-17 11:56:57,192.168.0.14,user_1077,/settings,GET,404,237.96,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:57:06,192.168.0.68,user_1091,/dashboard,GET,200,129.92,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:57:08,192.168.0.42,user_1063,/products,GET,200,240.9,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:57:18,192.168.0.10,user_1014,/cart,GET,500,411.9,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:57:19,192.168.0.34,user_1029,/home,GET,200,292.45,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:57:26,192.168.0.53,user_1082,/api/orders,GET,200,465.81,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:57:28,192.168.0.31,user_1018,/profile,GET,404,760.01,profile_update,Mozilla/5.0 Edg/125.0
+2026-06-17 11:57:30,10.10.10.50,user_4004,/checkout,POST,200,6025.24,page_view,Mozilla/5.0 Safari/17.5
+2026-06-17 11:57:31,192.168.0.44,user_1088,/api/products,POST,200,396.54,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:57:53,192.168.0.29,user_1024,/dashboard,GET,200,324.51,page_view,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:57:54,192.168.0.22,user_1041,/cart,GET,200,187.97,page_view,curl/8.4.0
+2026-06-17 11:57:55,192.168.0.36,user_1065,/api/products,GET,200,214.47,api_request,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:58:04,192.168.0.44,user_1001,/checkout,POST,200,452.6,checkout,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:58:23,192.168.0.32,user_1004,/login,POST,200,187.8,login_success,Mozilla/5.0 Firefox/126.0
+2026-06-17 11:58:42,192.168.0.57,user_1039,/api/products,POST,302,421.06,api_request,Mozilla/5.0 Edg/125.0
+2026-06-17 11:58:47,192.168.0.52,user_1034,/dashboard,GET,200,358.92,page_view,Mozilla/5.0 Edg/125.0
+2026-06-17 11:58:51,192.168.0.53,user_1067,/,GET,200,224.13,page_view,curl/8.4.0
+2026-06-17 11:58:59,192.168.0.14,user_1022,/login,POST,200,215.67,login_success,Mozilla/5.0 Safari/17.5
+2026-06-17 11:58:59,192.168.0.25,user_1012,/profile,GET,200,402.85,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:59:01,192.168.0.60,user_1099,/cart,GET,200,184.54,page_view,curl/8.4.0
+2026-06-17 11:59:07,192.168.0.22,user_1068,/profile,GET,302,303.53,page_view,curl/8.4.0
+2026-06-17 11:59:17,192.168.0.19,user_1042,/dashboard,GET,200,495.49,page_view,Mozilla/5.0 Chrome/125.0
+2026-06-17 11:59:55,192.168.0.14,user_1005,/home,GET,200,404.12,page_view,Mozilla/5.0 Firefox/126.0
