@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+from backend.app.analytics.routes import router as analytics_router
 from backend.app.database import models  # Registers SQLAlchemy models.
 from backend.app.database.session import Base, engine
 from backend.app.detection.routes import router as ml_router
@@ -15,6 +16,7 @@ app = FastAPI(
     version="1.0.0",
 )
 
+app.include_router(analytics_router)
 app.include_router(features_router)
 app.include_router(incidents_router)
 app.include_router(logs_router)
