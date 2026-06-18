@@ -1,4 +1,7 @@
+import os
+
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from backend.app.analytics.routes import router as analytics_router
@@ -12,10 +15,37 @@ from backend.app.incidents.routes import router as incidents_router
 from backend.app.logs.routes import router as logs_router
 
 
+DEFAULT_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+allowed_origins_env = os.getenv("ATHES_ALLOWED_ORIGINS")
+
+if allowed_origins_env:
+    allowed_origins = [
+        origin.strip()
+        for origin in allowed_origins_env.split(",")
+        if origin.strip()
+    ]
+else:
+    allowed_origins = DEFAULT_ALLOWED_ORIGINS
+
+
 app = FastAPI(
     title="Athes Sentinel API",
     description="API for the Athes Sentinel placement project.",
     version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(analytics_router)
