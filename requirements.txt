@@ -9,3 +9,5 @@ requests
 plotly
 scikit-learn
 numpy
+passlib[bcrypt]
+python-jose[cryptography]
