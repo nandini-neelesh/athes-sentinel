@@ -5,6 +5,7 @@ import {
   FileUp,
   LayoutDashboard,
   LogIn,
+  ShieldCheck,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
@@ -23,14 +24,23 @@ export default function Sidebar() {
   const { isAuthenticated, logout, user } = useAuth();
 
   return (
-    <aside className="hidden w-72 shrink-0 border-r border-slate-700 bg-slate-900/80 px-4 py-6 lg:flex lg:flex-col">
+    <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 shrink-0 border-r border-[#3b494c] bg-[#0d1516] px-4 py-6 lg:flex lg:flex-col">
       <div>
-        <div className="mb-8 rounded-lg border border-slate-700 bg-slate-800 p-4">
-          <p className="text-lg font-bold text-slate-50">Athes Sentinel</p>
-          <p className="mt-1 text-xs text-slate-400">Lightweight SIEM workspace</p>
+        <div className="mb-9 flex items-center gap-3 px-2">
+          <div className="flex h-9 w-9 items-center justify-center rounded bg-[#00e5ff] text-[#00363d]">
+            <ShieldCheck className="h-5 w-5" aria-hidden="true" />
+          </div>
+          <div>
+            <p className="text-lg font-bold leading-tight text-[#c3f5ff]">
+              Athes Sentinel
+            </p>
+            <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#849396]">
+              SOC Command Center
+            </p>
+          </div>
         </div>
 
-        <nav className="space-y-2">
+        <nav className="space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
 
@@ -41,14 +51,14 @@ export default function Sidebar() {
                 end={item.path === "/"}
                 className={({ isActive }) =>
                   [
-                    "flex items-center gap-3 rounded-lg border px-3 py-2.5 text-sm font-medium transition",
+                    "flex items-center gap-3 rounded px-3 py-3 text-sm font-medium transition",
                     isActive
-                      ? "border-cyan-400/60 bg-cyan-400/10 text-cyan-300"
-                      : "border-transparent text-slate-400 hover:border-slate-700 hover:bg-slate-800 hover:text-slate-100",
+                      ? "border-r-2 border-[#9cf0ff] bg-[#242b2d] text-[#c3f5ff]"
+                      : "text-[#bac9cc] hover:bg-[#192122] hover:text-[#c3f5ff]",
                   ].join(" ")
                 }
               >
-                <Icon className="h-4 w-4" />
+                <Icon className="h-4 w-4" aria-hidden="true" />
                 {item.label}
               </NavLink>
             );
@@ -56,15 +66,15 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      <div className="mt-auto rounded-lg border border-slate-700 bg-slate-800 p-4">
+      <div className="mt-auto border-t border-[#3b494c] pt-4">
         {isAuthenticated ? (
           <>
-            <p className="text-sm font-semibold text-slate-50">{user.username}</p>
-            <p className="mt-1 text-xs uppercase tracking-wide text-cyan-300">
+            <p className="text-sm font-semibold text-[#dce4e5]">{user.username}</p>
+            <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-[#9cf0ff]">
               {user.role}
             </p>
             <button
-              className="mt-4 w-full rounded-lg border border-slate-600 px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-cyan-300"
+              className="mt-4 w-full rounded border border-[#3b494c] px-3 py-2 text-sm font-semibold text-[#bac9cc] transition hover:border-[#00daf3] hover:text-[#c3f5ff]"
               onClick={logout}
               type="button"
             >
@@ -72,7 +82,7 @@ export default function Sidebar() {
             </button>
           </>
         ) : (
-          <p className="text-sm text-slate-400">Not signed in</p>
+          <p className="text-sm text-[#849396]">Not signed in</p>
         )}
       </div>
     </aside>

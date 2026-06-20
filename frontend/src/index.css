@@ -7,8 +7,8 @@
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  background: #0f172a;
-  color: #f8fafc;
+  background: #0d1516;
+  color: #dce4e5;
 }
 
 * {
@@ -19,32 +19,52 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #0f172a;
+  background: #0d1516;
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
 @layer components {
   .page-title {
-    @apply text-3xl font-bold tracking-tight text-slate-50;
+    @apply text-3xl font-semibold tracking-tight text-[#dce4e5];
   }
 
   .page-subtitle {
-    @apply mt-2 text-sm text-slate-400;
+    @apply mt-2 text-sm text-[#bac9cc];
   }
 
   .panel {
-    @apply rounded-lg border border-slate-700 bg-slate-800 p-5 shadow-lg shadow-slate-950/20;
+    @apply rounded-md border border-[#3b494c] bg-[#192122]/90 p-5 shadow-lg shadow-black/20;
   }
 
   .muted-label {
-    @apply text-xs font-semibold uppercase tracking-wide text-slate-500;
+    @apply text-[11px] font-semibold uppercase tracking-[0.16em] text-[#849396];
   }
 
   .primary-button {
-    @apply rounded-lg border border-cyan-400/50 bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300;
+    @apply rounded border border-[#00daf3]/50 bg-[#00e5ff] px-4 py-2 text-sm font-semibold text-[#00363d] transition hover:bg-[#9cf0ff];
+  }
+
+  .app-canvas {
+    background-color: #0d1516;
+    background-image: radial-gradient(rgba(0, 229, 255, 0.08) 1px, transparent 1px);
+    background-position: 0 0;
+    background-size: 24px 24px;
+  }
+
+  .top-shell-bar {
+    @apply sticky top-0 z-30 border-b border-[#3b494c] bg-[#192122]/95 backdrop-blur;
+  }
+
+  .status-pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-[#00e5ff]/30 bg-[#00e5ff]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9cf0ff];
+  }
+
+  .status-dot {
+    @apply h-2 w-2 rounded-full bg-[#00e5ff] shadow-[0_0_10px_rgba(0,229,255,0.55)];
   }
 }

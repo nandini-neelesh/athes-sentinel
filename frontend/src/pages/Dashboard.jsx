@@ -12,11 +12,32 @@ function formatMetricValue(value) {
   return value;
 }
 
+function getMetricBorderClass(label) {
+  if (label.includes("Critical")) {
+    return "border-l-red-400";
+  }
+
+  if (label.includes("High") || label.includes("Risk")) {
+    return "border-l-orange-400";
+  }
+
+  if (label.includes("ML")) {
+    return "border-l-blue-400";
+  }
+
+  return "border-l-[#00daf3]";
+}
+
 function MetricCard({ label, value }) {
   return (
-    <div className="panel">
+    <div
+      className={[
+        "rounded-md border border-[#3b494c] border-l-2 bg-[#192122]/90 p-5 shadow-lg shadow-black/20",
+        getMetricBorderClass(label),
+      ].join(" ")}
+    >
       <p className="muted-label">{label}</p>
-      <p className="mt-3 text-3xl font-bold text-cyan-300">
+      <p className="mt-3 text-3xl font-semibold tracking-tight text-[#dce4e5]">
         {formatMetricValue(value)}
       </p>
     </div>
@@ -25,16 +46,63 @@ function MetricCard({ label, value }) {
 
 function PipelineStep({ isActive, label, description }) {
   return (
-    <div className="flex gap-3 rounded-lg border border-slate-700 bg-slate-900/60 p-3">
-      <div
-        className={[
-          "mt-1 h-3 w-3 shrink-0 rounded-full",
-          isActive ? "bg-cyan-400 shadow-lg shadow-cyan-400/30" : "bg-slate-600",
-        ].join(" ")}
-      />
+    <div className="min-w-[150px] flex-1 rounded border border-[#3b494c] bg-[#0d1516]/70 p-4">
+      <div className="flex items-center gap-3">
+        <div
+          className={[
+            "h-2.5 w-2.5 shrink-0 rounded-full",
+            isActive
+              ? "bg-[#00e5ff] shadow-[0_0_10px_rgba(0,229,255,0.45)]"
+              : "bg-[#3b494c]",
+          ].join(" ")}
+        />
+        <p
+          className={[
+            "text-sm font-semibold",
+            isActive ? "text-[#c3f5ff]" : "text-[#bac9cc]",
+          ].join(" ")}
+        >
+          {label}
+        </p>
+      </div>
+      <p className="mt-3 text-xs leading-5 text-[#849396]">{description}</p>
+    </div>
+  );
+}
+
+function NoticePanel({ children }) {
+  return (
+    <div className="mt-6 rounded border border-[#3b494c] bg-[#192122]/90 px-4 py-3 text-sm text-[#bac9cc]">
+      {children}
+    </div>
+  );
+}
+
+function ErrorPanel({ children }) {
+  return (
+    <div className="mt-6 rounded border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+      {children}
+    </div>
+  );
+}
+
+function DashboardHeader() {
+  return (
+    <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
       <div>
-        <p className="text-sm font-semibold text-slate-100">{label}</p>
-        <p className="mt-1 text-xs text-slate-500">{description}</p>
+        <p className="muted-label">Operational overview</p>
+        <h1 className="page-title mt-2">Security Overview</h1>
+        <p className="page-subtitle">
+          Monitor application activity, anomaly signals, and analyst triage in one
+          place.
+        </p>
+      </div>
+
+      <div className="rounded border border-[#3b494c] bg-[#192122]/80 px-4 py-3">
+        <p className="muted-label">Current mode</p>
+        <p className="mt-1 text-sm font-semibold text-[#c3f5ff]">
+          Live API data
+        </p>
       </div>
     </div>
   );
@@ -89,30 +157,21 @@ export default function Dashboard() {
 
   return (
     <section>
-      <h1 className="page-title">Dashboard</h1>
-      <p className="page-subtitle">Security monitoring overview</p>
+      <DashboardHeader />
 
       <FileSelector />
 
       {!selectedFileId ? (
-        <div className="panel mt-6">
-          <p className="text-sm text-slate-400">
-            Select an uploaded log file to load dashboard metrics.
-          </p>
-        </div>
+        <NoticePanel>
+          Select an uploaded log file to load dashboard metrics.
+        </NoticePanel>
       ) : null}
 
       {isLoadingSummary ? (
-        <div className="panel mt-6">
-          <p className="text-sm text-slate-300">Loading dashboard summary...</p>
-        </div>
+        <NoticePanel>Loading dashboard summary...</NoticePanel>
       ) : null}
 
-      {summaryError ? (
-        <div className="mt-6 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
-          {summaryError}
-        </div>
-      ) : null}
+      {summaryError ? <ErrorPanel>{summaryError}</ErrorPanel> : null}
 
       {summary ? (
         <>
@@ -127,26 +186,31 @@ export default function Dashboard() {
           </div>
 
           <div className="panel mt-8">
-            <div className="flex flex-col gap-1">
-              <p className="muted-label">Pipeline status</p>
-              <h2 className="text-xl font-semibold text-slate-50">
-                Analysis progress for file_id {summary.file_id}
-              </h2>
+            <div className="flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <p className="muted-label">Pipeline status</p>
+                <h2 className="mt-2 text-xl font-semibold text-[#dce4e5]">
+                  Analysis progress for file_id {summary.file_id}
+                </h2>
+              </div>
+              <p className="text-sm text-[#849396]">
+                Active steps are based only on available summary data.
+              </p>
             </div>
 
-            <div className="mt-5 grid gap-3 lg:grid-cols-5">
+            <div className="mt-5 flex flex-col gap-3 xl:flex-row">
               <PipelineStep
                 description="Raw log rows are available."
                 isActive={hasLogs}
                 label="Logs uploaded"
               />
               <PipelineStep
-                description="Run feature generation before ML."
+                description="Awaiting feature evidence in this summary."
                 isActive={false}
                 label="Features generated"
               />
               <PipelineStep
-                description="Run Isolation Forest after features."
+                description="Awaiting ML score evidence in this summary."
                 isActive={false}
                 label="ML scored"
               />
@@ -156,7 +220,7 @@ export default function Dashboard() {
                 label="Incidents generated"
               />
               <PipelineStep
-                description="Use status updates during review."
+                description="Status review is tracked in Workflow."
                 isActive={false}
                 label="Analyst triage"
               />
