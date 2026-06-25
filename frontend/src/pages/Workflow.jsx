@@ -86,7 +86,7 @@ function getStatusBadgeClass(status) {
 function Badge({ children, className }) {
   return (
     <span
-      className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold uppercase tracking-wide ${className}`}
+      className={`inline-flex rounded-full border px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] ${className}`}
     >
       {children}
     </span>
@@ -95,14 +95,247 @@ function Badge({ children, className }) {
 
 function EmptyState({ children, icon }) {
   return (
-    <div className="panel mt-8">
+    <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 p-5 shadow-lg shadow-black/20">
       <div className="flex items-start gap-4">
-        <div className="rounded-xl border border-cyan-400/30 bg-cyan-400/10 p-3 text-cyan-300">
+        <div className="rounded border border-[#00e5ff]/30 bg-[#00e5ff]/10 p-3 text-[#9cf0ff]">
           {icon}
         </div>
         <div>{children}</div>
       </div>
     </div>
+  );
+}
+
+function IncidentSelectionRow({ incident, isSelected, onSelect }) {
+  return (
+    <button
+      type="button"
+      onClick={onSelect}
+      className={[
+        "w-full border-l-2 px-4 py-3 text-left transition",
+        isSelected
+          ? "border-l-[#00e5ff] bg-[#00e5ff]/10"
+          : "border-l-transparent hover:bg-[#242b2d]/60",
+      ].join(" ")}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <p className="truncate text-sm font-semibold text-[#dce4e5]">
+            {formatLabel(incident.incident_type)}
+          </p>
+          <p className="mt-1 text-xs text-[#849396]">
+            {incident.ip_address || "Unknown IP"}
+          </p>
+        </div>
+
+        <div className="text-right">
+          <p className="text-lg font-semibold leading-none text-[#9cf0ff]">
+            {formatRiskScore(incident.risk_score)}
+          </p>
+          <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#849396]">
+            Risk
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-3 flex flex-wrap gap-2">
+        <Badge className={getStatusBadgeClass(incident.status || "open")}>
+          {formatLabel(incident.status || "open")}
+        </Badge>
+      </div>
+    </button>
+  );
+}
+
+function IncidentSelectionPanel({
+  incidents,
+  selectedIncidentId,
+  setSelectedIncidentId,
+  setSuccessMessage,
+  setUpdateError,
+}) {
+  return (
+    <aside className="overflow-hidden rounded-md border border-[#3b494c] bg-[#192122]/90 shadow-lg shadow-black/20">
+      <div className="border-b border-[#3b494c] bg-[#242b2d]/60 px-5 py-3">
+        <p className="muted-label">Incident Selection</p>
+        <div className="mt-1 flex items-end justify-between gap-3">
+          <h2 className="text-base font-semibold text-[#dce4e5]">
+            Highest-risk queue
+          </h2>
+          <p className="text-xs text-[#849396]">{incidents.length} records</p>
+        </div>
+      </div>
+
+      <div className="max-h-[620px] divide-y divide-[#3b494c] overflow-y-auto">
+        {incidents.map((incident) => {
+          const isSelected = incident.id === selectedIncidentId;
+
+          return (
+            <IncidentSelectionRow
+              incident={incident}
+              isSelected={isSelected}
+              key={incident.id}
+              onSelect={() => {
+                setSelectedIncidentId(incident.id);
+                setUpdateError("");
+                setSuccessMessage("");
+              }}
+            />
+          );
+        })}
+      </div>
+    </aside>
+  );
+}
+
+function IncidentReviewPanel({ incident }) {
+  if (!incident) {
+    return (
+      <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 p-5 text-sm text-[#849396] shadow-lg shadow-black/20">
+        Select an incident to review its evidence and update status.
+      </div>
+    );
+  }
+
+  return (
+    <section className="overflow-hidden rounded-md border border-[#3b494c] bg-[#192122]/90 shadow-lg shadow-black/20">
+      <div className="border-b border-[#3b494c] bg-[#242b2d]/60 px-5 py-4">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <div className="flex items-center gap-2 text-[#9cf0ff]">
+              <ShieldCheck className="h-5 w-5" aria-hidden="true" />
+              <p className="muted-label text-[#9cf0ff]">Incident Review</p>
+            </div>
+
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-[#dce4e5]">
+              {formatLabel(incident.incident_type)}
+            </h2>
+            <p className="mt-2 text-sm text-[#849396]">
+              Source IP{" "}
+              <span className="font-semibold text-[#c3f5ff]">
+                {incident.ip_address || "Unknown"}
+              </span>
+            </p>
+
+            {incident.created_at ? (
+              <p className="mt-1 text-xs text-[#849396]">
+                Created {incident.created_at}
+              </p>
+            ) : null}
+          </div>
+
+          <div className="rounded border border-[#00e5ff]/30 bg-[#00e5ff]/10 px-5 py-4 lg:text-right">
+            <p className="muted-label text-[#9cf0ff]">Risk score</p>
+            <p className="mt-1 text-4xl font-semibold text-[#9cf0ff]">
+              {formatRiskScore(incident.risk_score)}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Badge className={getSeverityBadgeClass(incident.severity || "low")}>
+            {formatLabel(incident.severity || "low")}
+          </Badge>
+          <Badge className={getStatusBadgeClass(incident.status || "open")}>
+            {formatLabel(incident.status || "open")}
+          </Badge>
+        </div>
+      </div>
+
+      <div className="grid gap-4 p-5">
+        <div>
+          <p className="muted-label">Evidence</p>
+          <pre className="mt-2 whitespace-pre-wrap rounded border border-[#3b494c] bg-[#0d1516]/80 p-4 font-mono text-xs leading-6 text-[#bac9cc]">
+            {incident.evidence || "No evidence text available."}
+          </pre>
+        </div>
+
+        <div>
+          <p className="muted-label">Recommended Action</p>
+          <p className="mt-2 rounded border border-[#3b494c] bg-[#0d1516]/60 p-4 text-sm leading-6 text-[#bac9cc]">
+            {incident.recommended_action || "No recommendation available."}
+          </p>
+        </div>
+
+        <div className="rounded border border-[#3b494c] bg-[#0d1516]/60 p-4">
+          <p className="muted-label text-[#9cf0ff]">Detection Context</p>
+          <p className="mt-2 text-sm leading-6 text-[#bac9cc]">
+            Risk score combines configurable detection rules with Isolation
+            Forest anomaly scoring when available.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function StatusUpdatePanel({
+  handleStatusUpdate,
+  isUpdating,
+  selectedIncident,
+  selectedStatus,
+  setSelectedStatus,
+  successMessage,
+  updateError,
+}) {
+  if (!selectedIncident) {
+    return null;
+  }
+
+  return (
+    <section className="rounded-md border border-[#3b494c] bg-[#192122]/90 p-5 shadow-lg shadow-black/20">
+      <div className="flex items-start gap-3">
+        <div className="rounded border border-[#00e5ff]/30 bg-[#00e5ff]/10 p-2 text-[#9cf0ff]">
+          <CheckCircle2 className="h-5 w-5" aria-hidden="true" />
+        </div>
+        <div>
+          <p className="text-base font-semibold text-[#dce4e5]">
+            Update investigation status
+          </p>
+          <p className="mt-1 text-sm text-[#849396]">
+            Record the current triage state for this incident.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-5 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+        <label className="block">
+          <span className="muted-label">Status</span>
+          <select
+            className="mt-1.5 w-full rounded border border-[#3b494c] bg-[#0d1516] px-3 py-2 text-sm text-[#dce4e5] outline-none transition focus:border-[#00daf3]"
+            onChange={(event) => setSelectedStatus(event.target.value)}
+            value={selectedStatus}
+          >
+            {STATUS_OPTIONS.map((status) => (
+              <option key={status} value={status}>
+                {formatLabel(status)}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <button
+          type="button"
+          onClick={handleStatusUpdate}
+          disabled={isUpdating}
+          className="inline-flex justify-center rounded border border-[#00daf3]/50 bg-[#00e5ff] px-5 py-2.5 text-sm font-semibold text-[#00363d] transition hover:bg-[#9cf0ff] disabled:cursor-not-allowed disabled:border-[#3b494c] disabled:bg-[#242b2d] disabled:text-[#849396]"
+        >
+          {isUpdating ? "Updating..." : "Update Status"}
+        </button>
+      </div>
+
+      {successMessage ? (
+        <div className="mt-4 rounded border border-green-400/40 bg-green-500/10 px-4 py-3 text-sm text-green-200">
+          {successMessage}
+        </div>
+      ) : null}
+
+      {updateError ? (
+        <div className="mt-4 rounded border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+          {updateError}
+        </div>
+      ) : null}
+    </section>
   );
 }
 
@@ -202,9 +435,7 @@ export default function Workflow() {
       });
       setSelectedIncidentId(updatedIncident.id);
       setSuccessMessage(
-        `Incident #${updatedIncident.id} status updated to ${formatLabel(
-          updatedIncident.status
-        )}.`
+        `Status updated to ${formatLabel(updatedIncident.status)}.`
       );
     } catch (error) {
       setUpdateError(getErrorMessage(error));
@@ -214,22 +445,49 @@ export default function Workflow() {
   }
 
   return (
-    <section>
-      <h1 className="page-title">Workflow</h1>
-      <p className="page-subtitle">
-        Triage incidents and record the current analyst investigation status.
-      </p>
+    <section className="space-y-5">
+      <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(360px,520px)] xl:items-end">
+        <div>
+          <p className="muted-label">Security operations</p>
+          <h1 className="page-title mt-2">Analyst Workflow</h1>
+          <p className="page-subtitle max-w-3xl">
+            Review incident evidence and record the current investigation status.
+          </p>
+        </div>
 
-      <FileSelector />
+        <FileSelector />
+      </div>
+
+      <div className="flex flex-col gap-3 rounded-md border border-[#3b494c] bg-[#192122]/90 p-3 shadow-lg shadow-black/20 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="muted-label">Review desk</p>
+          <p className="mt-1 text-sm text-[#849396]">
+            Selected file_id {selectedFileId || "none"}
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => loadIncidents(false)}
+          disabled={!selectedFileId || isLoading}
+          className="inline-flex items-center justify-center gap-2 rounded border border-[#3b494c] bg-[#0d1516] px-3 py-2 text-sm font-semibold text-[#bac9cc] transition hover:border-[#00daf3] hover:text-[#c3f5ff] disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          <RefreshCw
+            className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`}
+            aria-hidden="true"
+          />
+          Refresh incidents
+        </button>
+      </div>
 
       {!selectedFileId ? (
         <EmptyState
           icon={<ShieldCheck className="h-6 w-6" aria-hidden="true" />}
         >
-          <p className="text-lg font-semibold text-slate-50">
+          <p className="text-base font-semibold text-[#dce4e5]">
             Select a log file
           </p>
-          <p className="mt-2 text-sm text-slate-400">
+          <p className="mt-2 text-sm text-[#849396]">
             Choose an uploaded file to start analyst triage.
           </p>
         </EmptyState>
@@ -238,17 +496,17 @@ export default function Workflow() {
       {selectedFileId ? (
         <>
           {loadError ? (
-            <div className="mt-8 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-200">
+            <div className="rounded border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
               {loadError}
             </div>
           ) : null}
 
           {isLoading ? (
-            <div className="panel mt-8">
-              <p className="text-lg font-semibold text-slate-50">
+            <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 p-5 shadow-lg shadow-black/20">
+              <p className="text-base font-semibold text-[#dce4e5]">
                 Loading workflow
               </p>
-              <p className="mt-2 text-sm text-slate-400">
+              <p className="mt-2 text-sm text-[#849396]">
                 Fetching incidents for file_id {selectedFileId}.
               </p>
             </div>
@@ -258,10 +516,10 @@ export default function Workflow() {
             <EmptyState
               icon={<CircleAlert className="h-6 w-6" aria-hidden="true" />}
             >
-              <p className="text-lg font-semibold text-slate-50">
+              <p className="text-base font-semibold text-[#dce4e5]">
                 No incidents to triage
               </p>
-              <p className="mt-2 text-sm text-slate-400">
+              <p className="mt-2 text-sm text-[#849396]">
                 This file has no incidents yet. Generate incidents first, then
                 return here to update analyst status.
               </p>
@@ -269,221 +527,27 @@ export default function Workflow() {
           ) : null}
 
           {!isLoading && !loadError && incidents.length > 0 ? (
-            <div className="mt-8 grid gap-6 xl:grid-cols-[minmax(320px,0.8fr)_minmax(0,1.2fr)]">
-              <aside className="panel">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <p className="text-lg font-semibold text-slate-50">
-                      Incident selection
-                    </p>
-                    <p className="mt-1 text-sm text-slate-400">
-                      Highest-risk incidents appear first.
-                    </p>
-                  </div>
+            <div className="grid gap-5 xl:grid-cols-[minmax(300px,0.72fr)_minmax(0,1.28fr)]">
+              <IncidentSelectionPanel
+                incidents={incidents}
+                selectedIncidentId={selectedIncidentId}
+                setSelectedIncidentId={setSelectedIncidentId}
+                setSuccessMessage={setSuccessMessage}
+                setUpdateError={setUpdateError}
+              />
 
-                  <button
-                    type="button"
-                    onClick={() => loadIncidents(false)}
-                    disabled={isLoading}
-                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-700 px-3 py-2 text-sm font-medium text-slate-200 transition hover:border-cyan-400 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-60"
-                  >
-                    <RefreshCw
-                      className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`}
-                      aria-hidden="true"
-                    />
-                    Refresh
-                  </button>
-                </div>
-
-                <div className="mt-5 space-y-3">
-                  {incidents.map((incident) => {
-                    const isSelected = incident.id === selectedIncidentId;
-
-                    return (
-                      <button
-                        key={incident.id}
-                        type="button"
-                        onClick={() => {
-                          setSelectedIncidentId(incident.id);
-                          setUpdateError("");
-                          setSuccessMessage("");
-                        }}
-                        className={`w-full rounded-xl border p-4 text-left transition ${
-                          isSelected
-                            ? "border-cyan-400 bg-cyan-400/10 shadow-lg shadow-cyan-950/20"
-                            : "border-slate-700 bg-slate-900/80 hover:border-slate-500"
-                        }`}
-                      >
-                        <div className="flex items-start justify-between gap-3">
-                          <div>
-                            <p className="font-semibold text-slate-50">
-                              {formatLabel(incident.incident_type)}
-                            </p>
-                            <p className="mt-1 text-sm text-slate-400">
-                              {incident.ip_address || "Unknown IP"}
-                            </p>
-                          </div>
-                          <p className="text-xl font-bold text-cyan-300">
-                            {formatRiskScore(incident.risk_score)}
-                          </p>
-                        </div>
-
-                        <div className="mt-3 flex flex-wrap gap-2">
-                          <Badge
-                            className={getStatusBadgeClass(
-                              incident.status || "open"
-                            )}
-                          >
-                            {formatLabel(incident.status || "open")}
-                          </Badge>
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
-              </aside>
-
-              <main className="panel">
-                {selectedIncident ? (
-                  <>
-                    <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
-                      <div>
-                        <div className="flex items-center gap-3 text-cyan-300">
-                          <ShieldCheck className="h-6 w-6" aria-hidden="true" />
-                          <p className="text-sm font-semibold uppercase tracking-wide">
-                            Analyst review
-                          </p>
-                        </div>
-                        <h2 className="mt-3 text-2xl font-bold text-slate-50">
-                          {formatLabel(selectedIncident.incident_type)}
-                        </h2>
-                        <p className="mt-2 text-sm text-slate-400">
-                          IP address:{" "}
-                          <span className="font-medium text-cyan-200">
-                            {selectedIncident.ip_address || "Unknown"}
-                          </span>
-                        </p>
-                        {selectedIncident.created_at ? (
-                          <p className="mt-1 text-xs text-slate-500">
-                            Created: {selectedIncident.created_at}
-                          </p>
-                        ) : null}
-                      </div>
-
-                      <div className="rounded-2xl border border-cyan-400/30 bg-cyan-400/10 px-5 py-4 text-left lg:text-right">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-cyan-200">
-                          Risk score
-                        </p>
-                        <p className="mt-1 text-4xl font-bold text-cyan-300">
-                          {formatRiskScore(selectedIncident.risk_score)}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      <Badge
-                        className={getSeverityBadgeClass(
-                          selectedIncident.severity || "low"
-                        )}
-                      >
-                        {formatLabel(selectedIncident.severity || "low")}
-                      </Badge>
-                      <Badge
-                        className={getStatusBadgeClass(
-                          selectedIncident.status || "open"
-                        )}
-                      >
-                        {formatLabel(selectedIncident.status || "open")}
-                      </Badge>
-                    </div>
-
-                    <div className="mt-6 grid gap-5">
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                          Evidence
-                        </p>
-                        <p className="mt-2 rounded-xl border border-slate-700 bg-slate-950/30 p-4 text-sm leading-6 text-slate-300">
-                          {selectedIncident.evidence ||
-                            "No evidence text available."}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                          Recommended action
-                        </p>
-                        <p className="mt-2 rounded-xl border border-slate-700 bg-slate-950/30 p-4 text-sm leading-6 text-slate-300">
-                          {selectedIncident.recommended_action ||
-                            "No recommendation available."}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-6 rounded-2xl border border-slate-700 bg-slate-900/80 p-5">
-                      <div className="flex items-center gap-3">
-                        <CheckCircle2
-                          className="h-5 w-5 text-cyan-300"
-                          aria-hidden="true"
-                        />
-                        <div>
-                          <p className="font-semibold text-slate-50">
-                            Update investigation status
-                          </p>
-                          <p className="mt-1 text-sm text-slate-400">
-                            Record the current triage state for this incident.
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="mt-5 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
-                        <label className="block">
-                          <span className="text-sm font-medium text-slate-300">
-                            Status
-                          </span>
-                          <select
-                            className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none transition focus:border-cyan-400"
-                            onChange={(event) =>
-                              setSelectedStatus(event.target.value)
-                            }
-                            value={selectedStatus}
-                          >
-                            {STATUS_OPTIONS.map((status) => (
-                              <option key={status} value={status}>
-                                {formatLabel(status)}
-                              </option>
-                            ))}
-                          </select>
-                        </label>
-
-                        <button
-                          type="button"
-                          onClick={handleStatusUpdate}
-                          disabled={isUpdating}
-                          className="inline-flex justify-center rounded-lg bg-cyan-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
-                        >
-                          {isUpdating ? "Updating..." : "Update Status"}
-                        </button>
-                      </div>
-
-                      {successMessage ? (
-                        <div className="mt-4 rounded-xl border border-green-500/30 bg-green-500/10 p-3 text-sm text-green-200">
-                          {successMessage}
-                        </div>
-                      ) : null}
-
-                      {updateError ? (
-                        <div className="mt-4 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-200">
-                          {updateError}
-                        </div>
-                      ) : null}
-                    </div>
-                  </>
-                ) : (
-                  <div className="rounded-xl border border-slate-700 bg-slate-950/30 p-5 text-sm text-slate-400">
-                    Select an incident to review its evidence and update status.
-                  </div>
-                )}
-              </main>
+              <div className="space-y-5">
+                <IncidentReviewPanel incident={selectedIncident} />
+                <StatusUpdatePanel
+                  handleStatusUpdate={handleStatusUpdate}
+                  isUpdating={isUpdating}
+                  selectedIncident={selectedIncident}
+                  selectedStatus={selectedStatus}
+                  setSelectedStatus={setSelectedStatus}
+                  successMessage={successMessage}
+                  updateError={updateError}
+                />
+              </div>
             </div>
           ) : null}
         </>
