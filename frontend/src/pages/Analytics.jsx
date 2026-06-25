@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Bar,
   BarChart,
@@ -26,9 +26,13 @@ import {
 import FileSelector from "../components/FileSelector.jsx";
 import { useFileContext } from "../context/FileContext.jsx";
 
-const PIE_COLORS = ["#22d3ee", "#3b82f6", "#f97316", "#ef4444", "#a855f7"];
-const GRID_COLOR = "#334155";
-const TEXT_COLOR = "#cbd5e1";
+const GRID_COLOR = "#3b494c";
+const TEXT_COLOR = "#849396";
+const CYAN = "#00e5ff";
+const BLUE = "#60a5fa";
+const AMBER = "#f59e0b";
+const ORANGE = "#f97316";
+const RED = "#ef4444";
 
 const EMPTY_ANALYTICS = {
   statusCodes: [],
@@ -57,24 +61,62 @@ function formatPercent(value) {
   return `${(Number(value || 0) * 100).toFixed(1)}%`;
 }
 
-function ChartPanel({ children, description, isEmpty, title }) {
+function formatMilliseconds(value) {
+  return `${Number(value || 0).toFixed(2)} ms`;
+}
+
+function getStatusCodeColor(statusCode) {
+  const code = Number(statusCode);
+
+  if (code >= 500) {
+    return RED;
+  }
+
+  if (code >= 400) {
+    return ORANGE;
+  }
+
+  if (code >= 300) {
+    return BLUE;
+  }
+
+  return CYAN;
+}
+
+function getMaxValue(items, key) {
+  return Math.max(...items.map((item) => Number(item[key] || 0)), 0);
+}
+
+function Panel({ children, className = "", isEmpty, isLoading, subtitle, title }) {
   return (
-    <div className="panel min-h-[360px]">
-      <div className="mb-5">
-        <h2 className="text-lg font-semibold text-slate-50">{title}</h2>
-        {description ? (
-          <p className="mt-1 text-sm text-slate-400">{description}</p>
-        ) : null}
+    <section
+      className={[
+        "rounded-md border border-[#3b494c] bg-[#192122]/90 shadow-lg shadow-black/20",
+        className,
+      ].join(" ")}
+    >
+      <div className="border-b border-[#3b494c] bg-[#242b2d]/60 px-5 py-3">
+        <div className="flex items-center gap-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#00e5ff]" />
+          <h2 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#dce4e5]">
+            {title}
+          </h2>
+        </div>
+        {subtitle ? <p className="mt-1 text-xs text-[#849396]">{subtitle}</p> : null}
       </div>
 
-      {isEmpty ? (
-        <div className="flex h-[260px] items-center justify-center rounded-xl border border-slate-700 bg-slate-950/30 text-sm text-slate-400">
-          No data available.
+      {isLoading ? (
+        <div className="flex min-h-[260px] items-center justify-center text-sm text-[#849396]">
+          Loading analytics data...
+        </div>
+      ) : isEmpty ? (
+        <div className="flex min-h-[260px] items-center justify-center text-sm text-[#849396]">
+          No data available for this file.
         </div>
       ) : (
-        <div className="h-[280px]">{children}</div>
+        children
       )}
-    </div>
+    </section>
   );
 }
 
@@ -84,10 +126,10 @@ function DarkTooltip({ active, label, payload }) {
   }
 
   return (
-    <div className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm shadow-xl">
-      {label ? <p className="mb-1 font-medium text-slate-100">{label}</p> : null}
+    <div className="rounded border border-[#3b494c] bg-[#0d1516] px-3 py-2 text-sm shadow-xl">
+      {label ? <p className="mb-1 font-semibold text-[#dce4e5]">{label}</p> : null}
       {payload.map((item) => (
-        <p key={item.dataKey} style={{ color: item.color || "#22d3ee" }}>
+        <p key={item.dataKey || item.name} style={{ color: item.color || CYAN }}>
           {item.name || item.dataKey}: {item.value}
         </p>
       ))}
@@ -103,12 +145,94 @@ function ErrorRateTooltip({ active, label, payload }) {
   const item = payload[0];
 
   return (
-    <div className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm shadow-xl">
-      <p className="mb-1 font-medium text-slate-100">{label}</p>
+    <div className="rounded border border-[#3b494c] bg-[#0d1516] px-3 py-2 text-sm shadow-xl">
+      <p className="mb-1 font-semibold text-[#dce4e5]">{label}</p>
       <p className="text-red-300">Error rate: {formatPercent(item.value)}</p>
-      <p className="text-slate-400">
+      <p className="text-[#849396]">
         Errors: {item.payload.error_count} / {item.payload.total_count}
       </p>
+    </div>
+  );
+}
+
+function RankedList({ accentColor = CYAN, items, labelKey, valueFormatter, valueKey }) {
+  const maxValue = getMaxValue(items, valueKey);
+
+  return (
+    <div className="space-y-3 p-5">
+      {items.map((item, index) => {
+        const value = Number(item[valueKey] || 0);
+        const width = maxValue > 0 ? `${Math.max((value / maxValue) * 100, 4)}%` : "4%";
+
+        return (
+          <div key={`${item[labelKey]}-${index}`} className="space-y-1.5">
+            <div className="flex items-end justify-between gap-3 text-sm">
+              <span className="min-w-0 truncate font-semibold text-[#dce4e5]">
+                {item[labelKey] || "Unknown"}
+              </span>
+              <span className="shrink-0 text-xs font-semibold text-[#9cf0ff]">
+                {valueFormatter(value, item)}
+              </span>
+            </div>
+            <div className="h-2 overflow-hidden rounded-full bg-[#0d1516]">
+              <div
+                className="h-full rounded-full"
+                style={{ backgroundColor: accentColor, width }}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function EndpointBars({ items }) {
+  const maxValue = getMaxValue(items, "request_count");
+
+  return (
+    <div className="grid min-h-[260px] grid-cols-2 gap-3 p-5 sm:grid-cols-3 lg:grid-cols-5">
+      {items.map((item, index) => {
+        const value = Number(item.request_count || 0);
+        const height = maxValue > 0 ? `${Math.max((value / maxValue) * 100, 8)}%` : "8%";
+
+        return (
+          <div
+            className="flex min-h-[220px] flex-col justify-end gap-3"
+            key={`${item.endpoint}-${index}`}
+          >
+            <div className="relative flex flex-1 items-end rounded border border-[#3b494c] bg-[#0d1516]/70">
+              <div
+                className="w-full rounded-t bg-[#00e5ff]/30 border-t-2 border-[#00e5ff]"
+                style={{ height }}
+              />
+              <span className="absolute left-1/2 top-3 -translate-x-1/2 text-xs font-semibold text-[#dce4e5]">
+                {value}
+              </span>
+            </div>
+            <p className="truncate text-center text-xs font-semibold text-[#849396]">
+              {item.endpoint || "Unknown"}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function Header() {
+  return (
+    <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(360px,520px)] xl:items-end">
+      <div>
+        <p className="muted-label">Traffic intelligence</p>
+        <h1 className="page-title mt-2">Log Analytics</h1>
+        <p className="page-subtitle max-w-3xl">
+          Explore traffic patterns, endpoint behavior, response performance, and
+          suspicious activity.
+        </p>
+      </div>
+
+      <FileSelector />
     </div>
   );
 }
@@ -122,6 +246,7 @@ export default function Analytics() {
   useEffect(() => {
     if (!selectedFileId) {
       setAnalyticsData(EMPTY_ANALYTICS);
+      setError("");
       return;
     }
 
@@ -177,226 +302,187 @@ export default function Analytics() {
     };
   }, [selectedFileId]);
 
-  return (
-    <section>
-      <h1 className="page-title">Analytics</h1>
-      <p className="page-subtitle">
-        Traffic patterns, endpoint behavior, and security performance metrics.
-      </p>
+  const legendPayload = useMemo(
+    () =>
+      analyticsData.statusCodes.map((item) => ({
+        color: getStatusCodeColor(item.status_code),
+        id: item.status_code,
+        type: "circle",
+        value: String(item.status_code),
+      })),
+    [analyticsData.statusCodes]
+  );
 
-      <FileSelector />
+  return (
+    <section className="space-y-5">
+      <Header />
 
       {!selectedFileId ? (
-        <div className="panel mt-8">
-          <p className="text-lg font-semibold text-slate-50">
-            Select a log file
-          </p>
-          <p className="mt-2 text-sm text-slate-400">
-            Choose an uploaded file to load traffic and endpoint analytics.
-          </p>
-        </div>
-      ) : null}
-
-      {isLoading ? (
-        <div className="panel mt-8">
-          <p className="text-lg font-semibold text-slate-50">
-            Loading analytics
-          </p>
-          <p className="mt-2 text-sm text-slate-400">
-            Fetching chart datasets for file_id {selectedFileId}.
-          </p>
+        <div className="rounded border border-[#3b494c] bg-[#192122]/90 px-4 py-3 text-sm text-[#bac9cc]">
+          Choose an uploaded file to load traffic and endpoint analytics.
         </div>
       ) : null}
 
       {error ? (
-        <div className="mt-8 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-200">
+        <div className="rounded border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
           {error}
         </div>
       ) : null}
 
-      {selectedFileId && !isLoading && !error ? (
-        <div className="mt-8 grid gap-6 xl:grid-cols-2">
-          <ChartPanel
-            description="Counts grouped by HTTP response code."
+      {selectedFileId && !error ? (
+        <div className="grid gap-5 xl:grid-cols-12">
+          <Panel
+            className="xl:col-span-8"
+            isEmpty={analyticsData.hourlyTraffic.length === 0}
+            isLoading={isLoading}
+            subtitle="Hourly request volume from stored raw logs."
+            title="Traffic Volume Over Time"
+          >
+            <div className="h-[360px] p-5">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={analyticsData.hourlyTraffic}>
+                  <CartesianGrid stroke={GRID_COLOR} strokeDasharray="3 3" />
+                  <XAxis
+                    dataKey="hour"
+                    stroke={TEXT_COLOR}
+                    tick={{ fill: TEXT_COLOR, fontSize: 11 }}
+                    tickFormatter={(value) => String(value).split(" ")[1] || value}
+                  />
+                  <YAxis stroke={TEXT_COLOR} tick={{ fill: TEXT_COLOR, fontSize: 11 }} />
+                  <Tooltip content={<DarkTooltip />} />
+                  <Line
+                    dataKey="request_count"
+                    dot={{ fill: CYAN, r: 3 }}
+                    name="Requests"
+                    stroke={CYAN}
+                    strokeWidth={2}
+                    type="monotone"
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </Panel>
+
+          <Panel
+            className="xl:col-span-4"
             isEmpty={analyticsData.statusCodes.length === 0}
+            isLoading={isLoading}
+            subtitle="Response codes grouped by count."
             title="Status Code Distribution"
           >
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={analyticsData.statusCodes}
-                  dataKey="count"
-                  nameKey="status_code"
-                  innerRadius={55}
-                  outerRadius={95}
-                  paddingAngle={3}
-                >
-                  {analyticsData.statusCodes.map((entry, index) => (
-                    <Cell
-                      key={entry.status_code}
-                      fill={PIE_COLORS[index % PIE_COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-                <Tooltip content={<DarkTooltip />} />
-                <Legend wrapperStyle={{ color: TEXT_COLOR }} />
-              </PieChart>
-            </ResponsiveContainer>
-          </ChartPanel>
+            <div className="h-[360px] p-5">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={analyticsData.statusCodes}
+                    dataKey="count"
+                    innerRadius={68}
+                    nameKey="status_code"
+                    outerRadius={108}
+                    paddingAngle={3}
+                  >
+                    {analyticsData.statusCodes.map((entry) => (
+                      <Cell
+                        fill={getStatusCodeColor(entry.status_code)}
+                        key={entry.status_code}
+                      />
+                    ))}
+                  </Pie>
+                  <Tooltip content={<DarkTooltip />} />
+                  <Legend
+                    payload={legendPayload}
+                    wrapperStyle={{ color: "#bac9cc", fontSize: 12 }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          </Panel>
 
-          <ChartPanel
-            description="Most active source IP addresses."
+          <Panel
+            className="xl:col-span-4"
             isEmpty={analyticsData.topIps.length === 0}
-            title="Top IPs by Request Count"
+            isLoading={isLoading}
+            subtitle="Ranked by request count."
+            title="Top Source IPs"
           >
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={analyticsData.topIps}>
-                <CartesianGrid stroke={GRID_COLOR} strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="ip_address"
-                  stroke={TEXT_COLOR}
-                  tick={{ fill: TEXT_COLOR, fontSize: 11 }}
-                  interval={0}
-                  angle={-25}
-                  textAnchor="end"
-                  height={70}
-                />
-                <YAxis stroke={TEXT_COLOR} tick={{ fill: TEXT_COLOR }} />
-                <Tooltip content={<DarkTooltip />} />
-                <Bar
-                  dataKey="request_count"
-                  fill="#22d3ee"
-                  name="Requests"
-                  radius={[6, 6, 0, 0]}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </ChartPanel>
+            <RankedList
+              accentColor={CYAN}
+              items={analyticsData.topIps}
+              labelKey="ip_address"
+              valueFormatter={(value) => `${value} requests`}
+              valueKey="request_count"
+            />
+          </Panel>
 
-          <ChartPanel
-            description="Request volume grouped by hour."
-            isEmpty={analyticsData.hourlyTraffic.length === 0}
-            title="Hourly Traffic Volume"
-          >
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={analyticsData.hourlyTraffic}>
-                <CartesianGrid stroke={GRID_COLOR} strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="hour"
-                  stroke={TEXT_COLOR}
-                  tick={{ fill: TEXT_COLOR, fontSize: 11 }}
-                />
-                <YAxis stroke={TEXT_COLOR} tick={{ fill: TEXT_COLOR }} />
-                <Tooltip content={<DarkTooltip />} />
-                <Line
-                  type="monotone"
-                  dataKey="request_count"
-                  stroke="#22d3ee"
-                  strokeWidth={3}
-                  dot={{ fill: "#22d3ee", r: 4 }}
-                  name="Requests"
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </ChartPanel>
-
-          <ChartPanel
-            description="Endpoints with the highest request counts."
+          <Panel
+            className="xl:col-span-8"
             isEmpty={analyticsData.topEndpoints.length === 0}
+            isLoading={isLoading}
+            subtitle="Most requested application paths."
             title="Most Accessed Endpoints"
           >
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={analyticsData.topEndpoints}>
-                <CartesianGrid stroke={GRID_COLOR} strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="endpoint"
-                  stroke={TEXT_COLOR}
-                  tick={{ fill: TEXT_COLOR, fontSize: 11 }}
-                  interval={0}
-                  angle={-25}
-                  textAnchor="end"
-                  height={80}
-                />
-                <YAxis stroke={TEXT_COLOR} tick={{ fill: TEXT_COLOR }} />
-                <Tooltip content={<DarkTooltip />} />
-                <Bar
-                  dataKey="request_count"
-                  fill="#3b82f6"
-                  name="Requests"
-                  radius={[6, 6, 0, 0]}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </ChartPanel>
+            <EndpointBars items={analyticsData.topEndpoints} />
+          </Panel>
 
-          <ChartPanel
-            description="Average response time by endpoint."
+          <Panel
+            className="xl:col-span-6"
             isEmpty={analyticsData.slowestEndpoints.length === 0}
+            isLoading={isLoading}
+            subtitle="Average response time by endpoint."
             title="Slowest Endpoints"
           >
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                data={analyticsData.slowestEndpoints}
-                layout="vertical"
-                margin={{ left: 32 }}
-              >
-                <CartesianGrid stroke={GRID_COLOR} strokeDasharray="3 3" />
-                <XAxis
-                  type="number"
-                  stroke={TEXT_COLOR}
-                  tick={{ fill: TEXT_COLOR }}
-                  tickFormatter={(value) => `${value} ms`}
-                />
-                <YAxis
-                  dataKey="endpoint"
-                  type="category"
-                  stroke={TEXT_COLOR}
-                  tick={{ fill: TEXT_COLOR, fontSize: 11 }}
-                  width={105}
-                />
-                <Tooltip content={<DarkTooltip />} />
-                <Bar
-                  dataKey="avg_response_time_ms"
-                  fill="#f97316"
-                  name="Avg response time ms"
-                  radius={[0, 6, 6, 0]}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </ChartPanel>
+            <RankedList
+              accentColor={AMBER}
+              items={analyticsData.slowestEndpoints}
+              labelKey="endpoint"
+              valueFormatter={(value, item) =>
+                `${formatMilliseconds(value)} avg / ${formatMilliseconds(
+                  item.max_response_time_ms
+                )} max`
+              }
+              valueKey="avg_response_time_ms"
+            />
+          </Panel>
 
-          <ChartPanel
-            description="Endpoints sorted by error rate."
+          <Panel
+            className="xl:col-span-6"
             isEmpty={analyticsData.errorRates.length === 0}
+            isLoading={isLoading}
+            subtitle="Errors divided by total requests per endpoint."
             title="Error Rate by Endpoint"
           >
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={analyticsData.errorRates}>
-                <CartesianGrid stroke={GRID_COLOR} strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="endpoint"
-                  stroke={TEXT_COLOR}
-                  tick={{ fill: TEXT_COLOR, fontSize: 11 }}
-                  interval={0}
-                  angle={-25}
-                  textAnchor="end"
-                  height={80}
-                />
-                <YAxis
-                  stroke={TEXT_COLOR}
-                  tick={{ fill: TEXT_COLOR }}
-                  tickFormatter={formatPercent}
-                />
-                <Tooltip content={<ErrorRateTooltip />} />
-                <Bar
-                  dataKey="error_rate"
-                  fill="#ef4444"
-                  name="Error rate"
-                  radius={[6, 6, 0, 0]}
-                />
-              </BarChart>
-            </ResponsiveContainer>
-          </ChartPanel>
+            <div className="h-[300px] p-5">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                  data={analyticsData.errorRates}
+                  layout="vertical"
+                  margin={{ left: 24 }}
+                >
+                  <CartesianGrid stroke={GRID_COLOR} strokeDasharray="3 3" />
+                  <XAxis
+                    type="number"
+                    stroke={TEXT_COLOR}
+                    tick={{ fill: TEXT_COLOR, fontSize: 11 }}
+                    tickFormatter={formatPercent}
+                  />
+                  <YAxis
+                    dataKey="endpoint"
+                    type="category"
+                    stroke={TEXT_COLOR}
+                    tick={{ fill: TEXT_COLOR, fontSize: 11 }}
+                    width={120}
+                  />
+                  <Tooltip content={<ErrorRateTooltip />} />
+                  <Bar
+                    dataKey="error_rate"
+                    fill={RED}
+                    name="Error rate"
+                    radius={[0, 4, 4, 0]}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </Panel>
         </div>
       ) : null}
     </section>
