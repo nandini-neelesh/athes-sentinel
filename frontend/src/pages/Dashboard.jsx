@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { CheckCircle2, CircleAlert, Loader2, Play } from "lucide-react";
 import {
   CartesianGrid,
   Cell,
@@ -18,6 +19,11 @@ import {
   getStatusCodeDistribution,
   getSummary,
 } from "../api/analytics.js";
+import {
+  generateFeatures,
+  generateIncidents,
+  runMlScoring,
+} from "../api/analysis.js";
 import { getIncidents } from "../api/incidents.js";
 import FileSelector from "../components/FileSelector.jsx";
 import { useFileContext } from "../context/FileContext.jsx";
@@ -30,6 +36,40 @@ const EMPTY_DASHBOARD_DATA = {
 };
 
 const TRIAGED_STATUSES = ["investigating", "resolved", "false_positive"];
+
+const ANALYSIS_STAGES = [
+  {
+    key: "features",
+    label: "Generate IP features",
+    activeLabel: "Generating IP features",
+  },
+  {
+    key: "ml",
+    label: "Score anomalies",
+    activeLabel: "Scoring anomalies with ML",
+  },
+  {
+    key: "incidents",
+    label: "Generate incidents",
+    activeLabel: "Generating explainable incidents",
+  },
+];
+
+async function fetchDashboardData(fileId) {
+  const [summary, hourlyTraffic, statusCodes, incidents] = await Promise.all([
+    getSummary(fileId),
+    getHourlyTraffic(fileId),
+    getStatusCodeDistribution(fileId),
+    getIncidents(fileId),
+  ]);
+
+  return {
+    summary,
+    hourlyTraffic: Array.isArray(hourlyTraffic) ? hourlyTraffic : [],
+    statusCodes: Array.isArray(statusCodes) ? statusCodes : [],
+    incidents: Array.isArray(incidents) ? incidents : [],
+  };
+}
 
 function formatMetricValue(value) {
   if (value === null || value === undefined) {
@@ -47,18 +87,36 @@ function formatStatusLabel(value) {
   return String(value).replaceAll("_", " ");
 }
 
-function getApiErrorMessage(error) {
+function getReadableRequestError(error) {
   const detail = error.response?.data?.detail;
 
   if (typeof detail === "string") {
     return detail;
   }
 
+  if (Array.isArray(detail)) {
+    const messages = detail
+      .map((item) => item?.msg || item?.message)
+      .filter(Boolean);
+
+    if (messages.length > 0) {
+      return messages.join("; ");
+    }
+  }
+
   if (detail) {
     return JSON.stringify(detail);
   }
 
-  return "Could not load dashboard data.";
+  if (error.message) {
+    return error.message;
+  }
+
+  return "Unknown request error.";
+}
+
+function getApiErrorMessage(error) {
+  return getReadableRequestError(error);
 }
 
 function getMetricBorderClass(label) {
@@ -174,6 +232,42 @@ function ErrorPanel({ children }) {
   );
 }
 
+function AnalysisStageTracker({ completedStages, currentStage }) {
+  return (
+    <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 p-3 shadow-lg shadow-black/20">
+      <p className="muted-label">Analysis pipeline</p>
+      <div className="mt-3 grid gap-2 md:grid-cols-3">
+        {ANALYSIS_STAGES.map((stage) => {
+          const isCurrent = currentStage === stage.key;
+          const isComplete = completedStages.includes(stage.key);
+
+          return (
+            <div
+              className={[
+                "flex items-center gap-2 rounded border px-3 py-2 text-sm",
+                isCurrent
+                  ? "border-[#00daf3] bg-[#00e5ff]/10 text-[#c3f5ff]"
+                  : "border-[#3b494c] bg-[#0d1516]/70 text-[#849396]",
+                isComplete ? "text-green-200" : "",
+              ].join(" ")}
+              key={stage.key}
+            >
+              {isComplete ? (
+                <CheckCircle2 className="h-4 w-4 text-green-300" />
+              ) : isCurrent ? (
+                <Loader2 className="h-4 w-4 animate-spin text-[#9cf0ff]" />
+              ) : (
+                <span className="h-2 w-2 rounded-full border border-[#3b494c]" />
+              )}
+              <span className="font-semibold">{stage.label}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function ChartPanel({ children, className = "", isEmpty, isLoading, title }) {
   return (
     <div
@@ -218,7 +312,7 @@ function DarkTooltip({ active, label, payload }) {
   );
 }
 
-function DashboardHeader() {
+function DashboardHeader({ isAnalysisRunning, onRunAnalysis, selectedFileId }) {
   return (
     <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(360px,520px)] xl:items-end">
       <div>
@@ -228,12 +322,28 @@ function DashboardHeader() {
           Monitor application activity, anomaly signals, and analyst triage in one
           place.
         </p>
-        <Link
-          className="mt-4 inline-flex rounded border border-[#3b494c] bg-[#192122]/80 px-4 py-2 text-sm font-semibold text-[#bac9cc] transition hover:border-[#00daf3] hover:text-[#c3f5ff]"
-          to="/upload"
-        >
-          Upload Logs
-        </Link>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <button
+            className="inline-flex items-center gap-2 rounded border border-[#00daf3]/50 bg-[#00e5ff] px-4 py-2 text-sm font-semibold text-[#00363d] transition hover:bg-[#9cf0ff] disabled:cursor-not-allowed disabled:border-[#3b494c] disabled:bg-[#242b2d] disabled:text-[#849396]"
+            disabled={!selectedFileId || isAnalysisRunning}
+            onClick={onRunAnalysis}
+            type="button"
+          >
+            {isAnalysisRunning ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <Play className="h-4 w-4" />
+            )}
+            {isAnalysisRunning ? "Running Analysis..." : "Run Analysis"}
+          </button>
+
+          <Link
+            className="inline-flex rounded border border-[#3b494c] bg-[#192122]/80 px-4 py-2 text-sm font-semibold text-[#bac9cc] transition hover:border-[#00daf3] hover:text-[#c3f5ff]"
+            to="/upload"
+          >
+            Upload Logs
+          </Link>
+        </div>
       </div>
 
       <FileSelector />
@@ -348,11 +458,20 @@ export default function Dashboard() {
   const [dashboardData, setDashboardData] = useState(EMPTY_DASHBOARD_DATA);
   const [isLoadingDashboard, setIsLoadingDashboard] = useState(false);
   const [dashboardError, setDashboardError] = useState("");
+  const [isAnalysisRunning, setIsAnalysisRunning] = useState(false);
+  const [analysisStage, setAnalysisStage] = useState("");
+  const [completedAnalysisStages, setCompletedAnalysisStages] = useState([]);
+  const [analysisMessage, setAnalysisMessage] = useState("");
+  const [analysisError, setAnalysisError] = useState("");
 
   useEffect(() => {
     if (!selectedFileId) {
       setDashboardData(EMPTY_DASHBOARD_DATA);
       setDashboardError("");
+      setAnalysisMessage("");
+      setAnalysisError("");
+      setAnalysisStage("");
+      setCompletedAnalysisStages([]);
       return;
     }
 
@@ -363,21 +482,10 @@ export default function Dashboard() {
       setDashboardError("");
 
       try {
-        const [summary, hourlyTraffic, statusCodes, incidents] =
-          await Promise.all([
-            getSummary(selectedFileId),
-            getHourlyTraffic(selectedFileId),
-            getStatusCodeDistribution(selectedFileId),
-            getIncidents(selectedFileId),
-          ]);
+        const nextDashboardData = await fetchDashboardData(selectedFileId);
 
         if (!shouldIgnoreResult) {
-          setDashboardData({
-            summary,
-            hourlyTraffic: Array.isArray(hourlyTraffic) ? hourlyTraffic : [],
-            statusCodes: Array.isArray(statusCodes) ? statusCodes : [],
-            incidents: Array.isArray(incidents) ? incidents : [],
-          });
+          setDashboardData(nextDashboardData);
         }
       } catch (error) {
         if (!shouldIgnoreResult) {
@@ -397,6 +505,83 @@ export default function Dashboard() {
       shouldIgnoreResult = true;
     };
   }, [selectedFileId]);
+
+  async function refreshDashboardData() {
+    const nextDashboardData = await fetchDashboardData(selectedFileId);
+    setDashboardData(nextDashboardData);
+    setDashboardError("");
+  }
+
+  async function handleRunAnalysis() {
+    if (!selectedFileId || isAnalysisRunning) {
+      return;
+    }
+
+    setIsAnalysisRunning(true);
+    setCompletedAnalysisStages([]);
+    setAnalysisMessage("");
+    setAnalysisError("");
+
+    const stages = [
+      {
+        key: "features",
+        activeLabel: "Generating IP features",
+        failureLabel: "Feature generation failed",
+        action: () => generateFeatures(selectedFileId),
+      },
+      {
+        key: "ml",
+        activeLabel: "Scoring anomalies with ML",
+        failureLabel: "ML scoring failed",
+        action: () => runMlScoring(selectedFileId),
+      },
+      {
+        key: "incidents",
+        activeLabel: "Generating explainable incidents",
+        failureLabel: "Incident generation failed",
+        action: () => generateIncidents(selectedFileId),
+      },
+    ];
+
+    try {
+      for (const stage of stages) {
+        setAnalysisStage(stage.key);
+
+        try {
+          await stage.action();
+          setCompletedAnalysisStages((currentStages) => [
+            ...currentStages,
+            stage.key,
+          ]);
+        } catch (error) {
+          throw new Error(
+            `${stage.failureLabel}: ${getReadableRequestError(error)}`
+          );
+        }
+      }
+
+      setAnalysisStage("");
+      try {
+        await refreshDashboardData();
+      } catch (error) {
+        setAnalysisError(
+          `Analysis completed, but dashboard refresh failed: ${getReadableRequestError(
+            error
+          )}`
+        );
+        return;
+      }
+
+      setAnalysisMessage(
+        "Analysis complete. Features, ML scores, and incidents have been refreshed."
+      );
+    } catch (error) {
+      setAnalysisError(getReadableRequestError(error));
+    } finally {
+      setIsAnalysisRunning(false);
+      setAnalysisStage("");
+    }
+  }
 
   const { summary, hourlyTraffic, statusCodes, incidents } = dashboardData;
 
@@ -450,7 +635,32 @@ export default function Dashboard() {
 
   return (
     <section className="space-y-5">
-      <DashboardHeader />
+      <DashboardHeader
+        isAnalysisRunning={isAnalysisRunning}
+        onRunAnalysis={handleRunAnalysis}
+        selectedFileId={selectedFileId}
+      />
+
+      {isAnalysisRunning ? (
+        <AnalysisStageTracker
+          completedStages={completedAnalysisStages}
+          currentStage={analysisStage}
+        />
+      ) : null}
+
+      {analysisMessage ? (
+        <div className="flex items-start gap-3 rounded border border-green-400/40 bg-green-500/10 px-4 py-3 text-sm text-green-200">
+          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
+          <span>{analysisMessage}</span>
+        </div>
+      ) : null}
+
+      {analysisError ? (
+        <div className="flex items-start gap-3 rounded border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
+          <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" />
+          <span>{analysisError}</span>
+        </div>
+      ) : null}
 
       {!selectedFileId ? (
         <NoticePanel>
