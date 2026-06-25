@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 
 const navItems = [
-  { label: "Dashboard", path: "/", icon: LayoutDashboard },
+  { label: "Overview", path: "/", icon: LayoutDashboard },
   { label: "Upload Logs", path: "/upload", icon: FileUp },
   { label: "Analytics", path: "/analytics", icon: BarChart3 },
   { label: "Incidents", path: "/incidents", icon: Activity },
@@ -24,10 +24,10 @@ export default function Sidebar() {
   const { isAuthenticated, logout, user } = useAuth();
 
   return (
-    <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 shrink-0 border-r border-[#3b494c] bg-[#0d1516] px-4 py-6 lg:flex lg:flex-col">
+    <aside className="fixed left-0 top-0 z-40 hidden h-screen w-64 shrink-0 border-r border-[#3b494c] bg-[#0d1516] px-4 py-5 lg:flex lg:flex-col">
       <div>
-        <div className="mb-9 flex items-center gap-3 px-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded bg-[#00e5ff] text-[#00363d]">
+        <div className="mb-8 flex items-center gap-3 px-2">
+          <div className="flex h-8 w-8 items-center justify-center rounded bg-[#00e5ff] text-[#00363d]">
             <ShieldCheck className="h-5 w-5" aria-hidden="true" />
           </div>
           <div>
@@ -51,7 +51,7 @@ export default function Sidebar() {
                 end={item.path === "/"}
                 className={({ isActive }) =>
                   [
-                    "flex items-center gap-3 rounded px-3 py-3 text-sm font-medium transition",
+                    "flex items-center gap-3 rounded px-3 py-2.5 text-sm font-medium transition",
                     isActive
                       ? "border-r-2 border-[#9cf0ff] bg-[#242b2d] text-[#c3f5ff]"
                       : "text-[#bac9cc] hover:bg-[#192122] hover:text-[#c3f5ff]",

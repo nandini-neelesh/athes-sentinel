@@ -51,13 +51,13 @@ select {
 
   .app-canvas {
     background-color: #0d1516;
-    background-image: radial-gradient(rgba(0, 229, 255, 0.08) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(0, 229, 255, 0.045) 1px, transparent 1px);
     background-position: 0 0;
-    background-size: 24px 24px;
+    background-size: 28px 28px;
   }
 
   .top-shell-bar {
-    @apply sticky top-0 z-30 border-b border-[#3b494c] bg-[#192122]/95 backdrop-blur;
+    @apply sticky top-0 z-30 border-b border-[#3b494c] bg-[#111a1b]/95 backdrop-blur;
   }
 
   .status-pill {
