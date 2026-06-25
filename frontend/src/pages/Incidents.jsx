@@ -42,9 +42,7 @@ function formatLabel(value) {
 }
 
 function formatRiskScore(value) {
-  const score = Number(value || 0);
-
-  return score.toFixed(2);
+  return Number(value || 0).toFixed(2);
 }
 
 function getSeverityBadgeClass(severity) {
@@ -83,28 +81,10 @@ function getStatusBadgeClass(status) {
   return "border-cyan-400/40 bg-cyan-500/15 text-cyan-200";
 }
 
-function getIncidentAccentClass(severity) {
-  const normalizedSeverity = String(severity || "").toLowerCase();
-
-  if (normalizedSeverity === "critical") {
-    return "border-l-red-500";
-  }
-
-  if (normalizedSeverity === "high") {
-    return "border-l-orange-500";
-  }
-
-  if (normalizedSeverity === "medium") {
-    return "border-l-yellow-500";
-  }
-
-  return "border-l-blue-500";
-}
-
 function Badge({ children, className }) {
   return (
     <span
-      className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold uppercase tracking-wide ${className}`}
+      className={`inline-flex rounded-full border px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] ${className}`}
     >
       {children}
     </span>
@@ -113,83 +93,282 @@ function Badge({ children, className }) {
 
 function SummaryCard({ label, value }) {
   return (
-    <div className="rounded-xl border border-slate-700 bg-slate-900/80 p-4">
-      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-        {label}
+    <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 p-4 shadow-lg shadow-black/20">
+      <p className="muted-label">{label}</p>
+      <p className="mt-2 text-2xl font-semibold tracking-tight text-[#dce4e5]">
+        {value}
       </p>
-      <p className="mt-2 text-2xl font-bold text-slate-50">{value}</p>
     </div>
   );
 }
 
-function IncidentCard({ incident }) {
-  const severity = incident.severity || "low";
-  const status = incident.status || "open";
+function EmptyPanel({ icon, title, message }) {
+  return (
+    <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 p-5 shadow-lg shadow-black/20">
+      <div className="flex items-start gap-4">
+        <div className="rounded border border-[#00e5ff]/30 bg-[#00e5ff]/10 p-3 text-[#9cf0ff]">
+          {icon}
+        </div>
+        <div>
+          <p className="text-base font-semibold text-[#dce4e5]">{title}</p>
+          <p className="mt-2 text-sm text-[#849396]">{message}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FilterBar({
+  isLoading,
+  loadIncidents,
+  searchText,
+  selectedSeverity,
+  selectedStatus,
+  setSearchText,
+  setSelectedSeverity,
+  setSelectedStatus,
+}) {
+  return (
+    <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 p-3 shadow-lg shadow-black/20">
+      <div className="flex flex-col gap-3 xl:flex-row xl:items-end xl:justify-between">
+        <div>
+          <div className="flex items-center gap-2 text-[#9cf0ff]">
+            <SlidersHorizontal className="h-4 w-4" aria-hidden="true" />
+            <p className="muted-label text-[#9cf0ff]">Operations filter</p>
+          </div>
+          <p className="mt-1 text-sm text-[#849396]">
+            Filter the selected file's incident queue.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          onClick={loadIncidents}
+          disabled={isLoading}
+          className="inline-flex items-center justify-center gap-2 rounded border border-[#3b494c] bg-[#0d1516] px-3 py-2 text-sm font-semibold text-[#bac9cc] transition hover:border-[#00daf3] hover:text-[#c3f5ff] disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          <RefreshCw
+            className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`}
+            aria-hidden="true"
+          />
+          Refresh
+        </button>
+      </div>
+
+      <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(0,1fr)_220px_240px]">
+        <label className="block">
+          <span className="muted-label">Search</span>
+          <div className="mt-1.5 flex items-center gap-2 rounded border border-[#3b494c] bg-[#0d1516] px-3 py-2 focus-within:border-[#00daf3]">
+            <Search className="h-4 w-4 text-[#849396]" aria-hidden="true" />
+            <input
+              className="w-full bg-transparent text-sm text-[#dce4e5] outline-none placeholder:text-[#849396]"
+              onChange={(event) => setSearchText(event.target.value)}
+              placeholder="Search IP address or incident type"
+              type="search"
+              value={searchText}
+            />
+          </div>
+        </label>
+
+        <label className="block">
+          <span className="muted-label">Severity</span>
+          <select
+            className="mt-1.5 w-full rounded border border-[#3b494c] bg-[#0d1516] px-3 py-2 text-sm text-[#dce4e5] outline-none transition focus:border-[#00daf3]"
+            onChange={(event) => setSelectedSeverity(event.target.value)}
+            value={selectedSeverity}
+          >
+            {SEVERITY_OPTIONS.map((severity) => (
+              <option key={severity} value={severity}>
+                {severity === "all" ? "All severities" : formatLabel(severity)}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="block">
+          <span className="muted-label">Status</span>
+          <select
+            className="mt-1.5 w-full rounded border border-[#3b494c] bg-[#0d1516] px-3 py-2 text-sm text-[#dce4e5] outline-none transition focus:border-[#00daf3]"
+            onChange={(event) => setSelectedStatus(event.target.value)}
+            value={selectedStatus}
+          >
+            {STATUS_OPTIONS.map((status) => (
+              <option key={status} value={status}>
+                {status === "all" ? "All statuses" : formatLabel(status)}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+    </div>
+  );
+}
+
+function IncidentQueueTable({ incidents, selectedIncidentId, setSelectedIncidentId }) {
+  return (
+    <div className="hidden overflow-x-auto lg:block">
+      <table className="w-full min-w-[960px] border-collapse text-left text-sm">
+        <thead>
+          <tr className="border-b border-[#3b494c] bg-[#111a1b] text-[11px] uppercase tracking-[0.16em] text-[#849396]">
+            <th className="px-4 py-3 font-semibold">Severity</th>
+            <th className="px-4 py-3 font-semibold">Incident Type</th>
+            <th className="px-4 py-3 font-semibold">Source IP</th>
+            <th className="px-4 py-3 font-semibold">Evidence Summary</th>
+            <th className="px-4 py-3 text-center font-semibold">Risk</th>
+            <th className="px-4 py-3 font-semibold">Status</th>
+            <th className="px-4 py-3 font-semibold">Created</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-[#3b494c]">
+          {incidents.map((incident) => {
+            const isSelected = selectedIncidentId === incident.id;
+
+            return (
+              <tr
+                key={incident.id}
+                onClick={() => setSelectedIncidentId(incident.id)}
+                className={[
+                  "cursor-pointer border-l-2 transition",
+                  isSelected
+                    ? "border-l-[#00e5ff] bg-[#00e5ff]/10"
+                    : "border-l-transparent hover:bg-[#242b2d]/50",
+                ].join(" ")}
+              >
+                <td className="px-4 py-4">
+                  <Badge className={getSeverityBadgeClass(incident.severity)}>
+                    {formatLabel(incident.severity || "low")}
+                  </Badge>
+                </td>
+                <td className="px-4 py-4 font-semibold text-[#dce4e5]">
+                  {formatLabel(incident.incident_type)}
+                </td>
+                <td className="px-4 py-4 font-medium text-[#bac9cc]">
+                  {incident.ip_address || "Unknown"}
+                </td>
+                <td className="max-w-[280px] truncate px-4 py-4 text-[#849396]">
+                  {incident.evidence || "No evidence text available."}
+                </td>
+                <td className="px-4 py-4 text-center">
+                  <span className="rounded bg-[#00e5ff]/10 px-2 py-1 font-semibold text-[#9cf0ff]">
+                    {formatRiskScore(incident.risk_score)}
+                  </span>
+                </td>
+                <td className="px-4 py-4">
+                  <Badge className={getStatusBadgeClass(incident.status)}>
+                    {formatLabel(incident.status || "open")}
+                  </Badge>
+                </td>
+                <td className="px-4 py-4 text-xs text-[#849396]">
+                  {incident.created_at || "Not available"}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function IncidentMobileList({ incidents, selectedIncidentId, setSelectedIncidentId }) {
+  return (
+    <div className="divide-y divide-[#3b494c] lg:hidden">
+      {incidents.map((incident) => {
+        const isSelected = selectedIncidentId === incident.id;
+
+        return (
+          <button
+            key={incident.id}
+            type="button"
+            onClick={() => setSelectedIncidentId(incident.id)}
+            className={[
+              "w-full border-l-2 p-4 text-left transition",
+              isSelected
+                ? "border-l-[#00e5ff] bg-[#00e5ff]/10"
+                : "border-l-transparent hover:bg-[#242b2d]/50",
+            ].join(" ")}
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="font-semibold text-[#dce4e5]">
+                  {formatLabel(incident.incident_type)}
+                </p>
+                <p className="mt-1 text-sm text-[#849396]">
+                  {incident.ip_address || "Unknown"}
+                </p>
+              </div>
+              <p className="text-xl font-semibold text-[#9cf0ff]">
+                {formatRiskScore(incident.risk_score)}
+              </p>
+            </div>
+            <p className="mt-3 line-clamp-2 text-sm text-[#849396]">
+              {incident.evidence || "No evidence text available."}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <Badge className={getSeverityBadgeClass(incident.severity)}>
+                {formatLabel(incident.severity || "low")}
+              </Badge>
+              <Badge className={getStatusBadgeClass(incident.status)}>
+                {formatLabel(incident.status || "open")}
+              </Badge>
+            </div>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function IncidentDetailPanel({ incident }) {
+  if (!incident) {
+    return null;
+  }
 
   return (
-    <article
-      className={`rounded-2xl border border-slate-700 border-l-4 bg-slate-900/80 p-5 shadow-lg shadow-slate-950/20 ${getIncidentAccentClass(
-        severity
-      )}`}
-    >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <p className="text-lg font-semibold text-slate-50">
-            {formatLabel(incident.incident_type)}
-          </p>
-          <p className="mt-1 text-sm text-slate-400">
-            IP address:{" "}
-            <span className="font-medium text-cyan-200">
-              {incident.ip_address || "Unknown"}
-            </span>
-          </p>
-          {incident.created_at ? (
-            <p className="mt-1 text-xs text-slate-500">
-              Created: {incident.created_at}
+    <section className="rounded-md border border-[#3b494c] bg-[#192122]/90 shadow-lg shadow-black/20">
+      <div className="border-b border-[#3b494c] bg-[#242b2d]/60 px-5 py-3">
+        <p className="muted-label">Selected incident detail</p>
+        <div className="mt-2 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <h2 className="text-lg font-semibold text-[#dce4e5]">
+              {formatLabel(incident.incident_type)}
+            </h2>
+            <p className="mt-1 text-sm text-[#849396]">
+              Source IP:{" "}
+              <span className="font-semibold text-[#c3f5ff]">
+                {incident.ip_address || "Unknown"}
+              </span>
             </p>
-          ) : null}
-        </div>
-
-        <div className="text-left sm:text-right">
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Risk score
-          </p>
-          <p className="mt-1 text-3xl font-bold text-cyan-300">
-            {formatRiskScore(incident.risk_score)}
-          </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Badge className={getSeverityBadgeClass(incident.severity)}>
+              {formatLabel(incident.severity || "low")}
+            </Badge>
+            <Badge className={getStatusBadgeClass(incident.status)}>
+              {formatLabel(incident.status || "open")}
+            </Badge>
+            <span className="rounded bg-[#00e5ff]/10 px-2 py-1 text-sm font-semibold text-[#9cf0ff]">
+              Risk {formatRiskScore(incident.risk_score)}
+            </span>
+          </div>
         </div>
       </div>
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        <Badge className={getSeverityBadgeClass(severity)}>
-          {formatLabel(severity)}
-        </Badge>
-        <Badge className={getStatusBadgeClass(status)}>{formatLabel(status)}</Badge>
-        <Badge className="border-slate-600 bg-slate-800 text-slate-300">
-          Rule + ML
-        </Badge>
-      </div>
-
-      <div className="mt-5 space-y-4">
+      <div className="grid gap-4 p-5 xl:grid-cols-2">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Evidence
-          </p>
-          <p className="mt-2 text-sm leading-6 text-slate-300">
+          <p className="muted-label">Evidence</p>
+          <p className="mt-2 rounded border border-[#3b494c] bg-[#0d1516]/70 p-4 text-sm leading-6 text-[#bac9cc]">
             {incident.evidence || "No evidence text available."}
           </p>
         </div>
-
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-            Recommended action
-          </p>
-          <p className="mt-2 text-sm leading-6 text-slate-300">
+          <p className="muted-label">Recommended action</p>
+          <p className="mt-2 rounded border border-[#3b494c] bg-[#0d1516]/70 p-4 text-sm leading-6 text-[#bac9cc]">
             {incident.recommended_action || "No recommendation available."}
           </p>
         </div>
       </div>
-    </article>
+    </section>
   );
 }
 
@@ -199,12 +378,14 @@ export default function Incidents() {
   const [searchText, setSearchText] = useState("");
   const [selectedSeverity, setSelectedSeverity] = useState("all");
   const [selectedStatus, setSelectedStatus] = useState("all");
+  const [selectedIncidentId, setSelectedIncidentId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   async function loadIncidents() {
     if (!selectedFileId) {
       setIncidents([]);
+      setSelectedIncidentId(null);
       return;
     }
 
@@ -217,6 +398,7 @@ export default function Incidents() {
     } catch (requestError) {
       setError(getErrorMessage(requestError));
       setIncidents([]);
+      setSelectedIncidentId(null);
     } finally {
       setIsLoading(false);
     }
@@ -256,6 +438,14 @@ export default function Incidents() {
     });
   }, [searchText, selectedSeverity, selectedStatus, sortedIncidents]);
 
+  const selectedIncident = useMemo(() => {
+    return (
+      filteredIncidents.find((incident) => incident.id === selectedIncidentId) ||
+      filteredIncidents[0] ||
+      null
+    );
+  }, [filteredIncidents, selectedIncidentId]);
+
   const openIncidentCount = sortedIncidents.filter((incident) => {
     return String(incident.status || "").toLowerCase() === "open";
   }).length;
@@ -269,36 +459,31 @@ export default function Incidents() {
       : "0.00";
 
   return (
-    <section>
-      <h1 className="page-title">Incidents</h1>
-      <p className="page-subtitle">
-        Review, prioritize, and investigate suspicious activity detected across
-        application logs.
-      </p>
+    <section className="space-y-5">
+      <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_minmax(360px,520px)] xl:items-end">
+        <div>
+          <p className="muted-label">Security operations</p>
+          <h1 className="page-title mt-2">Incident Queue</h1>
+          <p className="page-subtitle max-w-3xl">
+            Review, prioritize, and investigate suspicious activity detected across
+            application logs.
+          </p>
+        </div>
 
-      <FileSelector />
+        <FileSelector />
+      </div>
 
       {!selectedFileId ? (
-        <div className="panel mt-8">
-          <div className="flex items-start gap-4">
-            <div className="rounded-xl border border-cyan-400/30 bg-cyan-400/10 p-3 text-cyan-300">
-              <ShieldAlert className="h-6 w-6" aria-hidden="true" />
-            </div>
-            <div>
-              <p className="text-lg font-semibold text-slate-50">
-                Select a log file
-              </p>
-              <p className="mt-2 text-sm text-slate-400">
-                Choose an uploaded file to review generated incidents.
-              </p>
-            </div>
-          </div>
-        </div>
+        <EmptyPanel
+          icon={<ShieldAlert className="h-6 w-6" aria-hidden="true" />}
+          title="Select a log file"
+          message="Choose an uploaded file to review generated incidents."
+        />
       ) : null}
 
       {selectedFileId ? (
         <>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
             <SummaryCard label="Total Incidents" value={sortedIncidents.length} />
             <SummaryCard label="Open Incidents" value={openIncidentCount} />
             <SummaryCard
@@ -308,139 +493,80 @@ export default function Incidents() {
             <SummaryCard label="Highest Risk Score" value={highestRiskScore} />
           </div>
 
-          <div className="panel mt-6">
-            <div className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
-              <div>
-                <div className="flex items-center gap-2 text-cyan-300">
-                  <SlidersHorizontal className="h-5 w-5" aria-hidden="true" />
-                  <p className="text-sm font-semibold uppercase tracking-wide">
-                    Filters
-                  </p>
-                </div>
-                <p className="mt-2 text-sm text-slate-400">
-                  Search and filter the current file's incident queue.
-                </p>
-              </div>
-
-              <button
-                type="button"
-                onClick={loadIncidents}
-                disabled={isLoading}
-                className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-700 px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-cyan-400 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                <RefreshCw
-                  className={`h-4 w-4 ${isLoading ? "animate-spin" : ""}`}
-                  aria-hidden="true"
-                />
-                Refresh
-              </button>
-            </div>
-
-            <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,1fr)_220px_240px]">
-              <label className="block">
-                <span className="text-sm font-medium text-slate-300">Search</span>
-                <div className="mt-2 flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 focus-within:border-cyan-400">
-                  <Search className="h-4 w-4 text-slate-500" aria-hidden="true" />
-                  <input
-                    className="w-full bg-transparent text-sm text-slate-50 outline-none placeholder:text-slate-500"
-                    onChange={(event) => setSearchText(event.target.value)}
-                    placeholder="Search IP or incident type"
-                    type="search"
-                    value={searchText}
-                  />
-                </div>
-              </label>
-
-              <label className="block">
-                <span className="text-sm font-medium text-slate-300">
-                  Severity
-                </span>
-                <select
-                  className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-50 outline-none transition focus:border-cyan-400"
-                  onChange={(event) => setSelectedSeverity(event.target.value)}
-                  value={selectedSeverity}
-                >
-                  {SEVERITY_OPTIONS.map((severity) => (
-                    <option key={severity} value={severity}>
-                      {severity === "all"
-                        ? "All severities"
-                        : formatLabel(severity)}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="block">
-                <span className="text-sm font-medium text-slate-300">Status</span>
-                <select
-                  className="mt-2 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-50 outline-none transition focus:border-cyan-400"
-                  onChange={(event) => setSelectedStatus(event.target.value)}
-                  value={selectedStatus}
-                >
-                  {STATUS_OPTIONS.map((status) => (
-                    <option key={status} value={status}>
-                      {status === "all" ? "All statuses" : formatLabel(status)}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-          </div>
-
-          <div className="mt-6 rounded-xl border border-cyan-400/20 bg-cyan-400/10 p-4 text-sm text-cyan-100">
-            Incident risk scores combine configurable rule signals with Isolation
-            Forest anomaly scoring when ML scores are available.
-          </div>
+          <FilterBar
+            isLoading={isLoading}
+            loadIncidents={loadIncidents}
+            searchText={searchText}
+            selectedSeverity={selectedSeverity}
+            selectedStatus={selectedStatus}
+            setSearchText={setSearchText}
+            setSelectedSeverity={setSelectedSeverity}
+            setSelectedStatus={setSelectedStatus}
+          />
 
           {isLoading ? (
-            <div className="panel mt-6">
-              <p className="text-lg font-semibold text-slate-50">
-                Loading incidents
-              </p>
-              <p className="mt-2 text-sm text-slate-400">
-                Fetching incident records for file_id {selectedFileId}.
-              </p>
+            <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 px-4 py-3 text-sm text-[#849396]">
+              Fetching incident records for file_id {selectedFileId}.
             </div>
           ) : null}
 
           {error ? (
-            <div className="mt-6 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-200">
+            <div className="rounded border border-red-400/40 bg-red-500/10 px-4 py-3 text-sm text-red-200">
               {error}
             </div>
           ) : null}
 
           {!isLoading && !error && sortedIncidents.length === 0 ? (
-            <div className="panel mt-6">
-              <p className="text-lg font-semibold text-slate-50">
-                No incidents found for this file
-              </p>
-              <p className="mt-2 text-sm text-slate-400">
-                No incidents found for this file. Generate incidents after running
-                feature generation and ML scoring.
-              </p>
-            </div>
+            <EmptyPanel
+              icon={<ShieldAlert className="h-6 w-6" aria-hidden="true" />}
+              title="No incidents found for this file"
+              message="No incidents found for this file. Generate incidents after running feature generation and ML scoring."
+            />
           ) : null}
 
           {!isLoading &&
           !error &&
           sortedIncidents.length > 0 &&
           filteredIncidents.length === 0 ? (
-            <div className="panel mt-6">
-              <p className="text-lg font-semibold text-slate-50">
-                No matching incidents
-              </p>
-              <p className="mt-2 text-sm text-slate-400">
-                Adjust the search text, severity, or status filter.
-              </p>
-            </div>
+            <EmptyPanel
+              icon={<Search className="h-6 w-6" aria-hidden="true" />}
+              title="No matching incidents"
+              message="Adjust the search text, severity, or status filter."
+            />
           ) : null}
 
           {!isLoading && !error && filteredIncidents.length > 0 ? (
-            <div className="mt-6 grid gap-5 xl:grid-cols-2">
-              {filteredIncidents.map((incident) => (
-                <IncidentCard key={incident.id} incident={incident} />
-              ))}
-            </div>
+            <>
+              <section className="rounded-md border border-[#3b494c] bg-[#192122]/90 shadow-lg shadow-black/20">
+                <div className="border-b border-[#3b494c] bg-[#242b2d]/60 px-5 py-3">
+                  <div className="flex flex-col gap-1 md:flex-row md:items-end md:justify-between">
+                    <div>
+                      <p className="muted-label">Queue</p>
+                      <h2 className="text-base font-semibold text-[#dce4e5]">
+                        Risk score high to low
+                      </h2>
+                    </div>
+                    <p className="text-xs text-[#849396]">
+                      {filteredIncidents.length} visible incident
+                      {filteredIncidents.length === 1 ? "" : "s"}
+                    </p>
+                  </div>
+                </div>
+
+                <IncidentQueueTable
+                  incidents={filteredIncidents}
+                  selectedIncidentId={selectedIncident?.id}
+                  setSelectedIncidentId={setSelectedIncidentId}
+                />
+                <IncidentMobileList
+                  incidents={filteredIncidents}
+                  selectedIncidentId={selectedIncident?.id}
+                  setSelectedIncidentId={setSelectedIncidentId}
+                />
+              </section>
+
+              <IncidentDetailPanel incident={selectedIncident} />
+            </>
           ) : null}
         </>
       ) : null}
