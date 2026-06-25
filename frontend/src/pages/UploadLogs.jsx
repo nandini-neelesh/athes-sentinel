@@ -17,6 +17,13 @@ const REQUIRED_COLUMNS = [
   "user_agent",
 ];
 
+const PIPELINE_STEPS = [
+  "Upload CSV",
+  "Generate IP features",
+  "Score anomalies",
+  "Generate incidents",
+];
+
 function formatFileSize(bytes) {
   if (!bytes) {
     return "0 KB";
@@ -29,6 +36,14 @@ function formatFileSize(bytes) {
   }
 
   return `${(kilobytes / 1024).toFixed(2)} MB`;
+}
+
+function formatUploadedAt(value) {
+  if (!value) {
+    return "Upload time unavailable";
+  }
+
+  return value;
 }
 
 function getUploadErrorMessage(error) {
@@ -49,6 +64,68 @@ function getUploadErrorMessage(error) {
   }
 
   return "Upload failed. Please check the CSV file and try again.";
+}
+
+function PanelHeader({ eyebrow, title }) {
+  return (
+    <div className="border-b border-[#3b494c] bg-[#242b2d]/60 px-4 py-3">
+      <p className="muted-label">{eyebrow}</p>
+      <h2 className="mt-1 text-base font-semibold text-[#dce4e5]">{title}</h2>
+    </div>
+  );
+}
+
+function PipelinePreview() {
+  return (
+    <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 p-5 shadow-lg shadow-black/20">
+      <div className="flex items-center justify-between gap-3">
+        <div>
+          <p className="muted-label">Ingestion pipeline</p>
+          <p className="mt-1 text-sm text-[#849396]">
+            Visual guide for the current security analysis flow.
+          </p>
+        </div>
+        <span className="rounded-full border border-[#00e5ff]/30 bg-[#00e5ff]/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9cf0ff]">
+          Start here
+        </span>
+      </div>
+
+      <div className="mt-5 flex flex-col gap-4 md:flex-row md:items-start">
+        {PIPELINE_STEPS.map((step, index) => {
+          const isCurrentStep = index === 0;
+          const isLastStep = index === PIPELINE_STEPS.length - 1;
+
+          return (
+            <div className="flex flex-1 items-center" key={step}>
+              <div className="flex min-w-0 flex-col items-center gap-2">
+                <div
+                  className={[
+                    "flex h-9 w-9 items-center justify-center rounded border text-sm font-semibold",
+                    isCurrentStep
+                      ? "border-[#00e5ff] bg-[#00e5ff] text-[#00363d]"
+                      : "border-[#3b494c] bg-[#111a1b] text-[#849396]",
+                  ].join(" ")}
+                >
+                  {index + 1}
+                </div>
+                <p
+                  className={[
+                    "text-center text-[11px] font-semibold uppercase tracking-[0.14em]",
+                    isCurrentStep ? "text-[#c3f5ff]" : "text-[#849396]",
+                  ].join(" ")}
+                >
+                  {step}
+                </p>
+              </div>
+              {!isLastStep ? (
+                <div className="mx-3 hidden h-px flex-1 bg-[#3b494c] md:block" />
+              ) : null}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 export default function UploadLogs() {
@@ -95,131 +172,138 @@ export default function UploadLogs() {
   }
 
   return (
-    <section>
-      <h1 className="page-title">Upload Logs</h1>
-      <p className="page-subtitle">
-        Import CSV application logs for feature generation and detection.
-      </p>
+    <section className="space-y-5">
+      <div>
+        <p className="muted-label">CSV ingestion workspace</p>
+        <h1 className="page-title mt-2">Ingest Security Logs</h1>
+        <p className="page-subtitle max-w-3xl">
+          Upload structured application logs to begin feature generation, anomaly
+          detection, and incident analysis.
+        </p>
+      </div>
 
-      <div className="mt-8 grid gap-6 xl:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.65fr)]">
-        <div className="panel">
-          <div className="flex items-start gap-4">
-            <div className="rounded-xl border border-cyan-400/30 bg-cyan-400/10 p-3 text-cyan-300">
-              <Upload className="h-6 w-6" aria-hidden="true" />
-            </div>
-            <div>
-              <h2 className="text-xl font-semibold text-slate-50">CSV upload</h2>
-              <p className="mt-1 text-sm text-slate-400">
-                Upload raw application logs using the backend CSV schema.
-              </p>
-            </div>
-          </div>
+      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_380px]">
+        <div className="space-y-5">
+          <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 shadow-lg shadow-black/20">
+            <PanelHeader eyebrow="Upload canvas" title="CSV application log" />
 
-          <label className="mt-6 flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-600 bg-slate-950/30 px-6 py-12 text-center transition hover:border-cyan-400/70 hover:bg-cyan-400/5">
-            <Upload className="h-10 w-10 text-cyan-300" aria-hidden="true" />
-            <span className="mt-4 text-base font-semibold text-slate-50">
-              Choose a CSV file
-            </span>
-            <span className="mt-2 text-sm text-slate-400">
-              Use the file picker to select an application log export.
-            </span>
-            <input
-              className="sr-only"
-              type="file"
-              accept=".csv,text/csv"
-              onChange={handleFileChange}
-            />
-          </label>
-
-          {selectedFile && (
-            <div className="mt-4 rounded-xl border border-slate-700 bg-slate-950/30 p-4">
-              <p className="text-sm font-medium text-slate-200">
-                {selectedFile.name}
-              </p>
-              <p className="mt-1 text-sm text-slate-500">
-                {formatFileSize(selectedFile.size)}
-              </p>
-            </div>
-          )}
-
-          <div className="mt-6 flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={handleUpload}
-              disabled={!selectedFile || isUploading}
-              className="rounded-lg bg-cyan-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
-            >
-              {isUploading ? "Uploading..." : "Upload CSV"}
-            </button>
-          </div>
-
-          {uploadError && (
-            <div className="mt-5 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-200">
-              {uploadError}
-            </div>
-          )}
-
-          {uploadResult && (
-            <div className="mt-5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-5">
-              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-300">
-                Upload complete
-              </p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                <div>
-                  <p className="text-xs uppercase text-slate-500">Filename</p>
-                  <p className="mt-1 break-all text-sm font-medium text-slate-100">
-                    {uploadResult.filename}
-                  </p>
+            <div className="p-5">
+              <label className="flex min-h-[300px] cursor-pointer flex-col items-center justify-center rounded-md border-2 border-dashed border-[#3b494c] bg-[#0d1516]/70 px-6 py-10 text-center transition hover:border-[#00daf3] hover:bg-[#00e5ff]/5">
+                <div className="flex h-14 w-14 items-center justify-center rounded border border-[#3b494c] bg-[#242b2d] text-[#9cf0ff]">
+                  <Upload className="h-7 w-7" aria-hidden="true" />
                 </div>
-                <div>
-                  <p className="text-xs uppercase text-slate-500">File ID</p>
-                  <p className="mt-1 text-sm font-medium text-slate-100">
-                    {uploadResult.file_id}
-                  </p>
+                <span className="mt-5 text-xl font-semibold text-[#dce4e5]">
+                  Drop a CSV file here or browse
+                </span>
+                <span className="mt-2 text-sm text-[#849396]">
+                  Upload one structured application log file.
+                </span>
+                <input
+                  className="sr-only"
+                  type="file"
+                  accept=".csv,text/csv"
+                  onChange={handleFileChange}
+                />
+              </label>
+
+              {selectedFile ? (
+                <div className="mt-4 rounded border border-[#3b494c] bg-[#111a1b]/80 p-4">
+                  <p className="muted-label">Selected file</p>
+                  <div className="mt-2 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="break-all text-sm font-semibold text-[#dce4e5]">
+                      {selectedFile.name}
+                    </p>
+                    <p className="text-sm text-[#849396]">
+                      {formatFileSize(selectedFile.size)}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs uppercase text-slate-500">Rows inserted</p>
-                  <p className="mt-1 text-sm font-medium text-slate-100">
-                    {uploadResult.rows_inserted}
-                  </p>
-                </div>
+              ) : null}
+
+              <div className="mt-5 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={handleUpload}
+                  disabled={!selectedFile || isUploading}
+                  className="rounded bg-[#00e5ff] px-5 py-2.5 text-sm font-semibold text-[#00363d] transition hover:bg-[#9cf0ff] disabled:cursor-not-allowed disabled:border disabled:border-[#3b494c] disabled:bg-[#111a1b] disabled:text-[#849396]"
+                >
+                  {isUploading ? "Uploading..." : "Upload CSV"}
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => navigate("/")}
-                className="mt-5 rounded-lg border border-cyan-400/40 px-4 py-2 text-sm font-medium text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-400/10"
-              >
-                Go to Dashboard
-              </button>
+
+              {uploadError ? (
+                <div className="mt-5 rounded border border-red-400/40 bg-red-500/10 p-4 text-sm text-red-200">
+                  {uploadError}
+                </div>
+              ) : null}
+
+              {uploadResult ? (
+                <div className="mt-5 rounded-md border border-emerald-400/30 bg-emerald-500/10 p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-emerald-200">
+                    Upload complete
+                  </p>
+                  <div className="mt-4 grid gap-3 md:grid-cols-3">
+                    <div className="rounded border border-emerald-400/20 bg-[#0d1516]/50 p-3">
+                      <p className="muted-label">Filename</p>
+                      <p className="mt-1 break-all text-sm font-semibold text-[#dce4e5]">
+                        {uploadResult.filename}
+                      </p>
+                    </div>
+                    <div className="rounded border border-emerald-400/20 bg-[#0d1516]/50 p-3">
+                      <p className="muted-label">File ID</p>
+                      <p className="mt-1 text-sm font-semibold text-[#dce4e5]">
+                        {uploadResult.file_id}
+                      </p>
+                    </div>
+                    <div className="rounded border border-emerald-400/20 bg-[#0d1516]/50 p-3">
+                      <p className="muted-label">Rows inserted</p>
+                      <p className="mt-1 text-sm font-semibold text-[#dce4e5]">
+                        {uploadResult.rows_inserted}
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => navigate("/")}
+                    className="mt-5 rounded border border-[#00daf3]/40 px-4 py-2 text-sm font-semibold text-[#c3f5ff] transition hover:bg-[#00e5ff]/10"
+                  >
+                    Go to Dashboard
+                  </button>
+                </div>
+              ) : null}
             </div>
-          )}
+          </div>
+
+          <PipelinePreview />
         </div>
 
-        <aside className="space-y-6">
-          <div className="panel">
-            <h2 className="text-lg font-semibold text-slate-50">Required schema</h2>
-            <p className="mt-2 text-sm text-slate-400">
-              CSV files must include these columns:
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {REQUIRED_COLUMNS.map((column) => (
-                <span
-                  key={column}
-                  className="rounded-full border border-slate-700 bg-slate-950/40 px-3 py-1 text-xs text-slate-300"
-                >
-                  {column}
-                </span>
-              ))}
+        <aside className="space-y-5">
+          <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 shadow-lg shadow-black/20">
+            <PanelHeader eyebrow="Requirements" title="Required log schema" />
+            <div className="p-4">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-1">
+                {REQUIRED_COLUMNS.map((column) => (
+                  <div
+                    key={column}
+                    className="rounded border border-[#3b494c] bg-[#0d1516]/70 px-3 py-2"
+                  >
+                    <p className="text-xs font-semibold text-[#dce4e5]">
+                      {column}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 rounded border border-[#3b494c] bg-[#111a1b]/80 px-3 py-2 text-xs leading-5 text-[#849396]">
+                Files are validated before records are stored.
+              </p>
             </div>
           </div>
 
-          <div className="panel">
-            <div className="flex items-center justify-between gap-3">
+          <div className="rounded-md border border-[#3b494c] bg-[#192122]/90 shadow-lg shadow-black/20">
+            <div className="flex items-center justify-between gap-3 border-b border-[#3b494c] bg-[#242b2d]/60 px-4 py-3">
               <div>
-                <h2 className="text-lg font-semibold text-slate-50">
-                  Existing files
-                </h2>
-                <p className="mt-1 text-sm text-slate-400">
+                <p className="muted-label">Recent uploads</p>
+                <p className="mt-1 text-sm font-semibold text-[#dce4e5]">
                   {logFiles.length} uploaded file{logFiles.length === 1 ? "" : "s"}
                 </p>
               </div>
@@ -227,7 +311,7 @@ export default function UploadLogs() {
                 type="button"
                 onClick={loadLogFiles}
                 disabled={isLoadingFiles}
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-700 px-3 py-2 text-sm font-medium text-slate-200 transition hover:border-cyan-400 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex items-center gap-2 rounded border border-[#3b494c] bg-[#0d1516] px-3 py-2 text-sm font-semibold text-[#bac9cc] transition hover:border-[#00daf3] hover:text-[#c3f5ff] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <RefreshCw
                   className={`h-4 w-4 ${isLoadingFiles ? "animate-spin" : ""}`}
@@ -238,23 +322,25 @@ export default function UploadLogs() {
             </div>
 
             {latestFiles.length > 0 ? (
-              <div className="mt-5 space-y-3">
+              <div className="divide-y divide-[#3b494c]">
                 {latestFiles.map((file) => (
-                  <div
-                    key={file.id}
-                    className="rounded-xl border border-slate-700 bg-slate-950/30 p-3"
-                  >
-                    <p className="text-sm font-semibold text-slate-100">
-                      File #{file.id}
-                    </p>
-                    <p className="mt-1 break-all text-sm text-slate-400">
-                      {file.filename}
+                  <div key={file.id} className="p-4">
+                    <div className="flex items-start justify-between gap-3">
+                      <p className="break-all text-sm font-semibold text-[#dce4e5]">
+                        {file.filename}
+                      </p>
+                      <span className="shrink-0 rounded bg-[#00e5ff]/10 px-2 py-1 text-xs font-semibold text-[#9cf0ff]">
+                        #{file.id}
+                      </span>
+                    </div>
+                    <p className="mt-2 text-xs text-[#849396]">
+                      {formatUploadedAt(file.uploaded_at)}
                     </p>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="mt-5 rounded-xl border border-slate-700 bg-slate-950/30 p-4 text-sm text-slate-400">
+              <p className="p-4 text-sm text-[#849396]">
                 No uploaded log files found yet.
               </p>
             )}
