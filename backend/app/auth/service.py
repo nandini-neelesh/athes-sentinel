@@ -10,10 +10,19 @@ from backend.app.database.models import User
 from backend.app.database.session import get_db
 
 
-SECRET_KEY = os.getenv(
-    "ATHES_SECRET_KEY",
-    "athes-dev-secret-change-before-production",
-)
+DEFAULT_SECRET_KEY = "athes-dev-secret-change-before-production"
+
+configured_secret_key = os.getenv("ATHES_SECRET_KEY")
+
+if configured_secret_key is not None:
+    configured_secret_key = configured_secret_key.strip()
+
+if os.getenv("ATHES_ENV") == "production" and not configured_secret_key:
+    raise RuntimeError(
+        "ATHES_SECRET_KEY must be configured when ATHES_ENV is production."
+    )
+
+SECRET_KEY = configured_secret_key or DEFAULT_SECRET_KEY
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 480
 

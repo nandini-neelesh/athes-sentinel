@@ -17,12 +17,9 @@ from backend.app.logs.routes import router as logs_router
 
 DEFAULT_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
 ]
 
-allowed_origins_env = os.getenv("ATHES_ALLOWED_ORIGINS")
+allowed_origins_env = os.getenv("ATHES_ALLOWED_ORIGINS", "").strip()
 
 if allowed_origins_env:
     allowed_origins = [
