@@ -2,6 +2,20 @@
 
 Athes Sentinel is a lightweight SIEM-style application log monitoring platform built to demonstrate practical backend, security analytics, machine learning, and React dashboard engineering.
 
+## Live Demo
+
+- Live application: [https://athes-sentinel.vercel.app](https://athes-sentinel.vercel.app/)
+- API health endpoint: [https://athes-sentinel-api.onrender.com](https://athes-sentinel-api.onrender.com/)
+- Source repository: [https://github.com/nandini-neelesh/athes-sentinel](https://github.com/nandini-neelesh/athes-sentinel)
+
+> The hosted version is a portfolio demo. It uses public demo credentials and a free-tier backend, which may take a moment to wake after inactivity.
+
+Public demo credentials for portfolio evaluation only:
+
+| Username | Password |
+| --- | --- |
+| `admin` | `admin123` |
+
 ## Why This Project?
 
 Modern applications produce large volumes of logs, but raw log lines are hard to review manually. Athes Sentinel turns structured application logs into a usable security workflow:
@@ -133,6 +147,28 @@ Main screens:
 | Log Analytics | Explore traffic volume, source IPs, endpoints, response times, and error rates |
 | Incident Queue | Review generated incidents sorted by risk score |
 | Analyst Workflow | Select an incident and update investigation status |
+
+## Screenshots
+
+### Login
+
+![Login](docs/screenshots/returnpage.png.png)
+
+### Security Overview after analysis
+
+![Security Overview after analysis](docs/screenshots/dashboard.png.png)
+
+### Ingest Security Logs
+
+![Ingest Security Logs](docs/screenshots/upload_logs-png.png)
+
+### Incident Queue
+
+![Incident Queue](docs/screenshots/incidents.png.png)
+
+### Analyst Workflow
+
+![Analyst Workflow](docs/screenshots/analytics.png.png)
 
 ## Required CSV Schema
 
