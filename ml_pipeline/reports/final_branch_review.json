@@ -1,0 +1,293 @@
+{
+  "outcome": "passed_with_manual_release_gates",
+  "timestamp_utc": "2026-07-26T16:17:47.3765039Z",
+  "active_branch": "nsl-kdd-integration",
+  "active_branch_commit": "22c0465ace250deaaf3943b78654e91f47b4a267",
+  "local_master_commit_used": "e024d6b1f334bd5a975e5a261b479f9057912bd8",
+  "remote_alignment": {
+    "cached_origin_master_commit": "e024d6b1f334bd5a975e5a261b479f9057912bd8",
+    "local_master_matches_cached_origin_master": true,
+    "live_remote_fetched": false,
+    "release_requirement": "Fetch deliberately and confirm current remote master alignment immediately before the real merge."
+  },
+  "initial_working_tree": {
+    "clean": true,
+    "expected_branch": true
+  },
+  "commit_review": {
+    "commit_count": 20,
+    "merge_commits": 0,
+    "fixup_squash_wip_or_temporary_commits": 0,
+    "history_understandable_as_is": true,
+    "history_rewrite_performed": false,
+    "groups": {
+      "dataset_and_model_work": [
+        "655b6d9 Prepare NSL-KDD integration",
+        "c494b61 Inspect complete NSL-KDD dataset",
+        "252fbcd Train NSL-KDD binary intrusion baseline",
+        "8633000 Select improved NSL-KDD intrusion model",
+        "db883f1 Evaluate hybrid NSL-KDD detector"
+      ],
+      "frozen_inference": [
+        "6b6a91c Freeze verified NSL-KDD inference model"
+      ],
+      "database_and_apis": [
+        "afa723a Add NSL-KDD network database schema",
+        "0910553 Add NSL-KDD network ingestion APIs",
+        "1bf86d5 Add NSL-KDD analysis and incident generation",
+        "348cdf7 Add NSL-KDD network analytics and workflow APIs"
+      ],
+      "react_frontend": [
+        "fe26b09 Add React foundation for network intrusion mode",
+        "d29b36d Add NSL-KDD network dataset upload interface",
+        "563c31a Add functional network intrusion overview",
+        "bbfb8a2 Add network intrusion analytics interface",
+        "ccb0c77 Add network incident queue and triage controls",
+        "3d21499 Add network analyst workflow interface"
+      ],
+      "verification": [
+        "25b709e Add network mode end-to-end verification"
+      ],
+      "deployment_hardening": [
+        "cbc03c2 Harden network mode deployment configuration"
+      ],
+      "documentation": [
+        "11608fd Document dual-mode Athes Sentinel platform"
+      ],
+      "release_readiness": [
+        "22c0465 Finalize release readiness verification"
+      ]
+    }
+  },
+  "complete_diff_review": {
+    "comparison": "master...nsl-kdd-integration",
+    "file_count": 73,
+    "text_insertions": 23642,
+    "text_deletions": 265,
+    "binary_file_count": 1,
+    "binary_artifact_size_bytes": 6705637,
+    "deleted_files": [],
+    "renamed_files": [],
+    "unexpected_files": [],
+    "unexplained_application_log_deletions": [],
+    "authentication_files_changed": [],
+    "deployment_configuration_removed": false,
+    "raw_datasets_tracked": false,
+    "generated_frontend_dist_tracked": false,
+    "sqlite_database_or_cache_tracked": false,
+    "credential_bearing_urls_found": false,
+    "jwt_like_tokens_found": false,
+    "absolute_windows_user_paths_found": false,
+    "expected_areas_present": [
+      "ml_pipeline source, reports, metadata, and selected artifact",
+      "backend frozen inference module",
+      "additive backend network services, routes, and schemas",
+      "additive network SQLAlchemy models and focused tests",
+      "React network API, context, pages, and page-specific components",
+      "verification scripts and committed reports",
+      "runtime dependency hardening",
+      "documentation and safe environment examples"
+    ]
+  },
+  "application_mode_safety": {
+    "outcome": "passed",
+    "original_backend_route_groups_present": [
+      "/logs",
+      "/features",
+      "/ml",
+      "/analytics",
+      "/incidents"
+    ],
+    "original_react_routes_present": [
+      "/",
+      "/upload",
+      "/analytics",
+      "/incidents",
+      "/workflow",
+      "/login"
+    ],
+    "file_context_storage_key": "athes_selected_file_id",
+    "network_context_storage_key": "athes_network_dataset_id",
+    "contexts_independent": true,
+    "existing_application_table_definitions_changed": false,
+    "existing_model_registration_change": "Only the additive network model registration import was appended.",
+    "shared_authentication_preserved": true,
+    "authentication_implementation_changed": false,
+    "backend_regression_tests": {
+      "outcome": "passed",
+      "tests_run": 23,
+      "failures": 0,
+      "errors": 0,
+      "duration_seconds": 5.252
+    }
+  },
+  "network_mode_completeness": {
+    "outcome": "passed",
+    "registered_endpoint_count": 11,
+    "authenticated_upload": true,
+    "headerless_and_headered_41_or_43_column_validation": true,
+    "persisted_original_flows": true,
+    "explicit_frozen_model_analysis": true,
+    "persisted_predictions_and_incidents": true,
+    "dashboard": true,
+    "analytics": true,
+    "incident_queue_and_detail": true,
+    "status_updates": true,
+    "analyst_workflow": true,
+    "inference_only_behavior": true,
+    "idempotent_completed_analysis": true,
+    "failed_analysis_rollback": true,
+    "complete_http_e2e_evidence": "passed in committed N6A/N7B verification"
+  },
+  "artifact_and_dependencies": {
+    "outcome": "passed",
+    "artifact_relative_path": "ml_pipeline/artifacts/nsl_kdd_improved_binary_pipeline.joblib",
+    "artifact_tracked": true,
+    "artifact_size_bytes": 6705637,
+    "sha256_expected": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+    "sha256_observed_primary": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+    "sha256_observed_simulated_merge": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+    "metadata_hash_agrees": true,
+    "required_declarations": {
+      "scikit_learn": "scikit-learn==1.9.0",
+      "joblib": "joblib"
+    },
+    "repository_relative_model_loading": true,
+    "raw_dataset_runtime_dependency": false,
+    "inference_fitting": false,
+    "baseline_and_experimental_joblib_ignored": true
+  },
+  "database_merge_impact": {
+    "outcome": "additive",
+    "existing_application_tables_preserved": [
+      "users",
+      "log_files",
+      "raw_logs",
+      "ip_features",
+      "incidents"
+    ],
+    "missing_network_tables_expected_to_be_created": [
+      "network_datasets",
+      "network_flows",
+      "network_predictions",
+      "network_incidents"
+    ],
+    "existing_application_table_alterations": false,
+    "deployed_database_network_table_state": "Per the established release state, the deployed master database does not yet contain the experimental network tables; N8A did not contact it.",
+    "startup_behavior": "Base.metadata.create_all() creates missing tables.",
+    "migration_limitation": "create_all() is not a versioned migration history or rollback system.",
+    "postgresql_dialect_compilation": "passed",
+    "deployed_database_contacted": false
+  },
+  "merge_simulation": {
+    "outcome": "passed",
+    "source": "committed local master in a disposable detached Git worktree",
+    "command_policy": "git merge --no-commit --no-ff nsl-kdd-integration",
+    "real_primary_branch_merged": false,
+    "conflicts": false,
+    "conflicted_files": [],
+    "staged_file_count": 73,
+    "unmerged_file_count": 0,
+    "selected_artifact_present": true,
+    "selected_artifact_hash_match": true,
+    "backend": {
+      "app_import": "passed",
+      "startup_table_creation": "passed",
+      "health_response": "passed",
+      "registered_route_path_count_including_framework_paths": 37,
+      "registered_network_endpoint_count": 11,
+      "original_route_groups_present": true,
+      "registered_table_count": 9,
+      "registered_network_tables": [
+        "network_datasets",
+        "network_flows",
+        "network_incidents",
+        "network_predictions"
+      ],
+      "model_cache_size_at_startup": 0,
+      "model_loaded_at_startup": false,
+      "database": "disposable SQLite only"
+    },
+    "frontend": {
+      "outcome": "passed",
+      "vite_version": "5.4.21",
+      "modules_transformed": 2462,
+      "duration_seconds": 5.08,
+      "temporary_api_base_url_used": true,
+      "non_blocking_warning": "A minified JavaScript chunk remains larger than 500 kB.",
+      "generated_dist_removed": true
+    },
+    "disposable_database_removed": true,
+    "disposable_worktree_removed": true
+  },
+  "final_verification_evidence": {
+    "deployment_readiness_verifier": {
+      "outcome": "passed",
+      "timestamp_only_report_write_suppressed": true,
+      "stages": [
+        "tracked artifact",
+        "clean checkout",
+        "raw-data independence",
+        "runtime dependencies",
+        "backend startup",
+        "PostgreSQL compilation",
+        "environment and CORS",
+        "frontend build",
+        "repository hygiene",
+        "artifact integrity"
+      ]
+    },
+    "backend_tests": "23 passed",
+    "final_model_artifact_hash_unchanged": true,
+    "simulated_frontend_build": "passed",
+    "complete_22544_row_e2e_rerun": "not required because the conflict-free simulated merge exposed no integration concern; committed E2E evidence remains green"
+  },
+  "production_variable_checklist": {
+    "backend": [
+      "ATHES_ENV=production",
+      "DATABASE_URL",
+      "ATHES_SECRET_KEY",
+      "ATHES_ALLOWED_ORIGINS"
+    ],
+    "frontend": [
+      "VITE_API_BASE_URL"
+    ],
+    "safe_failure_behavior": {
+      "backend_missing_secret_or_origins": "production startup fails clearly",
+      "frontend_missing_api_base_url": "production build fails clearly"
+    },
+    "cors_requirement": "ATHES_ALLOWED_ORIGINS must contain the final Vercel origin; unrestricted * must not be used with credentials."
+  },
+  "known_limitations": [
+    "Local master matches only the cached origin/master reference; live remote synchronization must be confirmed before the real merge.",
+    "NSL-KDD is an older benchmark.",
+    "The detector performs binary classification only.",
+    "R2L and U2R benchmark recall remain weak.",
+    "Only NSL-KDD-compatible inputs are supported, not PCAP or arbitrary network logs.",
+    "Upload and analysis remain synchronous.",
+    "Actual Render request, timeout, memory, and concurrency limits remain untested live.",
+    "There is no versioned database migration system.",
+    "There is no automated blocking or remediation.",
+    "Network screenshots are still pending capture."
+  ],
+  "release_blockers": {
+    "code_or_merge_conflict_blockers": [],
+    "manual_release_gates": [
+      "Confirm current remote master alignment after an authorized fetch.",
+      "Obtain deliberate approval for the real merge and push.",
+      "Configure and verify production environment variables outside Git.",
+      "Run the documented small live smoke test before attempting the complete benchmark upload."
+    ]
+  },
+  "safety_confirmation": {
+    "real_merge_performed": false,
+    "push_performed": false,
+    "deployment_performed": false,
+    "live_database_contacted": false,
+    "live_render_contacted": false,
+    "live_vercel_contacted": false,
+    "other_live_service_contacted": false,
+    "primary_worktree_modified_by_simulation": false,
+    "earlier_verification_reports_modified": false
+  }
+}
