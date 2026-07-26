@@ -13,6 +13,7 @@ from backend.app.detection.routes import router as ml_router
 from backend.app.features.routes import router as features_router
 from backend.app.incidents.routes import router as incidents_router
 from backend.app.logs.routes import router as logs_router
+from backend.app.network.routes import router as network_router
 
 
 DEFAULT_ALLOWED_ORIGINS = [
@@ -20,6 +21,7 @@ DEFAULT_ALLOWED_ORIGINS = [
 ]
 
 allowed_origins_env = os.getenv("ATHES_ALLOWED_ORIGINS", "").strip()
+application_environment = os.getenv("ATHES_ENV", "").strip().lower()
 
 if allowed_origins_env:
     allowed_origins = [
@@ -27,6 +29,10 @@ if allowed_origins_env:
         for origin in allowed_origins_env.split(",")
         if origin.strip()
     ]
+elif application_environment == "production":
+    raise RuntimeError(
+        "ATHES_ALLOWED_ORIGINS must be configured when ATHES_ENV is production."
+    )
 else:
     allowed_origins = DEFAULT_ALLOWED_ORIGINS
 
@@ -51,6 +57,7 @@ app.include_router(features_router)
 app.include_router(incidents_router)
 app.include_router(logs_router)
 app.include_router(ml_router)
+app.include_router(network_router)
 
 
 class TestLogRequest(BaseModel):
