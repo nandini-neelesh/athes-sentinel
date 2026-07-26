@@ -1,0 +1,101 @@
+{
+  "verification_outcome": "passed",
+  "artifact_relative_path": "ml_pipeline/artifacts/nsl_kdd_improved_binary_pipeline.joblib",
+  "metadata_relative_path": "ml_pipeline/artifacts/improved_model_metadata.json",
+  "artifact_size_bytes": 6705637,
+  "artifact_sha256": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+  "artifact_hash_matches_metadata": true,
+  "model_type": "sklearn.pipeline.Pipeline",
+  "classifier_type": "sklearn.ensemble._forest.RandomForestClassifier",
+  "threshold": 0.38,
+  "official_test_row_count": 22544,
+  "prediction_counts": {
+    "normal": 13366,
+    "attack": 9178
+  },
+  "reproduced_metrics": {
+    "actual_normal": 9711,
+    "actual_attack": 12833,
+    "true_negatives": 9419,
+    "false_positives": 292,
+    "false_negatives": 3947,
+    "true_positives": 8886,
+    "accuracy": 0.8119677075940384,
+    "precision": 0.9681847897145348,
+    "recall": 0.6924335697031092,
+    "f1": 0.8074144745808913,
+    "f2": 0.7342588001983144,
+    "false_positive_rate": 0.030068993924415612,
+    "false_negative_rate": 0.30756643029689085
+  },
+  "expected_metrics": {
+    "accuracy": 0.8119677075940384,
+    "precision": 0.9681847897145348,
+    "recall": 0.6924335697031092,
+    "f1": 0.8074144745808913,
+    "f2": 0.7342588001983144,
+    "false_positive_rate": 0.030068993924415612,
+    "false_negative_rate": 0.30756643029689085,
+    "true_negatives": 9419,
+    "false_positives": 292,
+    "false_negatives": 3947,
+    "true_positives": 8886
+  },
+  "metric_absolute_differences": {
+    "accuracy": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "f2": 0.0,
+    "false_positive_rate": 0.0,
+    "false_negative_rate": 0.0,
+    "true_negatives": 0.0,
+    "false_positives": 0.0,
+    "false_negatives": 0.0,
+    "true_positives": 0.0
+  },
+  "metric_tolerance": 1e-09,
+  "maximum_metric_difference": 0.0,
+  "cache_verification": {
+    "passed": true,
+    "same_pipeline_object": true,
+    "same_metadata_object": true,
+    "cache_maxsize": 1
+  },
+  "supported_input_formats": {
+    "labelled_official": "all 43 official NSL-KDD columns",
+    "inference_only": "exactly the 41 official feature columns",
+    "model_input_after_validation": "40 columns after dropping num_outbound_cmds"
+  },
+  "validation_cases_tested": {
+    "valid_43_column_input": "passed",
+    "caller_dataframe_not_modified": "passed",
+    "valid_41_column_input": "passed",
+    "missing_required_column": "passed",
+    "unsupported_extra_column": "passed",
+    "invalid_numeric_value": "passed",
+    "missing_value": "passed",
+    "infinite_value": "passed"
+  },
+  "fitting_guard": {
+    "passed": true,
+    "fit_methods_called": false,
+    "guarded_methods": [
+      "Pipeline.fit",
+      "ColumnTransformer.fit",
+      "ColumnTransformer.fit_transform",
+      "OneHotEncoder.fit",
+      "OneHotEncoder.fit_transform",
+      "RandomForestClassifier.fit"
+    ]
+  },
+  "no_model_training_or_fitting_occurred": true,
+  "timestamp_utc": "2026-07-26T07:55:43.682439+00:00",
+  "package_versions": {
+    "python": "3.13.9",
+    "scikit_learn": "1.9.0",
+    "joblib": "1.5.3",
+    "pandas": "3.0.3",
+    "numpy": "2.4.6"
+  }
+}
