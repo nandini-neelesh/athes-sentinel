@@ -1,0 +1,221 @@
+{
+  "outcome": "passed",
+  "timestamp_utc": "2026-07-26T14:20:11.860616+00:00",
+  "temporary_database_policy": "The real FastAPI app was imported only after DATABASE_URL was redirected to a disposable SQLite file. get_db was explicitly overridden, startup was not connected to any external database, and the disposable database was removed afterward.",
+  "defects_found_and_fixed": [],
+  "authenticated_workflow": {
+    "authentication": "passed",
+    "unauthenticated_protected_request": "rejected",
+    "token_recorded_in_report": false,
+    "labelled_upload": {
+      "upload": "passed",
+      "dataset_listing": "passed",
+      "pre_analysis_detail": "passed",
+      "source_order_pagination": "passed",
+      "family_distribution": {
+        "normal": 9711,
+        "dos": 7460,
+        "r2l": 2885,
+        "probe": 2421,
+        "u2r": 67
+      }
+    },
+    "analysis": {
+      "outcome": "passed",
+      "complete_uploaded_rows": 22544,
+      "total_predictions": 22544,
+      "predicted_normal": 13366,
+      "predicted_attack": 9178,
+      "total_incidents": 9178,
+      "threshold_probability": 0.38,
+      "model_version": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+      "confusion_matrix": {
+        "true_negatives": 9419,
+        "false_positives": 292,
+        "false_negatives": 3947,
+        "true_positives": 8886
+      },
+      "metrics": {
+        "accuracy": 0.8119677075940384,
+        "precision": 0.9681847897145348,
+        "recall": 0.6924335697031092,
+        "f1": 0.8074144745808914,
+        "f2": 0.7342588001983144,
+        "false_positive_rate": 0.030068993924415612,
+        "false_negative_rate": 0.30756643029689085
+      },
+      "maximum_metric_difference": 1.1102230246251565e-16
+    }
+  },
+  "dashboard_reconciliation": {
+    "outcome": "passed",
+    "workflow_count_sum": 9178,
+    "severity_count_sum": 9178,
+    "priority_incident_count": 5,
+    "priority_order": "passed",
+    "fabricated_context_absent": true
+  },
+  "analytics_reconciliation": {
+    "outcome": "passed",
+    "totals": {
+      "prediction_distribution": 22544,
+      "protocol_distribution": 22544,
+      "flag_distribution": 22544,
+      "probability_histogram": 22544,
+      "severity_distribution": 9178,
+      "actual_family_distribution": 22544,
+      "correctness_distribution": 22544
+    },
+    "service_limit_5": "passed",
+    "service_limit_10": "passed",
+    "service_limit_50": "passed",
+    "service_distribution_is_partial": true,
+    "histogram_bucket_labels": [
+      "0.00\u20130.10",
+      "0.10\u20130.20",
+      "0.20\u20130.30",
+      "0.30\u20130.38",
+      "0.38\u20130.50",
+      "0.50\u20130.60",
+      "0.60\u20130.75",
+      "0.75\u20130.90",
+      "0.90\u20131.00"
+    ]
+  },
+  "queue_and_detail": {
+    "outcome": "passed",
+    "total_incidents": 9178,
+    "adjacent_pages_unique": true,
+    "risk_order": "passed",
+    "status_filter": "passed",
+    "severity_filter_totals": {
+      "critical": 6921,
+      "high": 482,
+      "medium": 331,
+      "low": 1444
+    },
+    "case_insensitive_search": "passed",
+    "combined_filters": "passed",
+    "detail_contract": "passed",
+    "fabricated_context_absent": true
+  },
+  "status_persistence": {
+    "outcome": "passed",
+    "incident_id": 1,
+    "original_status": "open",
+    "updated_status": "investigating",
+    "fresh_request_persistence": "passed",
+    "queue_movement": "passed",
+    "dashboard_reconciliation": "passed",
+    "restored_for_determinism": true
+  },
+  "inference_only": {
+    "outcome": "passed",
+    "dataset_id": 2,
+    "uploaded_rows": 2,
+    "predictions": 2,
+    "predicted_attack": 2,
+    "incidents": 2,
+    "benchmark_metrics_are_null": true,
+    "incident_benchmark_fields_are_null": true,
+    "temporary_csv_deleted": true
+  },
+  "idempotency": {
+    "outcome": "passed",
+    "reused_existing": true,
+    "prediction_count": 22544,
+    "incident_count": 9178,
+    "prediction_function_not_called": true
+  },
+  "frontend_contract_inspection": {
+    "inspected_files": [
+      "frontend/src/pages/network/NetworkUpload.jsx",
+      "frontend/src/pages/network/NetworkOverview.jsx",
+      "frontend/src/pages/network/NetworkAnalytics.jsx",
+      "frontend/src/pages/network/NetworkIncidents.jsx",
+      "frontend/src/pages/network/components/NetworkIncidentTable.jsx",
+      "frontend/src/pages/network/components/NetworkIncidentDetail.jsx",
+      "frontend/src/pages/network/NetworkWorkflow.jsx",
+      "frontend/src/pages/network/components/NetworkWorkflowColumn.jsx"
+    ],
+    "demonstrated_field_mismatches": []
+  },
+  "route_registration": {
+    "network_route_count": 11,
+    "existing_application_route_groups": [
+      "/logs",
+      "/analytics",
+      "/features",
+      "/incidents",
+      "/ml"
+    ]
+  },
+  "no_fit_verification": {
+    "outcome": "passed",
+    "guarded_methods": [
+      "Pipeline.fit",
+      "ColumnTransformer.fit",
+      "ColumnTransformer.fit_transform",
+      "OneHotEncoder.fit",
+      "OneHotEncoder.fit_transform",
+      "RandomForestClassifier.fit"
+    ],
+    "statement": "No model training, fitting, tuning, or threshold selection occurred."
+  },
+  "artifact_integrity": {
+    "outcome": "passed",
+    "artifact_relative_path": "ml_pipeline/artifacts/nsl_kdd_improved_binary_pipeline.joblib",
+    "artifact_sha256_before": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+    "artifact_sha256_after": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+    "metadata_sha256_before": "e0fe4336f99bbb10fb417d2c159a56126a0e1bf55c70d01afa1b5abf2b6a701b",
+    "metadata_sha256_after": "e0fe4336f99bbb10fb417d2c159a56126a0e1bf55c70d01afa1b5abf2b6a701b",
+    "source_dataset_unchanged": true
+  },
+  "regression_results": {
+    "api_contract_tests": {
+      "outcome": "passed",
+      "return_code": 0,
+      "duration_seconds": 4.131
+    },
+    "complete_backend_tests": {
+      "outcome": "passed",
+      "return_code": 0,
+      "duration_seconds": 6.243
+    },
+    "final_model_verification": {
+      "outcome": "passed",
+      "return_code": 0,
+      "duration_seconds": 3.214
+    },
+    "frontend_build": {
+      "outcome": "passed",
+      "return_code": 0,
+      "duration_seconds": 8.063,
+      "generated_dist_removed": true
+    }
+  },
+  "api_contract_tests": {
+    "outcome": "passed",
+    "return_code": 0,
+    "duration_seconds": 4.131
+  },
+  "backend_test_result": {
+    "outcome": "passed",
+    "return_code": 0,
+    "duration_seconds": 6.243
+  },
+  "frontend_build_result": {
+    "outcome": "passed",
+    "return_code": 0,
+    "duration_seconds": 8.063,
+    "generated_dist_removed": true
+  },
+  "real_database_safety": {
+    "real_local_database_unchanged": true,
+    "deployed_postgresql_contacted": false,
+    "deployed_vercel_contacted": false,
+    "deployed_master_contacted": false,
+    "disposable_database_removed": true
+  },
+  "duration_seconds": 33.95
+}
