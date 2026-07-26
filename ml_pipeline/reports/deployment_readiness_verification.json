@@ -1,0 +1,322 @@
+{
+  "overall_outcome": "passed",
+  "timestamp_utc": "2026-07-26T15:33:52.463760+00:00",
+  "git_branch": "nsl-kdd-integration",
+  "git_commit": "25b709efde96480bfda6aaff3aab2d43a07ae66e",
+  "tracked_artifact": {
+    "outcome": "passed",
+    "tracked": true,
+    "relative_path": "ml_pipeline/artifacts/nsl_kdd_improved_binary_pipeline.joblib",
+    "size_bytes": 6705637,
+    "git_blob_size_bytes": 6705637,
+    "git_blob_id": "0b00028182443897950696aecd017eaa499d2a9a",
+    "working_tree_sha256": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+    "metadata_sha256_match": true,
+    "ignored_checks": {
+      "baseline_joblib": true,
+      "hybrid_joblib": true,
+      "raw_test_dataset": true,
+      "raw_train_dataset": true,
+      "root_env": true,
+      "frontend_env": true
+    },
+    "tracked_raw_dataset_files": []
+  },
+  "artifact_integrity": {
+    "outcome": "passed",
+    "sha256_before": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+    "sha256_after": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+    "metadata_sha256_before": "e0fe4336f99bbb10fb417d2c159a56126a0e1bf55c70d01afa1b5abf2b6a701b",
+    "metadata_sha256_after": "e0fe4336f99bbb10fb417d2c159a56126a0e1bf55c70d01afa1b5abf2b6a701b",
+    "contents_modified": false
+  },
+  "clean_checkout": {
+    "outcome": "passed",
+    "source": "git archive HEAD with only current modifications to already tracked deployment files overlaid",
+    "overlaid_tracked_files": [
+      "requirements.txt",
+      "backend/app/main.py",
+      "frontend/src/api/client.js"
+    ],
+    "ignored_and_untracked_files_excluded": true,
+    "raw_datasets_absent": true,
+    "model_load_and_sample_inference": {
+      "artifact_relative_path": "ml_pipeline/artifacts/nsl_kdd_improved_binary_pipeline.joblib",
+      "metadata_relative_path": "ml_pipeline/artifacts/improved_model_metadata.json",
+      "artifact_exists": true,
+      "metadata_exists": true,
+      "artifact_hash": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+      "metadata_sklearn_version": "1.9.0",
+      "runtime_sklearn_version": "1.9.0",
+      "runtime_joblib_version": "1.5.3",
+      "model_type": "Pipeline",
+      "classifier_type": "RandomForestClassifier",
+      "cache_same_object": true,
+      "cache_size": 1,
+      "prediction_count": 1,
+      "probability": 0.06333333333333334,
+      "predicted_class": "normal",
+      "fit_methods_called": false
+    },
+    "temporary_checkout_disposed": true
+  },
+  "raw_dataset_independence": "passed",
+  "dependency_audit": {
+    "outcome": "passed",
+    "declarations": {
+      "fastapi": "fastapi",
+      "uvicorn": "uvicorn",
+      "sqlalchemy": "sqlalchemy",
+      "pydantic": "pydantic",
+      "multipart": "python-multipart",
+      "pandas": "pandas",
+      "numpy": "numpy",
+      "joblib": "joblib",
+      "password_hashing": "passlib[bcrypt]",
+      "jwt": "python-jose[cryptography]",
+      "bcrypt_compatibility": "bcrypt==4.0.1",
+      "postgresql_driver": "psycopg[binary]",
+      "model_serialization_compatibility": "scikit-learn==1.9.0"
+    },
+    "local_verification_versions": {
+      "fastapi": "0.136.3",
+      "uvicorn": "0.49.0",
+      "sqlalchemy": "2.0.50",
+      "pydantic": "2.13.4",
+      "python-multipart": "0.0.32",
+      "pandas": "3.0.3",
+      "numpy": "2.4.6",
+      "scikit-learn": "1.9.0",
+      "joblib": "1.5.3",
+      "passlib": "1.7.4",
+      "python-jose": "3.5.0",
+      "bcrypt": "4.0.1",
+      "psycopg": null
+    },
+    "postgresql_driver_note": "psycopg[binary] is declared for clean production installation. The pre-existing local verification venv does not currently contain psycopg, so no PostgreSQL connection was attempted.",
+    "decision": "Added the directly imported joblib dependency and pinned scikit-learn to the artifact creation version 1.9.0. No other runtime package was changed."
+  },
+  "backend_startup": {
+    "outcome": "passed",
+    "command_equivalent": "uvicorn backend.app.main:app --host 127.0.0.1 --port <temporary-port>",
+    "bound_interface": "localhost only",
+    "health_endpoint": "/",
+    "health_response": "passed",
+    "openapi_generation": "passed",
+    "openapi_path_count": 33,
+    "network_routes_registered": 11,
+    "existing_application_route_groups_registered": [
+      "/logs",
+      "/features",
+      "/ml",
+      "/analytics",
+      "/incidents"
+    ],
+    "real_jwt_login": "passed",
+    "protected_network_read": "passed",
+    "startup_model_cache_size": 0,
+    "startup_loaded_model": false,
+    "multipart_inference_upload": "passed",
+    "frozen_model_http_prediction": "passed",
+    "prediction_count": 1,
+    "model_version": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+    "cors_preflight": {
+      "origin": "configured placeholder production origin",
+      "credentials": true,
+      "methods": [
+        "GET",
+        "POST",
+        "PATCH"
+      ],
+      "authorization_header": true,
+      "multipart_content_type": true
+    },
+    "disposable_table_database_created": true
+  },
+  "route_and_table_registration": {
+    "route_count": 33,
+    "network_routes": 11,
+    "tables": [
+      "incidents",
+      "ip_features",
+      "log_files",
+      "network_datasets",
+      "network_flows",
+      "network_incidents",
+      "network_predictions",
+      "raw_logs",
+      "users"
+    ],
+    "table_count": 9
+  },
+  "database_compatibility": {
+    "outcome": "passed",
+    "tables": [
+      "incidents",
+      "ip_features",
+      "log_files",
+      "network_datasets",
+      "network_flows",
+      "network_incidents",
+      "network_predictions",
+      "raw_logs",
+      "users"
+    ],
+    "table_count": 9,
+    "network_tables": [
+      "network_datasets",
+      "network_flows",
+      "network_incidents",
+      "network_predictions"
+    ],
+    "postgresql_tables_compiled": [
+      "incidents",
+      "ip_features",
+      "log_files",
+      "network_datasets",
+      "network_flows",
+      "network_incidents",
+      "network_predictions",
+      "raw_logs",
+      "users"
+    ],
+    "postgresql_indexes_compiled": [
+      "ix_incidents_id",
+      "ix_incidents_ip_address",
+      "ix_ip_features_id",
+      "ix_ip_features_ip_address",
+      "ix_log_files_id",
+      "ix_network_datasets_analysis_status",
+      "ix_network_datasets_uploaded_at",
+      "ix_network_flows_actual_family",
+      "ix_network_flows_dataset_id",
+      "ix_network_flows_protocol_type",
+      "ix_network_flows_service",
+      "ix_network_incidents_created_at",
+      "ix_network_incidents_dataset_id",
+      "ix_network_incidents_risk_score",
+      "ix_network_incidents_severity",
+      "ix_network_incidents_status",
+      "ix_network_predictions_dataset_id",
+      "ix_network_predictions_predicted_class",
+      "ix_network_predictions_rf_attack_probability",
+      "ix_raw_logs_id",
+      "ix_raw_logs_ip_address",
+      "ix_users_id",
+      "ix_users_username"
+    ],
+    "postgres_legacy_normalized": true,
+    "postgresql_normalized": true,
+    "sqlite_preserved": true,
+    "deployed_database_contacted": false,
+    "migration_note": "Base.metadata.create_all() creates missing network tables but is not a versioned migration system. The deployed master database does not yet contain these additive tables, so no existing network-table migration is required before first deployment."
+  },
+  "environment_and_cors": {
+    "outcome": "passed",
+    "environment_handling": {
+      "production_missing_jwt_secret": "clear startup failure",
+      "production_missing_allowed_origins": "clear startup failure",
+      "development_defaults": {
+        "database": "repository-local SQLite",
+        "jwt": "development-only fallback",
+        "cors": [
+          "http://localhost:5173"
+        ]
+      },
+      "secret_values_recorded": false
+    },
+    "render_configuration": {
+      "build_command": "pip install -r requirements.txt",
+      "start_command": "uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT",
+      "database_url_source": "Render database connectionString",
+      "jwt_secret_source": "Render-generated environment value",
+      "environment": "production",
+      "allowed_origins_source": "manually configured environment value",
+      "live_values_recorded": false
+    },
+    "cors_preflight": {
+      "origin": "configured placeholder production origin",
+      "credentials": true,
+      "methods": [
+        "GET",
+        "POST",
+        "PATCH"
+      ],
+      "authorization_header": true,
+      "multipart_content_type": true
+    },
+    "unrestricted_wildcard_with_credentials": false
+  },
+  "frontend_build": {
+    "outcome": "passed",
+    "duration_seconds": 9.725,
+    "configured_environment_variable": "VITE_API_BASE_URL",
+    "configured_placeholder_url_embedded": true,
+    "localhost_api_absent_from_production_bundle": true,
+    "network_upload_method": "POST multipart FormData",
+    "analysis_method": "POST",
+    "incident_status_method": "PATCH",
+    "model_or_dataset_bundled": false,
+    "live_secret_bundled": false,
+    "intentional_demo_credentials_note": "The existing demo login guidance remains intentionally visible.",
+    "vercel_spa_refresh_rewrite": "passed",
+    "generated_file_count": 3,
+    "build_output_removed": true
+  },
+  "repository_hygiene": {
+    "outcome": "passed",
+    "tracked_generated_or_local_files": [],
+    "tracked_raw_datasets": [],
+    "machine_specific_paths_in_runtime_source_or_reports": [],
+    "jwt_like_values": [],
+    "database_credential_urls": [],
+    "complete_dataset_contents_tracked": false,
+    "runtime_benchmark_filename_references": false,
+    "readme_note": "README contains pre-existing local Windows command examples. It was excluded from runtime/source hygiene and left unchanged as explicitly required.",
+    "intentional_demo_credentials": "Existing documented demo-user credentials remain intentional; no additional password or token material was found."
+  },
+  "upload_and_analysis_characteristics": {
+    "max_upload_bytes": 52428800,
+    "flow_insert_batch_size": 2000,
+    "analysis_batch_size": 5000,
+    "model_cache_maxsize": 1,
+    "upload_is_retained_on_server": false,
+    "complete_kddtest_local_http_verification_rows": 22544,
+    "completed_analysis_reused": true,
+    "child_write_rollback_covered_by_backend_tests": true,
+    "analysis_execution": "synchronous",
+    "known_limitations": [
+      "The 50 MiB upload and synchronous analysis path must be validated against the selected Render plan's actual request size, memory, and timeout limits during deployment.",
+      "A future production architecture may use object storage and a background worker with progress polling for large datasets."
+    ]
+  },
+  "known_deployment_limitations": [
+    "The 50 MiB upload and synchronous analysis path must be validated against the selected Render plan's actual request size, memory, and timeout limits during deployment.",
+    "A future production architecture may use object storage and a background worker with progress polling for large datasets.",
+    "PostgreSQL model definitions were compiled locally without connecting to Render PostgreSQL.",
+    "The project still uses startup create_all rather than formal versioned migrations."
+  ],
+  "defects_found_and_fixed": [
+    {
+      "defect": "The production runtime directly imported joblib without declaring it, and requirements did not guarantee the scikit-learn 1.9.0 artifact-creation version.",
+      "fix": "Declared joblib and pinned scikit-learn==1.9.0 in requirements.txt."
+    },
+    {
+      "defect": "A production frontend without VITE_API_BASE_URL silently used the localhost backend.",
+      "fix": "The production API client now fails clearly when the environment variable is absent; development retains its localhost fallback."
+    },
+    {
+      "defect": "A production backend without ATHES_ALLOWED_ORIGINS silently allowed only localhost, making a deployed Vercel frontend unusable.",
+      "fix": "Production startup now requires ATHES_ALLOWED_ORIGINS; development retains the localhost origin."
+    }
+  ],
+  "live_service_safety": {
+    "render_contacted": false,
+    "postgresql_contacted": false,
+    "vercel_contacted": false,
+    "master_deployment_contacted": false,
+    "only_http_bind": "127.0.0.1 temporary port",
+    "real_local_database_unchanged": true
+  },
+  "duration_seconds": 44.417
+}

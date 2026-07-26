@@ -21,6 +21,7 @@ DEFAULT_ALLOWED_ORIGINS = [
 ]
 
 allowed_origins_env = os.getenv("ATHES_ALLOWED_ORIGINS", "").strip()
+application_environment = os.getenv("ATHES_ENV", "").strip().lower()
 
 if allowed_origins_env:
     allowed_origins = [
@@ -28,6 +29,10 @@ if allowed_origins_env:
         for origin in allowed_origins_env.split(",")
         if origin.strip()
     ]
+elif application_environment == "production":
+    raise RuntimeError(
+        "ATHES_ALLOWED_ORIGINS must be configured when ATHES_ENV is production."
+    )
 else:
     allowed_origins = DEFAULT_ALLOWED_ORIGINS
 
