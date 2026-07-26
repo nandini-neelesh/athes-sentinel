@@ -13,6 +13,7 @@ from backend.app.detection.routes import router as ml_router
 from backend.app.features.routes import router as features_router
 from backend.app.incidents.routes import router as incidents_router
 from backend.app.logs.routes import router as logs_router
+from backend.app.network.routes import router as network_router
 
 
 DEFAULT_ALLOWED_ORIGINS = [
@@ -51,6 +52,7 @@ app.include_router(features_router)
 app.include_router(incidents_router)
 app.include_router(logs_router)
 app.include_router(ml_router)
+app.include_router(network_router)
 
 
 class TestLogRequest(BaseModel):

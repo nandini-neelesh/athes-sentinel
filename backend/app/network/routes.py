@@ -1,0 +1,109 @@
+"""Authenticated upload and read routes for network-flow datasets."""
+
+import logging
+
+from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile
+
+from backend.app.auth.service import get_current_user
+from backend.app.database.session import get_db
+from backend.app.network.schemas import (
+    NetworkDatasetDetail,
+    NetworkDatasetUploadResponse,
+    PaginatedNetworkDatasets,
+    PaginatedNetworkFlows,
+)
+from backend.app.network.service import (
+    MAX_UPLOAD_BYTES,
+    NetworkPersistenceError,
+    NetworkUploadTooLargeError,
+    NetworkValidationError,
+    get_network_dataset_detail,
+    ingest_network_dataset,
+    list_network_datasets,
+    list_network_flows,
+)
+
+LOGGER = logging.getLogger(__name__)
+router = APIRouter(prefix="/network", tags=["Network"])
+
+
+@router.post(
+    "/datasets/upload",
+    response_model=NetworkDatasetUploadResponse,
+    status_code=201,
+)
+async def upload_network_dataset(
+    file: UploadFile = File(...),
+    db=Depends(get_db),
+    current_user=Depends(get_current_user),
+):
+    """Read at most 50 MB and persist one fully validated network dataset."""
+    del current_user
+    try:
+        file_bytes = await file.read(MAX_UPLOAD_BYTES + 1)
+        return ingest_network_dataset(db, file.filename, file_bytes)
+    except NetworkUploadTooLargeError as error:
+        raise HTTPException(status_code=413, detail=str(error)) from error
+    except NetworkValidationError as error:
+        raise HTTPException(status_code=400, detail=str(error)) from error
+    except NetworkPersistenceError as error:
+        raise HTTPException(status_code=500, detail=str(error)) from error
+    except Exception as error:
+        db.rollback()
+        LOGGER.exception("Unexpected network upload failure")
+        raise HTTPException(
+            status_code=500,
+            detail="Network dataset upload failed unexpectedly.",
+        ) from error
+    finally:
+        await file.close()
+
+
+@router.get("/datasets", response_model=PaginatedNetworkDatasets)
+def read_network_datasets(
+    limit: int = Query(default=50, ge=1, le=200),
+    offset: int = Query(default=0, ge=0),
+    db=Depends(get_db),
+    current_user=Depends(get_current_user),
+):
+    """List uploaded network datasets newest first."""
+    del current_user
+    return list_network_datasets(db, limit=limit, offset=offset)
+
+
+@router.get("/datasets/{dataset_id}", response_model=NetworkDatasetDetail)
+def read_network_dataset(
+    dataset_id: int,
+    db=Depends(get_db),
+    current_user=Depends(get_current_user),
+):
+    """Return one dataset and its current flow/prediction/incident counts."""
+    del current_user
+    detail = get_network_dataset_detail(db, dataset_id)
+    if detail is None:
+        raise HTTPException(status_code=404, detail="Network dataset not found")
+    return detail
+
+
+@router.get(
+    "/datasets/{dataset_id}/flows",
+    response_model=PaginatedNetworkFlows,
+)
+def read_network_dataset_flows(
+    dataset_id: int,
+    limit: int = Query(default=100, ge=1, le=500),
+    offset: int = Query(default=0, ge=0),
+    db=Depends(get_db),
+    current_user=Depends(get_current_user),
+):
+    """Return source-ordered original flows without encoded model features."""
+    del current_user
+    page = list_network_flows(
+        db,
+        dataset_id=dataset_id,
+        limit=limit,
+        offset=offset,
+    )
+    if page is None:
+        raise HTTPException(status_code=404, detail="Network dataset not found")
+    return page
