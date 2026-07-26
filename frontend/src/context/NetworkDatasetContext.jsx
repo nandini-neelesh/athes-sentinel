@@ -54,6 +54,7 @@ export function NetworkDatasetProvider({ children }) {
   );
   const [isLoadingDatasets, setIsLoadingDatasets] = useState(false);
   const [datasetsError, setDatasetsError] = useState("");
+  const datasetsRef = useRef([]);
   const isMountedRef = useRef(false);
   const requestSequenceRef = useRef(0);
 
@@ -68,6 +69,7 @@ export function NetworkDatasetProvider({ children }) {
 
   const clearNetworkState = useCallback(() => {
     requestSequenceRef.current += 1;
+    datasetsRef.current = [];
     setDatasets([]);
     setSelectedDatasetIdState(null);
     setIsLoadingDatasets(false);
@@ -75,7 +77,7 @@ export function NetworkDatasetProvider({ children }) {
     localStorage.removeItem(NETWORK_DATASET_STORAGE_KEY);
   }, []);
 
-  const refreshDatasets = useCallback(async () => {
+  const refreshDatasets = useCallback(async (preferredDatasetId = null) => {
     if (isLoadingAuth || !isAuthenticated) {
       return [];
     }
@@ -96,16 +98,21 @@ export function NetworkDatasetProvider({ children }) {
         return nextDatasets;
       }
 
+      datasetsRef.current = nextDatasets;
       setDatasets(nextDatasets);
       setSelectedDatasetIdState((currentDatasetId) => {
         const persistedDatasetId = readPersistedDatasetId();
-        const preferredDatasetId = currentDatasetId || persistedDatasetId;
+        const requestedDatasetId = Number(preferredDatasetId);
+        const preferredSelection =
+          Number.isInteger(requestedDatasetId) && requestedDatasetId > 0
+            ? requestedDatasetId
+            : currentDatasetId || persistedDatasetId;
         const selectionStillExists = nextDatasets.some(
-          (dataset) => dataset.id === preferredDatasetId
+          (dataset) => dataset.id === preferredSelection
         );
 
         if (selectionStillExists) {
-          return preferredDatasetId;
+          return preferredSelection;
         }
 
         localStorage.removeItem(NETWORK_DATASET_STORAGE_KEY);
@@ -162,20 +169,36 @@ export function NetworkDatasetProvider({ children }) {
   }, [isLoadingAuth, selectedDatasetId]);
 
   const setSelectedDatasetId = useCallback(
-    (datasetId) => {
+    (datasetId, knownDataset = null) => {
       if (!datasetId) {
         setSelectedDatasetIdState(null);
         return;
       }
 
       const numericDatasetId = Number(datasetId);
-      const selectionExists = datasets.some(
+      let selectionExists = datasetsRef.current.some(
         (dataset) => dataset.id === numericDatasetId
       );
 
+      if (
+        !selectionExists &&
+        knownDataset &&
+        Number(knownDataset.id) === numericDatasetId
+      ) {
+        const nextDatasets = [
+          knownDataset,
+          ...datasetsRef.current.filter(
+            (dataset) => dataset.id !== numericDatasetId
+          ),
+        ];
+        datasetsRef.current = nextDatasets;
+        setDatasets(nextDatasets);
+        selectionExists = true;
+      }
+
       setSelectedDatasetIdState(selectionExists ? numericDatasetId : null);
     },
-    [datasets]
+    []
   );
 
   const selectedDataset = useMemo(
