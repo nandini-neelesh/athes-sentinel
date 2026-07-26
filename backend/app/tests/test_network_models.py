@@ -98,6 +98,38 @@ class NetworkModelSchemaTest(unittest.TestCase):
         self.session.rollback()
         self.session.close()
 
+    def _incident_graph(self, risk_score, suffix):
+        """Build a complete unique graph for risk-score constraint checks."""
+        dataset = NetworkDataset(
+            filename=f"risk-{suffix}.csv",
+            total_records=1,
+            has_ground_truth=False,
+            source_type="nsl_kdd_inference",
+        )
+        flow = NetworkFlow(**network_flow_values(row_number=0))
+        prediction = NetworkPrediction(
+            rf_attack_probability=0.938,
+            predicted_binary=1,
+            predicted_class="attack",
+            threshold_used=0.38,
+            model_name="NSL-KDD improved Random Forest",
+            model_version="artifact-sha256",
+        )
+        incident = NetworkIncident(
+            incident_type="Predicted Network Intrusion",
+            severity="critical",
+            risk_score=risk_score,
+            evidence="Constraint verification.",
+            recommended_action="Review.",
+        )
+        dataset.flows.append(flow)
+        prediction.dataset = dataset
+        prediction.flow = flow
+        incident.dataset = dataset
+        incident.flow = flow
+        incident.prediction = prediction
+        return dataset, incident
+
     def test_schema_relationships_constraints_and_cascade(self):
         table_names = set(inspect(self.engine).get_table_names())
         self.assertTrue(
@@ -134,7 +166,7 @@ class NetworkModelSchemaTest(unittest.TestCase):
         incident = NetworkIncident(
             incident_type="Predicted Network Intrusion",
             severity="high",
-            risk_score=0.91,
+            risk_score=93.8,
             evidence="Random Forest attack probability exceeded threshold.",
             recommended_action="Review the network-flow record.",
             protocol_type="tcp",
@@ -181,6 +213,7 @@ class NetworkModelSchemaTest(unittest.TestCase):
         self.assertIsNone(reloaded_flow.difficulty_level)
         self.assertIsNone(reloaded_prediction.is_correct)
         self.assertIsNone(reloaded_prediction.actual_binary)
+        self.assertEqual(reloaded_incident.risk_score, 93.8)
 
         labelled_dataset = NetworkDataset(
             filename="labelled.txt",
@@ -203,6 +236,25 @@ class NetworkModelSchemaTest(unittest.TestCase):
         self.assertEqual(labelled_dataset.flows[0].actual_label, "normal")
         self.assertEqual(labelled_dataset.flows[0].actual_family, "normal")
         self.assertEqual(labelled_dataset.flows[0].difficulty_level, 21)
+
+        zero_dataset, zero_incident = self._incident_graph(0, "zero")
+        hundred_dataset, hundred_incident = self._incident_graph(100, "hundred")
+        self.session.add_all([zero_dataset, hundred_dataset])
+        self.session.commit()
+        self.assertEqual(zero_incident.risk_score, 0)
+        self.assertEqual(hundred_incident.risk_score, 100)
+
+        above_dataset, _ = self._incident_graph(100.01, "above")
+        self.session.add(above_dataset)
+        with self.assertRaises(IntegrityError):
+            self.session.commit()
+        self.session.rollback()
+
+        negative_dataset, _ = self._incident_graph(-0.01, "negative")
+        self.session.add(negative_dataset)
+        with self.assertRaises(IntegrityError):
+            self.session.commit()
+        self.session.rollback()
 
         duplicate_row = NetworkFlow(**network_flow_values(row_number=0))
         duplicate_row.dataset_id = dataset_id
@@ -232,7 +284,7 @@ class NetworkModelSchemaTest(unittest.TestCase):
             prediction_id=prediction_id,
             incident_type="Predicted Network Intrusion",
             severity="high",
-            risk_score=0.91,
+            risk_score=93.8,
             evidence="Duplicate incident must fail.",
             recommended_action="Review.",
         )

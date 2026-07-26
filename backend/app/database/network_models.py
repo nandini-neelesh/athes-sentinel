@@ -273,7 +273,7 @@ class NetworkIncident(Base):
             name="ck_network_incidents_status",
         ),
         CheckConstraint(
-            "risk_score >= 0 AND risk_score <= 1",
+            "risk_score >= 0 AND risk_score <= 100",
             name="ck_network_incidents_risk_score_range",
         ),
         CheckConstraint(

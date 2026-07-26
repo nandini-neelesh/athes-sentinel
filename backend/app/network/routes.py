@@ -6,7 +6,16 @@ from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile
 
 from backend.app.auth.service import get_current_user
 from backend.app.database.session import get_db
+from backend.app.network.analysis_service import (
+    NetworkAnalysisConflictError,
+    NetworkAnalysisExecutionError,
+    NetworkAnalysisNoFlowsError,
+    NetworkAnalysisNotFoundError,
+    analyze_network_dataset,
+    persisted_analysis_summary,
+)
 from backend.app.network.schemas import (
+    NetworkAnalysisResponse,
     NetworkDatasetDetail,
     NetworkDatasetUploadResponse,
     PaginatedNetworkDatasets,
@@ -69,6 +78,46 @@ def read_network_datasets(
     """List uploaded network datasets newest first."""
     del current_user
     return list_network_datasets(db, limit=limit, offset=offset)
+
+
+@router.post(
+    "/datasets/{dataset_id}/analyze",
+    response_model=NetworkAnalysisResponse,
+)
+def analyze_stored_network_dataset(
+    dataset_id: int,
+    db=Depends(get_db),
+    current_user=Depends(get_current_user),
+):
+    """Run the frozen binary detector or reuse a consistent completed result."""
+    del current_user
+    try:
+        return analyze_network_dataset(db, dataset_id)
+    except NetworkAnalysisNotFoundError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
+    except NetworkAnalysisNoFlowsError as error:
+        raise HTTPException(status_code=400, detail=str(error)) from error
+    except NetworkAnalysisConflictError as error:
+        raise HTTPException(status_code=409, detail=str(error)) from error
+    except NetworkAnalysisExecutionError as error:
+        raise HTTPException(status_code=500, detail=str(error)) from error
+
+
+@router.get(
+    "/datasets/{dataset_id}/analysis",
+    response_model=NetworkAnalysisResponse,
+)
+def read_stored_network_analysis(
+    dataset_id: int,
+    db=Depends(get_db),
+    current_user=Depends(get_current_user),
+):
+    """Return persisted status and results without running inference."""
+    del current_user
+    summary = persisted_analysis_summary(db, dataset_id)
+    if summary is None:
+        raise HTTPException(status_code=404, detail="Network dataset not found")
+    return summary
 
 
 @router.get("/datasets/{dataset_id}", response_model=NetworkDatasetDetail)

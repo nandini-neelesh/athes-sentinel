@@ -64,6 +64,59 @@ class NetworkDatasetDetail(NetworkDatasetSummary):
     predicted_attack_count: int
 
 
+class NetworkSeverityCounts(BaseModel):
+    """Incident counts for the fixed product-triage severity bands."""
+
+    critical: int
+    high: int
+    medium: int
+    low: int
+
+
+class NetworkBenchmarkMetrics(BaseModel):
+    """Optional benchmark-only outcomes for a labelled uploaded dataset."""
+
+    actual_normal: int
+    actual_attack: int
+    true_negatives: int
+    false_positives: int
+    false_negatives: int
+    true_positives: int
+    accuracy: float
+    precision: float
+    recall: float
+    f1: float
+    f2: float
+    false_positive_rate: float
+    false_negative_rate: float
+
+
+class NetworkAnalysisResponse(BaseModel):
+    """Persisted analysis state and aggregate detector outcomes."""
+
+    dataset_id: int
+    filename: str
+    total_flows: int
+    total_predictions: int
+    predicted_normal: int
+    predicted_attack: int
+    predicted_attack_percentage: float
+    total_incidents: int
+    severity_counts: NetworkSeverityCounts
+    minimum_probability: float | None
+    maximum_probability: float | None
+    mean_probability: float | None
+    model_name: str | None
+    model_version: str | None
+    threshold: float | None
+    analysis_status: str
+    analysis_error: str | None
+    analysis_started_at: datetime | None
+    analysis_completed_at: datetime | None
+    reused_existing: bool
+    benchmark_metrics: NetworkBenchmarkMetrics | None
+
+
 def _network_feature_response_fields() -> dict:
     """Build response fields from the official schema without duplicating it."""
     fields = {}
