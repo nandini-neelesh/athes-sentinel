@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { FileProvider } from "./context/FileContext.jsx";
+import { NetworkDatasetProvider } from "./context/NetworkDatasetContext.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -12,7 +13,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <AuthProvider>
         <FileProvider>
-          <App />
+          <NetworkDatasetProvider>
+            <App />
+          </NetworkDatasetProvider>
         </FileProvider>
       </AuthProvider>
     </BrowserRouter>
