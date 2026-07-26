@@ -1,0 +1,158 @@
+{
+  "train": {
+    "source_filename": "KDDTrain+.txt",
+    "file_size_bytes": 19109424,
+    "row_count": 125973,
+    "column_count": 43,
+    "duplicate_row_count": 0,
+    "total_missing_cell_count": 0,
+    "missing_count_per_column_nonzero": {},
+    "positive_infinity_count_numeric_columns": 0,
+    "negative_infinity_count_numeric_columns": 0,
+    "infinity_count_numeric_columns": 0,
+    "memory_usage_bytes": 45485870,
+    "categorical_unique_counts": {
+      "protocol_type": 3,
+      "service": 70,
+      "flag": 11
+    },
+    "normalized_label_distribution": {
+      "normal": 67343,
+      "neptune": 41214,
+      "satan": 3633,
+      "ipsweep": 3599,
+      "portsweep": 2931,
+      "smurf": 2646,
+      "nmap": 1493,
+      "back": 956,
+      "teardrop": 892,
+      "warezclient": 890,
+      "pod": 201,
+      "guess_passwd": 53,
+      "buffer_overflow": 30,
+      "warezmaster": 20,
+      "land": 18,
+      "imap": 11,
+      "rootkit": 10,
+      "loadmodule": 9,
+      "ftp_write": 8,
+      "multihop": 7,
+      "phf": 4,
+      "perl": 3,
+      "spy": 2
+    },
+    "number_of_unique_labels": 23,
+    "binary_distribution": {
+      "normal": 67343,
+      "attack": 58630
+    },
+    "difficulty_level_minimum": 0,
+    "difficulty_level_maximum": 21,
+    "columns_containing_one_unique_value": [
+      "num_outbound_cmds"
+    ],
+    "numeric_columns_with_zero_variance": [
+      "num_outbound_cmds"
+    ]
+  },
+  "test": {
+    "source_filename": "KDDTest+.txt",
+    "file_size_bytes": 3441513,
+    "row_count": 22544,
+    "column_count": 43,
+    "duplicate_row_count": 0,
+    "total_missing_cell_count": 0,
+    "missing_count_per_column_nonzero": {},
+    "positive_infinity_count_numeric_columns": 0,
+    "negative_infinity_count_numeric_columns": 0,
+    "infinity_count_numeric_columns": 0,
+    "memory_usage_bytes": 8153230,
+    "categorical_unique_counts": {
+      "protocol_type": 3,
+      "service": 64,
+      "flag": 11
+    },
+    "normalized_label_distribution": {
+      "normal": 9711,
+      "neptune": 4657,
+      "guess_passwd": 1231,
+      "mscan": 996,
+      "warezmaster": 944,
+      "apache2": 737,
+      "satan": 735,
+      "processtable": 685,
+      "smurf": 665,
+      "back": 359,
+      "snmpguess": 331,
+      "saint": 319,
+      "mailbomb": 293,
+      "snmpgetattack": 178,
+      "portsweep": 157,
+      "ipsweep": 141,
+      "httptunnel": 133,
+      "nmap": 73,
+      "pod": 41,
+      "buffer_overflow": 20,
+      "multihop": 18,
+      "named": 17,
+      "ps": 15,
+      "sendmail": 14,
+      "xterm": 13,
+      "rootkit": 13,
+      "teardrop": 12,
+      "xlock": 9,
+      "land": 7,
+      "xsnoop": 4,
+      "ftp_write": 3,
+      "loadmodule": 2,
+      "worm": 2,
+      "perl": 2,
+      "sqlattack": 2,
+      "udpstorm": 2,
+      "phf": 2,
+      "imap": 1
+    },
+    "number_of_unique_labels": 38,
+    "binary_distribution": {
+      "normal": 9711,
+      "attack": 12833
+    },
+    "difficulty_level_minimum": 0,
+    "difficulty_level_maximum": 21,
+    "columns_containing_one_unique_value": [
+      "num_outbound_cmds"
+    ],
+    "numeric_columns_with_zero_variance": [
+      "num_outbound_cmds"
+    ]
+  },
+  "train_vs_test": {
+    "labels_appearing_only_in_training": [
+      "spy",
+      "warezclient"
+    ],
+    "labels_appearing_only_in_testing": [
+      "apache2",
+      "httptunnel",
+      "mailbomb",
+      "mscan",
+      "named",
+      "processtable",
+      "ps",
+      "saint",
+      "sendmail",
+      "snmpgetattack",
+      "snmpguess",
+      "sqlattack",
+      "udpstorm",
+      "worm",
+      "xlock",
+      "xsnoop",
+      "xterm"
+    ],
+    "same_43_column_structure": true,
+    "protocol_type_values_appearing_only_in_testing": [],
+    "service_values_appearing_only_in_testing": [],
+    "flag_values_appearing_only_in_testing": []
+  }
+}
