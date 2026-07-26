@@ -1,9 +1,10 @@
 """Audit Athes Sentinel production readiness without contacting live services.
 
 The verifier creates a Git-archive snapshot, overlays only current modifications
-to already tracked deployment files, and exercises that candidate checkout with
-the existing local Python and Node installations. Ignored datasets, local
-databases, untracked files, and live provider credentials are never copied.
+to explicitly listed release-readiness files, and exercises that candidate
+checkout with the existing local Python and Node installations. Ignored
+datasets, local databases, untracked files, and live provider credentials are
+never copied.
 """
 
 from __future__ import annotations
@@ -82,6 +83,7 @@ EXPECTED_OLD_ROUTE_PREFIXES = (
     "/incidents",
 )
 CANDIDATE_OVERLAY_FILES = (
+    Path("scripts/verify_deployment_readiness.py"),
     Path("requirements.txt"),
     Path("backend/app/main.py"),
     Path("frontend/src/api/client.js"),
@@ -230,7 +232,7 @@ def git_artifact_audit() -> dict[str, Any]:
 
 
 def create_candidate_checkout(destination: Path) -> dict[str, Any]:
-    """Extract committed Git content, then overlay only tracked deployment edits."""
+    """Extract committed Git content, then overlay listed release-readiness edits."""
     archive_path = destination.parent / "candidate.tar"
     with archive_path.open("wb") as archive:
         completed = subprocess.run(
@@ -284,8 +286,8 @@ def create_candidate_checkout(destination: Path) -> dict[str, Any]:
     )
     return {
         "source": (
-            "git archive HEAD with only current modifications to already "
-            "tracked deployment files overlaid"
+            "git archive HEAD with only current modifications to explicitly "
+            "listed release-readiness files overlaid"
         ),
         "overlaid_tracked_files": overlaid,
         "ignored_and_untracked_files_excluded": True,
@@ -534,10 +536,10 @@ print(json.dumps({
     "postgresql_tables_compiled": sorted(table_sql),
     "postgresql_indexes_compiled": sorted(index_sql),
     "postgres_legacy_normalized": normalize_database_url(
-        "postgres://user:placeholder@host/database"
+        "postgres://placeholder-host/database"
     ).startswith("postgresql+psycopg://"),
     "postgresql_normalized": normalize_database_url(
-        "postgresql://user:placeholder@host/database"
+        "postgresql://placeholder-host/database"
     ).startswith("postgresql+psycopg://"),
     "sqlite_preserved": normalize_database_url(
         "sqlite:///temporary.sqlite3"

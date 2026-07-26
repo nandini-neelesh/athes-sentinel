@@ -1,0 +1,189 @@
+{
+  "outcome": "passed",
+  "timestamp_utc": "2026-07-26T16:03:21.2991118Z",
+  "branch": "nsl-kdd-integration",
+  "commit_tested": "11608fdd531365fe88dacb185d5e860c4d071a86",
+  "verifier_false_positive": {
+    "root_cause": "The repository-hygiene scanner examined the committed verifier and correctly matched credential-shaped PostgreSQL normalization fixtures that contained placeholder user information. They were deliberate test data, not application secrets.",
+    "exact_fix": {
+      "legacy_postgres_fixture": "postgres://placeholder-host/database",
+      "standard_postgresql_fixture": "postgresql://placeholder-host/database",
+      "candidate_checkout_policy": "The verifier itself was added to the explicit tracked-file overlay list so an uncommitted release-review fix is exercised inside the Git-archive candidate checkout."
+    },
+    "additional_integration_finding": "The first corrected run showed that the clean-checkout simulation still used the committed verifier because the verifier was not in its explicit candidate overlay list. Adding only that file made the clean checkout test the actual candidate verifier.",
+    "hygiene_detection_weakened": false,
+    "scanner_guarantees_retained": [
+      "credential-bearing PostgreSQL URLs remain detected",
+      "JWT-like tokens remain detected",
+      "machine-specific paths remain detected",
+      "tracked raw datasets remain rejected",
+      "forbidden generated and local artifacts remain rejected"
+    ],
+    "scanner_self_exclusion_added": false,
+    "postgresql_url_exclusion_added": false
+  },
+  "deployment_readiness_verifier": {
+    "outcome": "passed",
+    "command": ".\\venv\\Scripts\\python.exe scripts\\verify_deployment_readiness.py",
+    "timestamp_utc": "2026-07-26T16:02:59.047250+00:00",
+    "duration_seconds": 36.534,
+    "stages": {
+      "tracked_final_artifact": "passed",
+      "artifact_hash": "passed",
+      "clean_checkout": "passed",
+      "raw_dataset_independence": "passed",
+      "model_loading_and_sample_inference": "passed",
+      "no_fitting": "passed",
+      "dependency_audit": "passed",
+      "production_style_backend_startup": "passed",
+      "route_and_table_registration": "passed",
+      "postgresql_compilation": "passed",
+      "environment_checks": "passed",
+      "cors_checks": "passed",
+      "frontend_production_build": "passed",
+      "repository_hygiene": "passed"
+    },
+    "registered_route_count": 33,
+    "registered_network_route_count": 11,
+    "registered_table_count": 9,
+    "clean_checkout_overlay": [
+      "scripts/verify_deployment_readiness.py"
+    ],
+    "frontend_dist_removed": true
+  },
+  "backend_tests": {
+    "outcome": "passed",
+    "command": ".\\venv\\Scripts\\python.exe -m unittest discover -s backend/app/tests -p \"test*.py\" -v",
+    "tests_run": 23,
+    "failures": 0,
+    "errors": 0,
+    "duration_seconds": 4.789
+  },
+  "final_model_verification": {
+    "outcome": "passed",
+    "official_test_rows": 22544,
+    "predicted_normal": 13366,
+    "predicted_attack": 9178,
+    "confusion_matrix": {
+      "true_negatives": 9419,
+      "false_positives": 292,
+      "false_negatives": 3947,
+      "true_positives": 8886
+    },
+    "metrics": {
+      "accuracy": 0.8119677075940384,
+      "precision": 0.9681847897145348,
+      "recall": 0.6924335697031092,
+      "f1": 0.8074144745808913,
+      "f2": 0.7342588001983144,
+      "false_positive_rate": 0.030068993924415612,
+      "false_negative_rate": 0.30756643029689085
+    },
+    "maximum_stored_metric_difference": 0.0,
+    "cache_verification": "passed",
+    "validation_smoke_tests": "passed",
+    "no_fitting": true,
+    "timestamp_only_report_write_suppressed": true
+  },
+  "complete_network_e2e": {
+    "outcome": "passed",
+    "complete_labelled_rows": 22544,
+    "flows": 22544,
+    "predictions": 22544,
+    "predicted_normal": 13366,
+    "predicted_attack": 9178,
+    "incidents": 9178,
+    "confusion_matrix": {
+      "true_negatives": 9419,
+      "false_positives": 292,
+      "false_negatives": 3947,
+      "true_positives": 8886
+    },
+    "dashboard_reconciliation": "passed",
+    "analytics_reconciliation": "passed",
+    "incident_queue_and_detail": "passed",
+    "workflow_status_persistence": "passed",
+    "workflow_queue_movement": "passed",
+    "inference_only_workflow": "passed",
+    "idempotent_reuse": "passed",
+    "second_analysis_reused_existing": true,
+    "no_fitting": true,
+    "disposable_sqlite_only": true,
+    "timestamp_only_report_write_suppressed": true
+  },
+  "frontend_build": {
+    "outcome": "passed",
+    "command": "npm.cmd run build",
+    "temporary_api_base_url_used": true,
+    "vite_version": "5.4.21",
+    "modules_transformed": 2462,
+    "duration_seconds": 10.26,
+    "application_log_pages_compiled": true,
+    "network_pages_compiled": true,
+    "remaining_warning": "A non-blocking Vite warning reports a minified JavaScript chunk larger than 500 kB.",
+    "generated_dist_removed": true
+  },
+  "artifact_integrity": {
+    "relative_path": "ml_pipeline/artifacts/nsl_kdd_improved_binary_pipeline.joblib",
+    "tracked": true,
+    "size_bytes": 6705637,
+    "git_blob_id": "0b00028182443897950696aecd017eaa499d2a9a",
+    "sha256_before": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+    "sha256_after": "09b4cac3372256c3122bcfb5555706d63397e8449385470a283427e688691c13",
+    "unchanged": true
+  },
+  "repository_hygiene": {
+    "outcome": "passed",
+    "selected_model_tracked": true,
+    "raw_nsl_kdd_files_tracked": false,
+    "raw_nsl_kdd_files_ignored": true,
+    "baseline_and_experimental_joblib_files_ignored": true,
+    "tracked_sqlite_databases": false,
+    "tracked_python_caches": false,
+    "tracked_frontend_dist": false,
+    "tracked_temporary_files": false,
+    "tracked_credential_bearing_database_urls": false,
+    "tracked_jwt_like_tokens": false,
+    "tracked_absolute_windows_user_paths": false,
+    "secrets_printed_or_recorded": false
+  },
+  "working_tree_expectation": {
+    "before_release_review_commit": [
+      "scripts/verify_deployment_readiness.py",
+      "ml_pipeline/reports/deployment_readiness_verification.json",
+      "ml_pipeline/reports/final_release_readiness.json"
+    ],
+    "after_release_review_commit": "clean",
+    "unrelated_changes_expected": false
+  },
+  "documentation_verification": {
+    "status": "passed in Phase N7A",
+    "documentation_files_changed_in_phase_n7b": false,
+    "readiness_verifier_remained_compatible_with_documented_configuration": true
+  },
+  "known_operational_limitations": [
+    "NSL-KDD is an older benchmark and does not demonstrate modern production-traffic performance.",
+    "R2L and U2R benchmark recall remain weak.",
+    "The detector is binary and does not predict attack families.",
+    "Network input must be NSL-KDD-compatible; PCAP and arbitrary network-log formats are not supported.",
+    "Uploads and analysis are synchronous.",
+    "Actual Render request-size, memory, and timeout behavior still requires a live smoke test on the selected hosting plan.",
+    "SQLAlchemy startup create_all() creates missing tables but is not a versioned migration system.",
+    "The application does not perform automated blocking or remediation."
+  ],
+  "scope_confirmation": {
+    "application_code_changed": false,
+    "database_schema_changed": false,
+    "model_artifact_or_training_code_changed": false,
+    "requirements_changed": false,
+    "documentation_changed": false,
+    "deployment_configuration_changed": false,
+    "merge_performed": false,
+    "push_performed": false,
+    "deployment_performed": false,
+    "live_database_contacted": false,
+    "live_render_contacted": false,
+    "live_vercel_contacted": false,
+    "master_deployment_contacted": false
+  }
+}

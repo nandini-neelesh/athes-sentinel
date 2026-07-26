@@ -1,8 +1,8 @@
 {
   "overall_outcome": "passed",
-  "timestamp_utc": "2026-07-26T15:33:52.463760+00:00",
+  "timestamp_utc": "2026-07-26T16:02:59.047250+00:00",
   "git_branch": "nsl-kdd-integration",
-  "git_commit": "25b709efde96480bfda6aaff3aab2d43a07ae66e",
+  "git_commit": "11608fdd531365fe88dacb185d5e860c4d071a86",
   "tracked_artifact": {
     "outcome": "passed",
     "tracked": true,
@@ -32,11 +32,9 @@
   },
   "clean_checkout": {
     "outcome": "passed",
-    "source": "git archive HEAD with only current modifications to already tracked deployment files overlaid",
+    "source": "git archive HEAD with only current modifications to explicitly listed release-readiness files overlaid",
     "overlaid_tracked_files": [
-      "requirements.txt",
-      "backend/app/main.py",
-      "frontend/src/api/client.js"
+      "scripts/verify_deployment_readiness.py"
     ],
     "ignored_and_untracked_files_excluded": true,
     "raw_datasets_absent": true,
@@ -249,7 +247,7 @@
   },
   "frontend_build": {
     "outcome": "passed",
-    "duration_seconds": 9.725,
+    "duration_seconds": 10.998,
     "configured_environment_variable": "VITE_API_BASE_URL",
     "configured_placeholder_url_embedded": true,
     "localhost_api_absent_from_production_bundle": true,
@@ -318,5 +316,5 @@
     "only_http_bind": "127.0.0.1 temporary port",
     "real_local_database_unchanged": true
   },
-  "duration_seconds": 44.417
+  "duration_seconds": 36.534
 }
