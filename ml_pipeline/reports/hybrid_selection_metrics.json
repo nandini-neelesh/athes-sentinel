@@ -1,0 +1,47 @@
+{
+  "data_source": "KDDTrain+.txt",
+  "fusion_selection_rows": 18896,
+  "rf_weights_evaluated": [
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9
+  ],
+  "threshold_grid": {
+    "minimum": 0.1,
+    "maximum": 0.9,
+    "increment": 0.01,
+    "count_per_weight": 81
+  },
+  "false_positive_rate_limit": 0.05,
+  "valid_constrained_combination_available": true,
+  "selection_policy": "Prefer FPR <= 0.05; maximize F2, then recall, macro attack-family recall, lower FPR, precision, RF weight closest to 0.70, and threshold closest to 0.50.",
+  "selected_fusion": {
+    "rf_weight": 0.9,
+    "if_weight": 0.09999999999999998,
+    "threshold": 0.27,
+    "accuracy": 0.9980948348856901,
+    "balanced_accuracy": 0.9982108128204437,
+    "precision": 0.9960353420933393,
+    "recall": 0.999886286104162,
+    "f1": 0.9979570990806946,
+    "f2": 0.9991137169348241,
+    "false_positive_rate": 0.0034646604632745993,
+    "false_negative_rate": 0.00011371389583807141,
+    "specificity": 0.9965353395367254,
+    "true_negatives": 10067,
+    "false_positives": 35,
+    "false_negatives": 1,
+    "true_positives": 8793,
+    "dos_recall": 1.0,
+    "probe_recall": 1.0,
+    "r2l_recall": 0.9933774834437086,
+    "u2r_recall": 1.0,
+    "macro_attack_family_recall": 0.9983443708609272,
+    "meets_fpr_constraint": true,
+    "selected": true
+  },
+  "official_test_data_used": false,
+  "internal_holdout_data_used": false
+}

@@ -1,0 +1,158 @@
+{
+  "experiment_outcome": "rejected",
+  "decision_reason": "Rejected because holdout hybrid F2 was not strictly higher than RF-only F2.",
+  "split_policy": {
+    "source": "KDDTrain+.txt",
+    "random_state": 42,
+    "stratified_binary_target": true,
+    "two_train_test_split_calls": true,
+    "detector_fitting_fraction": 0.7,
+    "fusion_selection_fraction": 0.15,
+    "acceptance_holdout_fraction": 0.15,
+    "partition_row_counts": {
+      "detector_fitting": 88181,
+      "fusion_selection": 18896,
+      "acceptance_holdout": 18896
+    },
+    "sampling_or_synthetic_data_used": false
+  },
+  "feature_policy": {
+    "input_feature_count": 40,
+    "categorical_feature_count": 3,
+    "numeric_feature_count": 37,
+    "excluded_columns": [
+      "label",
+      "difficulty_level",
+      "num_outbound_cmds"
+    ],
+    "initial_rf_transformed_feature_count": 120,
+    "initial_if_transformed_feature_count": 76
+  },
+  "isolation_forest_training_policy": {
+    "initial_fit_rows": 47140,
+    "initial_fit_source": "normal-labelled records from detector fitting partition only",
+    "parameters": {
+      "n_estimators": 300,
+      "contamination": "auto",
+      "max_samples": "auto",
+      "random_state": 42,
+      "n_jobs": -1
+    },
+    "preprocessing": {
+      "categorical": "OneHotEncoder(handle_unknown='ignore')",
+      "numeric": "StandardScaler(with_mean=False)"
+    },
+    "attack_records_used_for_fit": false
+  },
+  "anomaly_calibration_method": {
+    "raw_score": "-IsolationForest.decision_function(X)",
+    "initial_lower_1st_percentile": -0.18204437114286837,
+    "initial_upper_99th_percentile": 0.03783671450779286,
+    "fit_source": "normal records used for initial Isolation Forest fit",
+    "transformation": "clip((raw_score - lower) / (upper - lower), 0, 1)",
+    "final_full_normal_training_bounds": null
+  },
+  "selected_fusion": {
+    "rf_weight": 0.9,
+    "if_weight": 0.09999999999999998,
+    "threshold": 0.27,
+    "accuracy": 0.9980948348856901,
+    "balanced_accuracy": 0.9982108128204437,
+    "precision": 0.9960353420933393,
+    "recall": 0.999886286104162,
+    "f1": 0.9979570990806946,
+    "f2": 0.9991137169348241,
+    "false_positive_rate": 0.0034646604632745993,
+    "false_negative_rate": 0.00011371389583807141,
+    "specificity": 0.9965353395367254,
+    "true_negatives": 10067,
+    "false_positives": 35,
+    "false_negatives": 1,
+    "true_positives": 8793,
+    "dos_recall": 1.0,
+    "probe_recall": 1.0,
+    "r2l_recall": 0.9933774834437086,
+    "u2r_recall": 1.0,
+    "macro_attack_family_recall": 0.9983443708609272,
+    "meets_fpr_constraint": true,
+    "selected": true
+  },
+  "fusion_selection_constraint_available": true,
+  "internal_holdout": {
+    "rf_only_threshold": 0.38,
+    "rf_only_metrics": {
+      "threshold": 0.38,
+      "accuracy": 0.9989415749364945,
+      "balanced_accuracy": 0.9989585459738957,
+      "precision": 0.9985228951255539,
+      "recall": 0.9992040932347925,
+      "f1": 0.9988633780404638,
+      "f2": 0.9990677792683205,
+      "false_positive_rate": 0.001287001287001287,
+      "false_negative_rate": 0.0007959067652075042,
+      "specificity": 0.9987129987129987,
+      "true_negatives": 10088,
+      "false_positives": 13,
+      "false_negatives": 7,
+      "true_positives": 8788,
+      "dos_recall": 1.0,
+      "probe_recall": 0.9977477477477478,
+      "r2l_recall": 0.9815950920245399,
+      "u2r_recall": 1.0,
+      "macro_attack_family_recall": 0.9948357099430719
+    },
+    "hybrid_metrics": {
+      "threshold": 0.27,
+      "accuracy": 0.9980948348856901,
+      "balanced_accuracy": 0.9981812460493529,
+      "precision": 0.9964856592223104,
+      "recall": 0.9994314951677089,
+      "f1": 0.9979564032697548,
+      "f2": 0.9988409354332856,
+      "false_positive_rate": 0.003069003069003069,
+      "false_negative_rate": 0.0005685048322910744,
+      "specificity": 0.996930996930997,
+      "true_negatives": 10070,
+      "false_positives": 31,
+      "false_negatives": 5,
+      "true_positives": 8790,
+      "dos_recall": 1.0,
+      "probe_recall": 0.9988738738738738,
+      "r2l_recall": 0.9815950920245399,
+      "u2r_recall": 1.0,
+      "macro_attack_family_recall": 0.9951172414746035
+    },
+    "acceptance": {
+      "decision": "rejected",
+      "reason": "Rejected because holdout hybrid F2 was not strictly higher than RF-only F2.",
+      "required_fpr_maximum": 0.05,
+      "required_strict_f2_improvement": true,
+      "rf_only_holdout_f2": 0.9990677792683205,
+      "hybrid_holdout_f2": 0.9988409354332856,
+      "hybrid_holdout_false_positive_rate": 0.003069003069003069,
+      "parameters_changed_after_holdout": false
+    }
+  },
+  "official_test_metrics": null,
+  "test_only_attack_label_performance": null,
+  "durations_seconds": {
+    "initial_rf_training": 10.695711800013669,
+    "initial_if_training": 1.5130982999689877,
+    "initial_anomaly_calibration": 1.0009526000358164,
+    "fusion_rf_prediction": 0.20205309998709708,
+    "fusion_if_prediction_and_calibration": 0.41995919996406883,
+    "fusion_grid_evaluation": 9.228582500014454,
+    "holdout_rf_prediction": 0.19310230005066842,
+    "holdout_if_prediction_and_calibration": 0.3708386999787763
+  },
+  "official_test_loaded": false,
+  "official_test_influenced_selection": false,
+  "selection_revised_after_official_test": false,
+  "report_paths": {
+    "fusion_search": "ml_pipeline/reports/hybrid_fusion_search.csv",
+    "fusion_selection": "ml_pipeline/reports/hybrid_selection_metrics.json",
+    "internal_holdout_comparison": "ml_pipeline/reports/hybrid_internal_holdout_comparison.csv",
+    "experiment_summary": "ml_pipeline/reports/hybrid_experiment_summary.json",
+    "metadata": "ml_pipeline/artifacts/hybrid_model_metadata.json"
+  }
+}
