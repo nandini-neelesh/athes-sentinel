@@ -15,3 +15,6 @@ frontend/.env
 
 # Local UI design references
 design-reference/
+
+# NSL-KDD dataset downloaded separately
+data/external/nsl-kdd/
