@@ -87,3 +87,8 @@ class Incident(Base):
     updated_at = Column(DateTime, default=datetime.utcnow)
 
     log_file = relationship("LogFile", back_populates="incidents")
+
+
+# Register the additive network-flow tables on the shared SQLAlchemy metadata.
+# The import stays at the end so the existing application-log models load first.
+from backend.app.database import network_models as network_models  # noqa: E402,F401
