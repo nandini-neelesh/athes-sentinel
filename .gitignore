@@ -18,3 +18,6 @@ design-reference/
 
 # NSL-KDD dataset downloaded separately
 data/external/nsl-kdd/
+
+# Generated binary model artifacts stay local pending deployment review
+ml_pipeline/artifacts/*.joblib

@@ -1,0 +1,52 @@
+{
+  "evaluation_policy": {
+    "training_data": "KDDTrain+.txt",
+    "evaluation_data": "KDDTest+.txt",
+    "test_set_used_for_fitting_or_tuning": false,
+    "hyperparameter_tuning_performed": false,
+    "classification_threshold": 0.5,
+    "positive_class": "attack"
+  },
+  "train_row_count": 125973,
+  "test_row_count": 22544,
+  "feature_count_before_encoding": 40,
+  "transformed_feature_count_after_encoding": 121,
+  "train_binary_distribution": {
+    "normal": 67343,
+    "attack": 58630
+  },
+  "test_binary_distribution": {
+    "normal": 9711,
+    "attack": 12833
+  },
+  "model_parameters": {
+    "n_estimators": 200,
+    "max_depth": 25,
+    "min_samples_leaf": 2,
+    "class_weight": "balanced_subsample",
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "timing_seconds": {
+    "training": 13.962582600070164,
+    "prediction": 0.3008576000574976
+  },
+  "test_metrics": {
+    "accuracy": 0.7609563520227112,
+    "balanced_accuracy": 0.7867141299956172,
+    "precision": 0.9667669927263607,
+    "recall": 0.6007169017377074,
+    "f1_score": 0.7410006247897343,
+    "roc_auc": 0.9664602500457729,
+    "average_precision_pr_auc": 0.9706022872044303,
+    "confusion_matrix": {
+      "true_negatives": 9446,
+      "false_positives": 265,
+      "false_negatives": 5124,
+      "true_positives": 7709
+    },
+    "false_positive_rate": 0.027288641746473073,
+    "false_negative_rate": 0.3992830982622925,
+    "specificity_true_negative_rate": 0.972711358253527
+  }
+}
