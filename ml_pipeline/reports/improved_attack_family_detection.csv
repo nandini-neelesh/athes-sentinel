@@ -1,0 +1,6 @@
+family,total_test_records,predicted_as_attack,missed_as_normal,detection_recall,correctly_predicted_normal,falsely_flagged_attack,false_positive_rate
+dos,7460,6394,1066,0.8571045576407507,,,
+probe,2421,2150,271,0.8880627839735646,,,
+r2l,2885,325,2560,0.11265164644714037,,,
+u2r,67,17,50,0.2537313432835821,,,
+normal,9711,,,,9419,292,0.030068993924415612

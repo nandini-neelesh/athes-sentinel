@@ -1,0 +1,133 @@
+{
+  "honesty_statements": [
+    "Phase N2 already established a fixed baseline on the official test set.",
+    "Phase N2.1 model and threshold selection used only one new stratified train/validation split from KDDTrain+.",
+    "Final official-test evaluation is reported transparently.",
+    "No official-test metric was used to revise the selected candidate or threshold after evaluation.",
+    "The selected model is a limited baseline comparison, not a global optimum.",
+    "NSL-KDD is a public benchmark and does not represent modern production traffic.",
+    "Rare-attack detection is not claimed to be solved."
+  ],
+  "data_policy": {
+    "complete_training_filename": "KDDTrain+.txt",
+    "complete_test_filename": "KDDTest+.txt",
+    "complete_training_rows": 125973,
+    "complete_test_rows": 22544,
+    "candidate_training_rows": 100778,
+    "validation_rows": 25195,
+    "validation_fraction": 0.2,
+    "stratified_binary_target": true,
+    "random_state": 42,
+    "sampling_or_synthetic_data_used": false
+  },
+  "feature_policy": {
+    "features_before_encoding": 40,
+    "categorical_features": 3,
+    "numeric_features": 37,
+    "transformed_features_after_encoding": 121,
+    "excluded_columns": [
+      "label",
+      "difficulty_level",
+      "num_outbound_cmds"
+    ]
+  },
+  "candidate_selection_policy": {
+    "threshold_grid": {
+      "minimum": 0.1,
+      "maximum": 0.9,
+      "increment": 0.01
+    },
+    "threshold_selection": "Prefer FPR <= 0.05; maximize validation F2, then recall, then lower FPR, then threshold closest to 0.5.",
+    "candidate_selection": "Maximize selected-threshold validation F2, then recall, then lower FPR, then precision.",
+    "official_test_metrics_used_for_selection": false
+  },
+  "selected_candidate": {
+    "candidate": "candidate_b",
+    "model_name": "Recall-oriented Random Forest",
+    "classifier": "RandomForestClassifier",
+    "parameters": {
+      "n_estimators": 300,
+      "max_depth": null,
+      "min_samples_leaf": 1,
+      "class_weight": {
+        "0": 1.0,
+        "1": 2.0
+      },
+      "random_state": 42,
+      "n_jobs": -1
+    },
+    "selected_validation_threshold": 0.38,
+    "selection_reason": "Selected by the declared validation F2 and tie-break policy."
+  },
+  "selected_candidate_validation_metrics": {
+    "threshold": 0.38,
+    "precision": 0.998381601362862,
+    "recall": 0.9995735971345727,
+    "f1": 0.9989772436716953,
+    "f2": 0.9993349703294455,
+    "false_positive_rate": 0.0014106466701314128,
+    "false_negative_rate": 0.00042640286542725567,
+    "specificity": 0.9985893533298685,
+    "confusion_matrix": {
+      "true_negatives": 13450,
+      "false_positives": 19,
+      "false_negatives": 5,
+      "true_positives": 11721
+    },
+    "roc_auc": 0.9999947764145225,
+    "pr_auc_average_precision": 0.999993915875365
+  },
+  "official_test_metrics_selected_threshold": {
+    "threshold": 0.38,
+    "accuracy": 0.8119677075940384,
+    "balanced_accuracy": 0.8311822878893468,
+    "precision": 0.9681847897145348,
+    "recall": 0.6924335697031092,
+    "f1": 0.8074144745808913,
+    "f2": 0.7342588001983144,
+    "roc_auc": 0.9637833473088777,
+    "pr_auc_average_precision": 0.9666010792633569,
+    "confusion_matrix": {
+      "true_negatives": 9419,
+      "false_positives": 292,
+      "false_negatives": 3947,
+      "true_positives": 8886
+    },
+    "false_positive_rate": 0.030068993924415612,
+    "false_negative_rate": 0.30756643029689085,
+    "specificity": 0.9699310060755844
+  },
+  "official_test_metrics_threshold_0_5_comparison_only": {
+    "threshold": 0.5,
+    "accuracy": 0.7826472675656494,
+    "balanced_accuracy": 0.805716469106881,
+    "precision": 0.9682445992208712,
+    "recall": 0.6391334839865971,
+    "f1": 0.7699962448366504,
+    "f2": 0.6857515509255389,
+    "roc_auc": 0.9637833473088777,
+    "pr_auc_average_precision": 0.9666010792633569,
+    "confusion_matrix": {
+      "true_negatives": 9442,
+      "false_positives": 269,
+      "false_negatives": 4631,
+      "true_positives": 8202
+    },
+    "false_positive_rate": 0.027700545772834928,
+    "false_negative_rate": 0.36086651601340297,
+    "specificity": 0.972299454227165
+  },
+  "durations_seconds": {
+    "candidate_training_total": 53.25310329999775,
+    "candidate_validation_prediction_total": 1.0172557999612764,
+    "final_full_training": 19.24056060006842,
+    "official_test_prediction": 0.31425479997415096
+  },
+  "report_paths": {
+    "candidate_validation": "ml_pipeline/reports/binary_candidate_validation.csv",
+    "threshold_search": "ml_pipeline/reports/binary_threshold_search.csv",
+    "confusion_matrix": "ml_pipeline/reports/improved_binary_confusion_matrix.csv",
+    "family_detection": "ml_pipeline/reports/improved_attack_family_detection.csv",
+    "baseline_comparison": "ml_pipeline/reports/baseline_vs_improved.csv"
+  }
+}
