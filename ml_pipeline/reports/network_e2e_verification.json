@@ -1,6 +1,6 @@
 {
   "outcome": "passed",
-  "timestamp_utc": "2026-07-26T14:20:11.860616+00:00",
+  "timestamp_utc": "2026-09-15T11:48:23.714650+00:00",
   "temporary_database_policy": "The real FastAPI app was imported only after DATABASE_URL was redirected to a disposable SQLite file. get_db was explicitly overridden, startup was not connected to any external database, and the disposable database was removed afterward.",
   "defects_found_and_fixed": [],
   "authenticated_workflow": {
@@ -175,39 +175,39 @@
     "api_contract_tests": {
       "outcome": "passed",
       "return_code": 0,
-      "duration_seconds": 4.131
+      "duration_seconds": 2.582
     },
     "complete_backend_tests": {
       "outcome": "passed",
       "return_code": 0,
-      "duration_seconds": 6.243
+      "duration_seconds": 4.806
     },
     "final_model_verification": {
       "outcome": "passed",
       "return_code": 0,
-      "duration_seconds": 3.214
+      "duration_seconds": 2.104
     },
     "frontend_build": {
       "outcome": "passed",
       "return_code": 0,
-      "duration_seconds": 8.063,
+      "duration_seconds": 6.289,
       "generated_dist_removed": true
     }
   },
   "api_contract_tests": {
     "outcome": "passed",
     "return_code": 0,
-    "duration_seconds": 4.131
+    "duration_seconds": 2.582
   },
   "backend_test_result": {
     "outcome": "passed",
     "return_code": 0,
-    "duration_seconds": 6.243
+    "duration_seconds": 4.806
   },
   "frontend_build_result": {
     "outcome": "passed",
     "return_code": 0,
-    "duration_seconds": 8.063,
+    "duration_seconds": 6.289,
     "generated_dist_removed": true
   },
   "real_database_safety": {
@@ -217,5 +217,5 @@
     "deployed_master_contacted": false,
     "disposable_database_removed": true
   },
-  "duration_seconds": 33.95
+  "duration_seconds": 28.276
 }

@@ -26,6 +26,8 @@ if DATABASE_URL.startswith("sqlite"):
     engine_options["connect_args"] = {"check_same_thread": False}
 else:
     engine_options["pool_pre_ping"] = True
+    # Managed Postgres drops idle connections; recycle before that happens.
+    engine_options["pool_recycle"] = 300
 
 
 engine = create_engine(

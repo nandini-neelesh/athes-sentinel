@@ -5,19 +5,25 @@ services:
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: athes-sentinel-db
-          property: connectionString
-      - key: ATHES_SECRET_KEY
-        generateValue: true
+      # Matches the version the model artifact and test suite were built with.
+      - key: PYTHON_VERSION
+        value: 3.13.9
       - key: ATHES_ENV
         value: production
-      # Set this to the deployed Vercel frontend URL after frontend deployment.
+      - key: ATHES_SECRET_KEY
+        generateValue: true
+      # Connection string of a Postgres database that does not expire, e.g. a
+      # free Neon or Supabase project. Render's own free Postgres is deleted
+      # 30 days after creation, which makes the API exit with status 3.
+      - key: DATABASE_URL
+        sync: false
+      # Exact Vercel URL with no trailing path, e.g. https://athes-sentinel.vercel.app
       - key: ATHES_ALLOWED_ORIGINS
         sync: false
-
-databases:
-  - name: athes-sentinel-db
-    plan: free
+      # Login for the deployed app. No account is created without these.
+      - key: ATHES_ADMIN_USERNAME
+        sync: false
+      - key: ATHES_ADMIN_PASSWORD
+        sync: false

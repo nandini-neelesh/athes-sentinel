@@ -1,4 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
+
+from backend.app.auth.service import get_current_user
 from pydantic import BaseModel
 
 from backend.app.database.session import get_db
@@ -13,6 +15,7 @@ from backend.app.incidents.service import (
 router = APIRouter(
     prefix="/incidents",
     tags=["Incidents"],
+    dependencies=[Depends(get_current_user)],
 )
 
 

@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 
+from backend.app.auth.service import get_current_user
+
 from backend.app.database.session import get_db
 from backend.app.features.ip_features import (
     generate_ip_features_for_file,
@@ -10,6 +12,7 @@ from backend.app.features.ip_features import (
 router = APIRouter(
     prefix="/features",
     tags=["Features"],
+    dependencies=[Depends(get_current_user)],
 )
 
 

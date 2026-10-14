@@ -11,12 +11,12 @@ def _clean_optional_value(value):
     return value
 
 
-def save_uploaded_logs(file, db):
+def save_uploaded_logs(file, db, uploaded_by=None):
     try:
         dataframe = pd.read_csv(file.file)
         cleaned_dataframe = validate_log_dataframe(dataframe)
 
-        log_file = LogFile(filename=file.filename)
+        log_file = LogFile(filename=file.filename, uploaded_by=uploaded_by)
         db.add(log_file)
         db.flush()
 

@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Depends, Query
 
+from backend.app.auth.service import get_current_user
+
 from backend.app.analytics.service import (
     get_error_rate_by_endpoint,
     get_hourly_traffic,
@@ -15,6 +17,7 @@ from backend.app.database.session import get_db
 router = APIRouter(
     prefix="/analytics",
     tags=["Analytics"],
+    dependencies=[Depends(get_current_user)],
 )
 
 

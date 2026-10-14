@@ -1,0 +1,6 @@
+# Only needed for the legacy Streamlit prototype (frontend/streamlit_app.py).
+# Not installed on Render: the deployed backend does not import any of these.
+-r requirements.txt
+streamlit
+requests
+plotly

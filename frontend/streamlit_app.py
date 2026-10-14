@@ -7,6 +7,38 @@ API_BASE_URL = "http://127.0.0.1:8000"
 INCIDENT_STATUSES = ["open", "investigating", "resolved", "false_positive"]
 
 
+def auth_headers():
+    """Return the bearer header for the signed-in analyst, if there is one."""
+    token = st.session_state.get("access_token")
+
+    if not token:
+        return {}
+
+    return {"Authorization": f"Bearer {token}"}
+
+
+def login(username, password):
+    """Exchange demo credentials for a JWT and store it in the session."""
+    try:
+        response = requests.post(
+            f"{API_BASE_URL}/auth/login",
+            json={"username": username, "password": password},
+            timeout=10,
+        )
+        response.raise_for_status()
+        payload = response.json()
+        st.session_state.access_token = payload["access_token"]
+        st.session_state.current_user = payload["user"]
+        return True, payload["user"]
+    except requests.RequestException as exc:
+        return False, _get_error_message(exc)
+
+
+def logout():
+    st.session_state.access_token = None
+    st.session_state.current_user = None
+
+
 def check_backend_health():
     try:
         response = requests.get(f"{API_BASE_URL}/", timeout=5)
@@ -28,6 +60,7 @@ def upload_logs(uploaded_file):
         response = requests.post(
             f"{API_BASE_URL}/logs/upload",
             files=files,
+            headers=auth_headers(),
             timeout=30,
         )
         response.raise_for_status()
@@ -39,7 +72,11 @@ def upload_logs(uploaded_file):
 
 def get_log_files():
     try:
-        response = requests.get(f"{API_BASE_URL}/logs/files", timeout=10)
+        response = requests.get(
+            f"{API_BASE_URL}/logs/files",
+            headers=auth_headers(),
+            timeout=10,
+        )
         response.raise_for_status()
         return True, response.json()
     except requests.RequestException as exc:
@@ -51,6 +88,7 @@ def get_raw_logs(file_id, limit):
         response = requests.get(
             f"{API_BASE_URL}/logs",
             params={"file_id": file_id, "limit": limit},
+            headers=auth_headers(),
             timeout=20,
         )
         response.raise_for_status()
@@ -63,6 +101,7 @@ def generate_ip_features(file_id):
     try:
         response = requests.post(
             f"{API_BASE_URL}/features/generate/{file_id}",
+            headers=auth_headers(),
             timeout=30,
         )
         response.raise_for_status()
@@ -75,6 +114,7 @@ def get_ip_features(file_id):
     try:
         response = requests.get(
             f"{API_BASE_URL}/features/{file_id}",
+            headers=auth_headers(),
             timeout=20,
         )
         response.raise_for_status()
@@ -87,6 +127,7 @@ def run_ml_anomaly_detection(file_id):
     try:
         response = requests.post(
             f"{API_BASE_URL}/ml/run/{file_id}",
+            headers=auth_headers(),
             timeout=30,
         )
         response.raise_for_status()
@@ -99,6 +140,7 @@ def get_ml_scores(file_id):
     try:
         response = requests.get(
             f"{API_BASE_URL}/ml/scores/{file_id}",
+            headers=auth_headers(),
             timeout=20,
         )
         response.raise_for_status()
@@ -111,6 +153,7 @@ def generate_incidents(file_id):
     try:
         response = requests.post(
             f"{API_BASE_URL}/incidents/generate/{file_id}",
+            headers=auth_headers(),
             timeout=30,
         )
         response.raise_for_status()
@@ -129,6 +172,7 @@ def get_incidents(file_id=None):
         response = requests.get(
             f"{API_BASE_URL}/incidents",
             params=params,
+            headers=auth_headers(),
             timeout=20,
         )
         response.raise_for_status()
@@ -142,6 +186,7 @@ def update_incident_status(incident_id, status):
         response = requests.patch(
             f"{API_BASE_URL}/incidents/{incident_id}/status",
             json={"status": status},
+            headers=auth_headers(),
             timeout=10,
         )
         response.raise_for_status()
@@ -193,6 +238,12 @@ if "ip_features" not in st.session_state:
 if "ml_scores" not in st.session_state:
     st.session_state.ml_scores = []
 
+if "access_token" not in st.session_state:
+    st.session_state.access_token = None
+
+if "current_user" not in st.session_state:
+    st.session_state.current_user = None
+
 
 st.header("Backend Health Check")
 is_healthy, health_result = check_backend_health()
@@ -203,6 +254,40 @@ if is_healthy:
 else:
     st.error("Backend is not running or cannot be reached.")
     st.write(health_result)
+
+
+# Every analysis endpoint below requires a JWT, so sign in before continuing.
+if st.session_state.access_token is None:
+    st.header("Sign In")
+    st.caption("Use the demo analyst or admin account created at backend startup.")
+
+    with st.form("login_form"):
+        username = st.text_input("Username", value="analyst")
+        password = st.text_input("Password", value="", type="password")
+        submitted = st.form_submit_button("Sign in")
+
+    if submitted:
+        success, login_result = login(username, password)
+
+        if success:
+            st.success(f"Signed in as {login_result['username']}.")
+            st.rerun()
+        else:
+            st.error("Sign in failed.")
+            st.write(login_result)
+
+    st.stop()
+
+
+signed_in_user = st.session_state.current_user or {}
+st.sidebar.write(
+    f"Signed in as {signed_in_user.get('username', 'unknown')} "
+    f"({signed_in_user.get('role', 'unknown')})"
+)
+
+if st.sidebar.button("Sign out"):
+    logout()
+    st.rerun()
 
 
 st.header("Upload Logs")

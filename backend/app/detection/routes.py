@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 
+from backend.app.auth.service import get_current_user
+
 from backend.app.database.session import get_db
 from backend.app.detection.ml_model import (
     get_ml_scores_for_file,
@@ -10,6 +12,7 @@ from backend.app.detection.ml_model import (
 router = APIRouter(
     prefix="/ml",
     tags=["ML Anomaly Detection"],
+    dependencies=[Depends(get_current_user)],
 )
 
 

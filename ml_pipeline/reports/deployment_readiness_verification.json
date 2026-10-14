@@ -1,8 +1,8 @@
 {
   "overall_outcome": "passed",
-  "timestamp_utc": "2026-07-26T16:02:59.047250+00:00",
-  "git_branch": "nsl-kdd-integration",
-  "git_commit": "11608fdd531365fe88dacb185d5e860c4d071a86",
+  "timestamp_utc": "2026-09-15T11:49:16.363861+00:00",
+  "git_branch": "master",
+  "git_commit": "f5868bfa50b45ceae9c513d823188635ff5b5921",
   "tracked_artifact": {
     "outcome": "passed",
     "tracked": true,
@@ -34,7 +34,7 @@
     "outcome": "passed",
     "source": "git archive HEAD with only current modifications to explicitly listed release-readiness files overlaid",
     "overlaid_tracked_files": [
-      "scripts/verify_deployment_readiness.py"
+      "backend/app/main.py"
     ],
     "ignored_and_untracked_files_excluded": true,
     "raw_datasets_absent": true,
@@ -101,7 +101,7 @@
     "health_endpoint": "/",
     "health_response": "passed",
     "openapi_generation": "passed",
-    "openapi_path_count": 33,
+    "openapi_path_count": 32,
     "network_routes_registered": 11,
     "existing_application_route_groups_registered": [
       "/logs",
@@ -132,7 +132,7 @@
     "disposable_table_database_created": true
   },
   "route_and_table_registration": {
-    "route_count": 33,
+    "route_count": 32,
     "network_routes": 11,
     "tables": [
       "incidents",
@@ -247,7 +247,7 @@
   },
   "frontend_build": {
     "outcome": "passed",
-    "duration_seconds": 10.998,
+    "duration_seconds": 6.235,
     "configured_environment_variable": "VITE_API_BASE_URL",
     "configured_placeholder_url_embedded": true,
     "localhost_api_absent_from_production_bundle": true,
@@ -316,5 +316,5 @@
     "only_http_bind": "127.0.0.1 temporary port",
     "real_local_database_unchanged": true
   },
-  "duration_seconds": 36.534
+  "duration_seconds": 23.699
 }

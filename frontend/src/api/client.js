@@ -1,12 +1,17 @@
 import axios from "axios";
 
-const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim().replace(
+  /\/+$/,
+  ""
+);
 
-if (import.meta.env.PROD && !configuredApiBaseUrl) {
-  throw new Error(
-    "VITE_API_BASE_URL must be configured for a production frontend."
-  );
-}
+// A production build without VITE_API_BASE_URL used to throw while the module
+// loaded, which left a blank white page. Expose the problem instead so the
+// login screen can explain it.
+export const apiConfigError =
+  import.meta.env.PROD && !configuredApiBaseUrl
+    ? "This deployment is missing VITE_API_BASE_URL. Set it to the backend URL in the hosting dashboard and redeploy."
+    : null;
 
 const apiBaseUrl =
   configuredApiBaseUrl ||
@@ -17,6 +22,10 @@ const apiClient = axios.create({
 });
 
 apiClient.interceptors.request.use((config) => {
+  if (apiConfigError) {
+    return Promise.reject(new Error(apiConfigError));
+  }
+
   const token = localStorage.getItem("athes_token");
 
   if (token) {

@@ -1,3 +1,4 @@
+import logging
 import os
 from datetime import datetime, timedelta, timezone
 
@@ -9,6 +10,8 @@ from passlib.context import CryptContext
 from backend.app.database.models import User
 from backend.app.database.session import get_db
 
+
+logger = logging.getLogger(__name__)
 
 DEFAULT_SECRET_KEY = "athes-dev-secret-change-before-production"
 
@@ -116,26 +119,127 @@ def require_role(allowed_roles):
     return role_dependency
 
 
+DEMO_USERS = (
+    ("admin", "admin123", "admin"),
+    ("analyst", "analyst123", "analyst"),
+)
+
+MIN_PASSWORD_LENGTH = 8
+
+
+def is_production():
+    return os.getenv("ATHES_ENV", "").strip().lower() == "production"
+
+
+def demo_users_enabled():
+    """Demo accounts are a development convenience, never a production default."""
+    flag = os.getenv("ATHES_SEED_DEMO_USERS", "").strip().lower()
+
+    if flag in {"1", "true", "yes"}:
+        return True
+
+    if flag in {"0", "false", "no"}:
+        return False
+
+    return not is_production()
+
+
 def create_demo_users(db):
-    admin_user = get_user_by_username("admin", db)
-    analyst_user = get_user_by_username("analyst", db)
-
-    if admin_user is None:
-        db.add(
-            User(
-                username="admin",
-                hashed_password=hash_password("admin123"),
-                role="admin",
+    """Create the well-known demo accounts (development and tests only)."""
+    for username, password, role in DEMO_USERS:
+        if get_user_by_username(username, db) is None:
+            db.add(
+                User(
+                    username=username,
+                    hashed_password=hash_password(password),
+                    role=role,
+                )
             )
-        )
-
-    if analyst_user is None:
-        db.add(
-            User(
-                username="analyst",
-                hashed_password=hash_password("analyst123"),
-                role="analyst",
-            )
-        )
 
     db.commit()
+
+
+def upsert_configured_user(db, username, password, role):
+    """Create a user, or reset the password of an existing one."""
+    if len(password) < MIN_PASSWORD_LENGTH:
+        raise RuntimeError(
+            f"Password for configured {role} '{username}' must be at least "
+            f"{MIN_PASSWORD_LENGTH} characters."
+        )
+
+    user = get_user_by_username(username, db)
+
+    if user is None:
+        db.add(
+            User(
+                username=username,
+                hashed_password=hash_password(password),
+                role=role,
+            )
+        )
+    elif not verify_password(password, user.hashed_password) or user.role != role:
+        user.hashed_password = hash_password(password)
+        user.role = role
+
+
+def remove_default_demo_users(db):
+    """Delete demo accounts that still use their publicly known password."""
+    removed = []
+
+    for username, password, _role in DEMO_USERS:
+        user = get_user_by_username(username, db)
+
+        if user is not None and verify_password(password, user.hashed_password):
+            db.delete(user)
+            removed.append(username)
+
+    return removed
+
+
+def seed_users(db):
+    """Provision login accounts for the current environment.
+
+    * ATHES_ADMIN_USERNAME / ATHES_ADMIN_PASSWORD and
+      ATHES_ANALYST_USERNAME / ATHES_ANALYST_PASSWORD create (or update) real
+      accounts from environment variables, so no credential lives in the code.
+    * The public demo accounts are only created outside production, or when
+      ATHES_SEED_DEMO_USERS=true is set explicitly.
+    * In production without that flag, any leftover demo account that still has
+      its default password is removed.
+    """
+    configured = (
+        ("ATHES_ADMIN_USERNAME", "ATHES_ADMIN_PASSWORD", "admin"),
+        ("ATHES_ANALYST_USERNAME", "ATHES_ANALYST_PASSWORD", "analyst"),
+    )
+
+    for username_var, password_var, role in configured:
+        username = os.getenv(username_var, "").strip()
+        password = os.getenv(password_var, "")
+
+        if username and password:
+            upsert_configured_user(db, username, password, role)
+        elif username or password:
+            raise RuntimeError(
+                f"{username_var} and {password_var} must be set together."
+            )
+
+    db.flush()
+
+    if demo_users_enabled():
+        create_demo_users(db)
+    else:
+        removed = remove_default_demo_users(db)
+
+        if removed:
+            logger.warning(
+                "Removed default demo accounts from the database: %s",
+                ", ".join(removed),
+            )
+
+    db.commit()
+
+    if is_production() and db.query(User).count() == 0:
+        logger.warning(
+            "No login accounts exist. Set ATHES_ADMIN_USERNAME and "
+            "ATHES_ADMIN_PASSWORD so someone can sign in."
+        )

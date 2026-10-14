@@ -1,16 +1,16 @@
-fastapi
-uvicorn
-sqlalchemy
-pydantic
-python-multipart
-pandas
-streamlit
-requests
-plotly
+# Backend runtime dependencies (Render). Pinned to the versions the test suite
+# passes against on Python 3.13 so a fresh build cannot pick up a breaking release.
+fastapi==0.136.3
+uvicorn==0.49.0
+sqlalchemy==2.0.50
+pydantic==2.13.4
+python-multipart==0.0.32
+pandas==3.0.3
+numpy==2.4.6
+# Must match the version the frozen model artifact was serialised with.
 scikit-learn==1.9.0
-joblib
-numpy
-passlib[bcrypt]
-python-jose[cryptography]
+joblib==1.5.3
+passlib==1.7.4
 bcrypt==4.0.1
-psycopg[binary]
+python-jose[cryptography]==3.5.0
+psycopg[binary]>=3.2,<4

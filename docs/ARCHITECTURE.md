@@ -83,7 +83,11 @@ Network rows retain the original 41 fields. The database does not store the 121 
 
 ## Backend boundaries
 
-- `backend/app/auth/`: JWT login and authenticated-user dependency.
+- `backend/app/auth/`: JWT login and authenticated-user dependency. Every router
+  except the health check and `POST /auth/login` attaches `get_current_user`, so
+  30 of the 32 API operations require a bearer token. `require_role` is defined
+  here but is currently unused: the system performs authentication, not
+  role-based authorisation.
 - `backend/app/database/`: shared SQLAlchemy base/session plus application and network models.
 - `backend/app/logs/`, `features/`, `detection/`, `incidents/`, `analytics/`: application-log mode.
 - `backend/app/network/`: upload, persisted analysis, analytics, incident, and workflow services/routes.

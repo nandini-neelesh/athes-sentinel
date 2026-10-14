@@ -33,11 +33,17 @@ export function AuthProvider({ children }) {
         const currentUser = await getCurrentUser();
         localStorage.setItem("athes_user", JSON.stringify(currentUser));
         setUser(currentUser);
-      } catch {
-        localStorage.removeItem("athes_token");
-        localStorage.removeItem("athes_user");
-        setToken(null);
-        setUser(null);
+      } catch (requestError) {
+        // Only discard the session when the server rejects the token. A sleeping
+        // or unreachable API (network error, 5xx) must not sign the user out.
+        const status = requestError.response?.status;
+
+        if (status === 401 || status === 403) {
+          localStorage.removeItem("athes_token");
+          localStorage.removeItem("athes_user");
+          setToken(null);
+          setUser(null);
+        }
       } finally {
         setIsLoading(false);
       }

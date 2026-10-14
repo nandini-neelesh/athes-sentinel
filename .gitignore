@@ -1,6 +1,7 @@
 venv/
 __pycache__/
 *.pyc
+.pytest_cache/
 *.db
 .env
 backend/.env
@@ -22,3 +23,6 @@ data/external/nsl-kdd/
 # Generated binary model artifacts stay local pending deployment review
 ml_pipeline/artifacts/*.joblib
 !ml_pipeline/artifacts/nsl_kdd_improved_binary_pipeline.joblib
+
+docs/study/
+docs/AUDIT_REPORT.md

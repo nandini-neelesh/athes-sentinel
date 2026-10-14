@@ -7,7 +7,10 @@ Athes Sentinel is a full-stack security monitoring and incident-triage platform 
 
 This is a portfolio and learning project, not a production SIEM replacement, packet sensor, or automated blocking system.
 
-> **Release status:** the deployed `master` application remains the stable application-log version. The complete Network IDS mode is on the verified `nsl-kdd-integration` feature branch pending review; this documentation does not imply that it has been deployed.
+> **Release status:** the `nsl-kdd-integration` branch has since been merged, so
+> `master` now contains both modes. Whether the hosted demo has been redeployed
+> from current `master` is not verified by anything in this repository; treat the
+> live links as the application-log demo unless a redeploy has been confirmed.
 
 ## Live application-log demo
 
@@ -264,10 +267,12 @@ athes-sentinel/
 │   │   └── nsl_kdd_inference.py   # Frozen network-model inference
 │   ├── network/                   # Network ingestion, analysis, reads/workflow
 │   └── main.py
+│   └── tests/                     # 27 regression tests (unittest, pytest-compatible)
 ├── frontend/src/
 │   ├── api/                       # Authenticated API wrappers
 │   ├── context/                   # Auth, file, and network dataset selection
 │   └── pages/network/             # Network upload/overview/analytics/workflow
+├── frontend/streamlit_app.py      # Superseded prototype dashboard (application-log mode)
 ├── ml_pipeline/                   # Inspection, training, reports, metadata/artifact
 ├── scripts/
 │   ├── verify_network_e2e.py
@@ -277,9 +282,15 @@ athes-sentinel/
 │   ├── NETWORK_IDS.md
 │   ├── DEPLOYMENT.md
 │   └── screenshots/
+├── pytest.ini
 ├── render.yaml
+├── requirements-dev.txt
 └── requirements.txt
 ```
+
+`frontend/streamlit_app.py` is the original prototype dashboard for
+application-log mode. The React application replaced it; it is kept because it
+still runs, and it now signs in with the same JWT login as the React client.
 
 ## Local setup on Windows PowerShell
 
@@ -291,6 +302,13 @@ From the repository root:
 python -m venv venv
 .\venv\Scripts\python.exe -m pip install --upgrade pip
 .\venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+To also run the test suite, install the development dependencies (this pulls in
+`requirements.txt` as well):
+
+```powershell
+.\venv\Scripts\python.exe -m pip install -r requirements-dev.txt
 ```
 
 Backend environment variables are process variables. The root `.env.example` is a safe reference; the application does not automatically load it. Local development can use the checked defaults:
@@ -362,14 +380,23 @@ These are intentional public development/demo credentials. Do not use them for a
 
 ### Application-log API groups
 
-| Group | Representative endpoints | Purpose |
-| --- | --- | --- |
-| Auth | `POST /auth/login`, `GET /auth/me` | Login and current user |
-| Logs | `POST /logs/upload`, `GET /logs/files`, `GET /logs` | Upload and read application logs |
-| Features | `POST /features/generate/{file_id}`, `GET /features/{file_id}` | Generate/read per-IP features |
-| ML | `POST /ml/run/{file_id}`, `GET /ml/scores/{file_id}` | Run/read application Isolation Forest scores |
-| Incidents | `POST /incidents/generate/{file_id}`, `GET /incidents`, `PATCH /incidents/{incident_id}/status` | Generate and triage application incidents |
-| Analytics | `/analytics/summary/{file_id}` and related routes | Application dashboard aggregations |
+| Group | Representative endpoints | Purpose | Auth |
+| --- | --- | --- | --- |
+| Auth | `POST /auth/login`, `GET /auth/me` | Login and current user | login public, `/auth/me` JWT |
+| Logs | `POST /logs/upload`, `GET /logs/files`, `GET /logs` | Upload and read application logs | JWT |
+| Features | `POST /features/generate/{file_id}`, `GET /features/{file_id}` | Generate/read per-IP features | JWT |
+| ML | `POST /ml/run/{file_id}`, `GET /ml/scores/{file_id}` | Run/read application Isolation Forest scores | JWT |
+| Incidents | `POST /incidents/generate/{file_id}`, `GET /incidents`, `PATCH /incidents/{incident_id}/status` | Generate and triage application incidents | JWT |
+| Analytics | `/analytics/summary/{file_id}` and related routes | Application dashboard aggregations | JWT |
+
+`POST /logs/upload` records the signed-in user's id in `log_files.uploaded_by`,
+and `GET /logs/files` returns it.
+
+### Authentication coverage
+
+The only unauthenticated routes in the whole API are `GET /` (health check) and
+`POST /auth/login`. Counting every operation in the generated OpenAPI schema,
+that is **30 authenticated endpoints and 2 public ones**.
 
 ### Network IDS API
 
@@ -395,6 +422,7 @@ From the repository root:
 
 ```powershell
 .\venv\Scripts\python.exe -m unittest discover -s backend/app/tests -p "test*.py" -v
+.\venv\Scripts\python.exe -m pytest -q
 .\venv\Scripts\python.exe -m ml_pipeline.verify_final_model
 .\venv\Scripts\python.exe scripts\verify_network_e2e.py
 .\venv\Scripts\python.exe scripts\verify_deployment_readiness.py
@@ -467,6 +495,13 @@ Use exact HTTPS frontend origins for credentialed CORS; do not use wildcard `*`.
 - There is no background worker or object storage.
 - There is no automatic blocking or remediation.
 - Startup uses `create_all()` rather than Alembic migrations.
+- Authentication is authentication only: `require_role` exists in
+  `backend/app/auth/service.py` but no endpoint restricts access by role, so
+  `admin` and `analyst` can do exactly the same things.
+- `log_files.uploaded_by` stores a user id but there is no foreign key to
+  `users`, and network datasets/incidents record no uploader or reviewer.
+- Several models still use `datetime.utcnow()`, which Python 3.13 deprecates;
+  stored values are correct but the call should move to a timezone-aware form.
 - Hosted request size, memory, and timeout behavior still requires live-plan validation.
 - Benchmark performance is not proof of modern production effectiveness.
 - Demo authentication is intentionally simple and unsuitable for a real security product.
