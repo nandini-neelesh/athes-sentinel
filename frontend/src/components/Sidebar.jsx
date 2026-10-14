@@ -4,7 +4,6 @@ import {
   ClipboardList,
   FileUp,
   LayoutDashboard,
-  LogIn,
   Network,
   ShieldCheck,
 } from "lucide-react";
@@ -18,7 +17,6 @@ const applicationNavItems = [
   { label: "Analytics", path: "/analytics", icon: BarChart3 },
   { label: "Incidents", path: "/incidents", icon: Activity },
   { label: "Workflow", path: "/workflow", icon: ClipboardList },
-  { label: "Login", path: "/login", icon: LogIn },
 ];
 
 const networkNavItems = [
